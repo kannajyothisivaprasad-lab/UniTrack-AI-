@@ -182,3 +182,5 @@ python -m unittest discover tests
 
 ## 📄 License
 Academic & Enterprise Multi-Tenant System – Built with Flask, Pandas, Scikit-Learn, and Bootstrap 5.
+#   U n i T r a c k - A I -  
+ 
