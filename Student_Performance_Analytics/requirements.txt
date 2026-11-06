@@ -7,5 +7,8 @@ openpyxl>=3.1.0
 shap>=0.42.0
 matplotlib>=3.7.0
 Werkzeug>=3.0.0
+gunicorn>=21.2.0
+opencv-python-headless>=4.8.0
+pymysql>=1.1.0
 # Optional for PostgreSQL enterprise deployment
 psycopg2-binary>=2.9.9

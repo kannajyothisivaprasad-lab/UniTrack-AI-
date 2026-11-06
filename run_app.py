@@ -34,5 +34,7 @@ if __name__ == '__main__':
     print("   4. University B Admin:   admin@pacific.edu    | Password: PacificAdmin@123")
     print("=" * 80)
     print("Press Ctrl + C to stop the server\n")
+    # Read dynamic PORT for cloud hosts (Render / Heroku / AWS) with default 5000
+    port = int(os.environ.get('PORT', 5000))
     # use_reloader=False prevents Werkzeug path issues on Windows
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=False)
