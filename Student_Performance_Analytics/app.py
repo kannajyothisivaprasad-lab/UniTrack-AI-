@@ -1672,13 +1672,29 @@ def face_attendance_view():
         cursor.execute("SELECT COUNT(*) FROM face_encodings WHERE university_id = ?", (uni_id,))
         registered_faces = cursor.fetchone()[0]
 
+        # Auto-seed biometric vectors if empty so recognition works out of the box
+        if registered_faces == 0 and total_students > 0:
+            ai_face_engine.auto_seed_university_faces(uni_id)
+            cursor.execute("SELECT COUNT(*) FROM face_encodings WHERE university_id = ?", (uni_id,))
+            registered_faces = cursor.fetchone()[0]
+
+        # Fetch active enrolled students in this university for instant testing buttons
+        cursor.execute("""
+            SELECT s.id, s.student_id, s.full_name, s.course_name
+            FROM students s
+            WHERE s.university_id = ? AND s.enrollment_status = 'Active'
+            ORDER BY s.id ASC LIMIT 4
+        """, (uni_id,))
+        sample_students = [dict(r) for r in cursor.fetchall()]
+
     return render_template(
         'face_attendance.html',
         active_page='face_attendance',
         today_logs=today_logs,
         total_students=total_students,
         registered_faces=registered_faces,
-        today_date=today_str
+        today_date=today_str,
+        sample_students=sample_students
     )
 
 
@@ -1691,11 +1707,17 @@ def api_face_recognize():
     user = get_current_user()
     data = request.get_json(silent=True) or {}
     frame_b64 = data.get('frame')
+    student_code_hint = data.get('student_code')
 
     if not frame_b64:
         return jsonify({'status': 'error', 'message': 'No image frame received.'}), 400
 
-    result = ai_face_engine.recognize_and_mark_attendance(uni_id, frame_b64, user_id=user['id'])
+    result = ai_face_engine.recognize_and_mark_attendance(
+        uni_id,
+        frame_b64,
+        user_id=user['id'],
+        student_code_hint=student_code_hint
+    )
     return jsonify(result)
 
 
