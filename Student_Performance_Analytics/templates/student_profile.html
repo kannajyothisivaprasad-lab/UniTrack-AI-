@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+
+{% block title %}Student 360° Dossier - {{ dossier.student.full_name }}{% endblock %}
+{% block page_title %}Student 360° Comprehensive Dossier{% endblock %}
+{% block page_subtitle %}Full institutional dossier: academic marks, attendance records, fee ledger, achievements, and AI risk analysis{% endblock %}
+
+{% block content %}
+<!-- Student Header Dossier Card -->
+<div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+    <div class="card-body p-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 72px; height: 72px;">
+                    {% if dossier.student.profile_photo %}
+                        <img src="{{ dossier.student.profile_photo }}" alt="Avatar" class="rounded-circle w-100 h-100 object-fit-cover">
+                    {% else %}
+                        {{ dossier.student.full_name[:1] }}
+                    {% endif %}
+                </div>
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <h4 class="fw-bold mb-0 text-dark">{{ dossier.student.full_name }}</h4>
+                        <span class="badge bg-light text-primary border font-monospace fs-6">{{ dossier.student.student_id }}</span>
+                        {% if dossier.student.enrollment_status == 'Active' %}
+                            <span class="badge bg-success-subtle text-success border border-success-subtle">Active</span>
+                        {% else %}
+                            <span class="badge bg-secondary-subtle text-secondary border">{{ dossier.student.enrollment_status }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="text-muted small d-flex flex-wrap gap-3">
+                        <span><i class="bi bi-bank me-1"></i>{{ dossier.student.uni_name }}</span>
+                        <span><i class="bi bi-mortarboard me-1"></i>{{ dossier.student.dept_name or 'General' }}</span>
+                        <span><i class="bi bi-layers me-1"></i>{{ dossier.student.sec_name or 'Default' }}</span>
+                        <span><i class="bi bi-calendar3 me-1"></i>Year {{ dossier.student.academic_year }} (Sem {{ dossier.student.semester }})</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column align-items-md-end text-muted small">
+                <span><i class="bi bi-envelope me-1"></i>{{ dossier.student.email }}</span>
+                <span><i class="bi bi-telephone me-1"></i>{{ dossier.student.phone or 'Not provided' }}</span>
+                <span><i class="bi bi-calendar-check me-1"></i>Enrolled: {{ dossier.student.enrollment_date or 'N/A' }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Risk Analysis Card -->
+{% if dossier.risk %}
+<div class="card border-0 shadow-sm rounded-4 mb-4 border-start 
+    {% if dossier.risk.risk_level == 'High Risk' %}border-danger border-4
+    {% elif dossier.risk.risk_level == 'Medium Risk' %}border-warning border-4
+    {% else %}border-success border-4{% endif %}">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-cpu-fill text-primary fs-5"></i>
+                <h6 class="fw-bold mb-0 text-dark">AI Explainable Risk Assessment (Decision-Support Indicator)</h6>
+            </div>
+            <span class="badge 
+                {% if dossier.risk.risk_level == 'High Risk' %}bg-danger
+                {% elif dossier.risk.risk_level == 'Medium Risk' %}bg-warning text-dark
+                {% else %}bg-success{% endif %} fs-6 px-3 py-1">
+                {{ dossier.risk.risk_level }} (Score: {{ dossier.risk.risk_score }}/100)
+            </span>
+        </div>
+
+        <p class="small text-muted mb-2"><strong>Recommended Institutional Action:</strong> {{ dossier.risk.recommended_action }}</p>
+
+        <h6 class="small fw-bold text-secondary mb-1">Key Contributing Factors & Evidence:</h6>
+        <ul class="small text-muted mb-3 ps-3">
+            {% for r in dossier.risk.reasons %}
+                <li>{{ r }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="p-2 px-3 bg-light rounded-3 small text-muted border">
+            <i class="bi bi-info-circle me-1 text-primary"></i> <em>Disclaimer: AI risk scores are decision-support indicators only. Human institutional review and faculty assessment are strictly required before taking any administrative action.</em>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Dossier Navigation Tabs -->
+<ul class="nav nav-pills mb-4 bg-white p-2 rounded-4 shadow-sm border" id="dossierTabs" role="tablist">
+    <li class="nav-item">
+        <button class="nav-link active rounded-3 px-3" data-bs-toggle="pill" data-bs-target="#marks-pane">
+            <i class="bi bi-journal-check me-1"></i>Marks & Examinations ({{ dossier.marks|length }})
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-3" data-bs-toggle="pill" data-bs-target="#attendance-pane">
+            <i class="bi bi-calendar-check me-1"></i>Attendance Log ({{ dossier.attendance_summary.percentage }}%)
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-3" data-bs-toggle="pill" data-bs-target="#fees-pane">
+            <i class="bi bi-wallet2 me-1"></i>Tuition Fees & Payments
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-3" data-bs-toggle="pill" data-bs-target="#assignments-pane">
+            <i class="bi bi-pencil-square me-1"></i>Assignments ({{ dossier.assignments|length }})
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-3" data-bs-toggle="pill" data-bs-target="#achievements-pane">
+            <i class="bi bi-trophy me-1"></i>Honors & Achievements ({{ dossier.achievements|length }})
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="dossierTabContent">
+    <!-- PANE 1: MARKS -->
+    <div class="tab-pane fade show active" id="marks-pane">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h6 class="fw-bold mb-0 text-primary">Academic Examination Ledger</h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Examination</th>
+                                <th>Subject Code</th>
+                                <th>Subject Title</th>
+                                <th>Internal Marks</th>
+                                <th>External Marks</th>
+                                <th>Total Marks</th>
+                                <th>Percentage</th>
+                                <th>Grade</th>
+                                <th class="text-end pe-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for m in dossier.marks %}
+                            <tr>
+                                <td class="ps-4"><strong>{{ m.exam_name }}</strong></td>
+                                <td><span class="badge bg-light text-primary border font-monospace">{{ m.sub_code }}</span></td>
+                                <td>{{ m.sub_name }}</td>
+                                <td>{{ m.internal_marks }}</td>
+                                <td>{{ m.external_marks }}</td>
+                                <td><strong>{{ m.total_marks }}</strong> / {{ m.max_marks }}</td>
+                                <td>{{ m.percentage }}%</td>
+                                <td><span class="badge bg-secondary-subtle text-dark">{{ m.grade }}</span></td>
+                                <td class="text-end pe-4">
+                                    {% if m.is_pass == 1 %}
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle">PASS</span>
+                                    {% else %}
+                                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle">FAIL</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="9" class="text-center py-4 text-muted">No examination marks recorded yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANE 2: ATTENDANCE -->
+    <div class="tab-pane fade" id="attendance-pane">
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="p-3 bg-white rounded-4 shadow-sm text-center">
+                    <span class="text-muted small d-block">Overall Attendance</span>
+                    <h4 class="fw-bold text-primary mb-0">{{ dossier.attendance_summary.percentage }}%</h4>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-white rounded-4 shadow-sm text-center">
+                    <span class="text-muted small d-block">Total Days Logged</span>
+                    <h4 class="fw-bold text-dark mb-0">{{ dossier.attendance_summary.total_days or 0 }}</h4>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-white rounded-4 shadow-sm text-center">
+                    <span class="text-muted small d-block">Present Days</span>
+                    <h4 class="fw-bold text-success mb-0">{{ dossier.attendance_summary.present_days or 0 }}</h4>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-white rounded-4 shadow-sm text-center">
+                    <span class="text-muted small d-block">Absent Days</span>
+                    <h4 class="fw-bold text-danger mb-0">{{ dossier.attendance_summary.absent_days or 0 }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h6 class="fw-bold mb-0 text-primary">Recent Daily Attendance Records</h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Date</th>
+                                <th>Status</th>
+                                <th>Method</th>
+                                <th>Correction Note</th>
+                                <th class="pe-4">Recorded By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in dossier.attendance_log %}
+                            <tr>
+                                <td class="ps-4 font-monospace">{{ a.date }}</td>
+                                <td>
+                                    {% if a.status == 'Present' %}
+                                        <span class="badge bg-success-subtle text-success">Present</span>
+                                    {% elif a.status == 'Absent' %}
+                                        <span class="badge bg-danger-subtle text-danger">Absent</span>
+                                    {% else %}
+                                        <span class="badge bg-warning-subtle text-warning">Leave</span>
+                                    {% endif %}
+                                </td>
+                                <td><span class="badge bg-light text-muted border small">{{ a.method }}</span></td>
+                                <td class="small text-muted">{{ a.correction_reason or '-' }}</td>
+                                <td class="pe-4 small text-muted">{{ a.marked_by_name or 'System' }}</td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="5" class="text-center py-4 text-muted">No attendance logs available.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANE 3: FEES -->
+    <div class="tab-pane fade" id="fees-pane">
+        {% if dossier.fee_record %}
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-4">
+                <div class="row g-3 text-center">
+                    <div class="col-md-3">
+                        <span class="text-muted small d-block">Total Assessed Fee</span>
+                        <h4 class="fw-bold text-dark mb-0">&#8377;{{ "{:,.0f}".format(dossier.fee_record.total_fee) }}</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="text-muted small d-block">Amount Cleared</span>
+                        <h4 class="fw-bold text-success mb-0">&#8377;{{ "{:,.0f}".format(dossier.fee_record.paid_amount) }}</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="text-muted small d-block">Pending Balance</span>
+                        <h4 class="fw-bold text-danger mb-0">&#8377;{{ "{:,.0f}".format(dossier.fee_record.pending_amount) }}</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="text-muted small d-block">Payment Status</span>
+                        <span class="badge {% if dossier.fee_record.payment_status == 'Paid' %}bg-success{% elif dossier.fee_record.payment_status == 'Partial' %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6 mt-1">
+                            {{ dossier.fee_record.payment_status }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h6 class="fw-bold mb-0 text-primary">Payment Receipts Ledger</h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Receipt Reference</th>
+                                <th>Payment Date</th>
+                                <th>Amount Paid</th>
+                                <th>Method</th>
+                                <th class="pe-4">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in dossier.payments %}
+                            <tr>
+                                <td class="ps-4"><span class="badge bg-light text-dark border font-monospace">{{ p.receipt_reference }}</span></td>
+                                <td>{{ p.payment_date }}</td>
+                                <td><strong class="text-success">&#8377;{{ "{:,.0f}".format(p.amount) }}</strong></td>
+                                <td><span class="badge bg-secondary-subtle text-secondary">{{ p.payment_method }}</span></td>
+                                <td class="pe-4 small text-muted">{{ p.notes or '-' }}</td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="5" class="text-center py-4 text-muted">No payments logged yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-light border text-center py-4">No fee record created for this academic year.</div>
+        {% endif %}
+    </div>
+
+    <!-- PANE 4: ASSIGNMENTS -->
+    <div class="tab-pane fade" id="assignments-pane">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Assignment Title</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Score</th>
+                                <th class="pe-4">Feedback</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for asg in dossier.assignments %}
+                            <tr>
+                                <td class="ps-4"><strong>{{ asg.assignment_title }}</strong></td>
+                                <td>{{ asg.due_date }}</td>
+                                <td><span class="badge bg-light text-dark border">{{ asg.status }}</span></td>
+                                <td><strong>{{ asg.score or '-' }}</strong> / {{ asg.max_points }}</td>
+                                <td class="pe-4 small text-muted">{{ asg.feedback or '-' }}</td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="5" class="text-center py-4 text-muted">No assignments assigned.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANE 5: ACHIEVEMENTS -->
+    <div class="tab-pane fade" id="achievements-pane">
+        <div class="row g-3">
+            {% for ach in dossier.achievements %}
+            <div class="col-md-6">
+                <div class="p-3 bg-white rounded-4 shadow-sm border h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-primary-subtle text-primary">{{ ach.category }}</span>
+                        <span class="small text-muted">{{ ach.achievement_date }}</span>
+                    </div>
+                    <h6 class="fw-bold mb-1">{{ ach.title }}</h6>
+                    <p class="small text-muted mb-2">{{ ach.description or '' }}</p>
+                    <div class="small text-secondary"><strong>Organizer:</strong> {{ ach.organizer or 'N/A' }}</div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 text-center py-4 text-muted">No student achievements recorded yet.</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

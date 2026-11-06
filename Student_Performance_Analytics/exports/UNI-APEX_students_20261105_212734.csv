@@ -1,0 +1,9 @@
+student_id,full_name,email,phone,department,academic_year,semester,enrollment_status
+APEX-24-001,Aarav Mehta,aarav.m@apex.edu,'+91 98765 43210,Computer Science & Engineering,2024-2025,3,Active
+APEX-24-002,Diya Sen,diya.sen@apex.edu,'+91 98765 43211,Computer Science & Engineering,2024-2025,3,Active
+APEX-24-003,Rohan Gupta,rohan.g@apex.edu,'+91 98765 43212,Computer Science & Engineering,2024-2025,3,Active
+APEX-24-004,Sneha Kapoor,sneha.k@apex.edu,'+91 98765 43213,Information Technology,2024-2025,3,Active
+APEX-24-005,Aditya Verma,aditya.v@apex.edu,'+91 98765 43214,Information Technology,2024-2025,3,Active
+APEX-24-006,Pooja Nair,pooja.n@apex.edu,'+91 98765 43215,Computer Science & Engineering,2024-2025,3,Active
+APEX-24-007,Kunal Deshmukh,kunal.d@apex.edu,'+91 98765 43216,Computer Science & Engineering,2024-2025,3,Active
+APEX-24-008,Tanvi Joshi,tanvi.j@apex.edu,'+91 98765 43217,Information Technology,2024-2025,3,Active

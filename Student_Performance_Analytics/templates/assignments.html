@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{% block title %}Assignment Management{% endblock %}
+{% block page_title %}Curriculum Assignment Operations{% endblock %}
+{% block page_subtitle %}Create coursework, track submissions, and evaluate student completion status{% endblock %}
+
+{% block content %}
+<!-- KPI Stats -->
+<div class="row g-3 mb-4">
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Active Assignments</span>
+                <span class="stat-value text-primary">{{ assignments|length }}</span>
+                <span class="stat-desc text-muted"><i class="bi bi-journal-text"></i> Curriculum Tasks</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-book"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Completed Submissions</span>
+                <span class="stat-value text-success">{{ stats.completed }}</span>
+                <span class="stat-desc text-success"><i class="bi bi-check2-all"></i> On-Time & Graded</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-check-circle"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Pending Reviews</span>
+                <span class="stat-value text-warning">{{ stats.pending }}</span>
+                <span class="stat-desc text-warning"><i class="bi bi-clock-history"></i> In Progress</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-hourglass"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Actions</span>
+                <div class="mt-2">
+                    <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#createAssignmentModal">
+                        <i class="bi bi-plus-circle me-1"></i> New Assignment
+                    </button>
+                </div>
+            </div>
+            <div class="stat-icon"><i class="bi bi-pencil"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabs -->
+<ul class="nav nav-pills mb-4 bg-white p-2 rounded-4 shadow-sm border" id="assignmentTabs" role="tablist">
+    <li class="nav-item">
+        <button class="nav-link active rounded-3 px-4" data-bs-toggle="pill" data-bs-target="#assignments-list-content">
+            <i class="bi bi-folder2-open me-2"></i>Curriculum Assignments
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-4" data-bs-toggle="pill" data-bs-target="#submissions-content">
+            <i class="bi bi-person-check-fill me-2"></i>Student Submissions Ledger
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="assignmentTabContent">
+    <!-- TAB 1: ASSIGNMENTS -->
+    <div class="tab-pane fade show active" id="assignments-list-content">
+        <div class="row g-4">
+            {% for a in assignments %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle">{{ a.sub_code }}</span>
+                            <span class="badge bg-light text-muted border small"><i class="bi bi-calendar-event me-1"></i>Due: {{ a.due_date }}</span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">{{ a.title }}</h5>
+                        <p class="text-muted small mb-3 flex-grow-1">{{ a.description or 'No specific description provided.' }}</p>
+                        
+                        <div class="border-top pt-3 d-flex justify-content-between align-items-center text-muted small">
+                            <span><i class="bi bi-mortarboard me-1"></i>{{ a.dept_code or 'General' }}</span>
+                            <span class="fw-semibold text-primary"><i class="bi bi-star me-1"></i>Max {{ a.max_points }} Pts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 text-center py-5 text-muted">
+                <i class="bi bi-journal-x fs-1 text-secondary d-block mb-2"></i>
+                No assignments created yet for this semester. Click "+ New Assignment" above to begin.
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- TAB 2: SUBMISSIONS -->
+    <div class="tab-pane fade" id="submissions-content">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary">Student Submission Records</h6>
+                <span class="badge bg-light text-secondary border">{{ submissions|length }} Records</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Student ID</th>
+                                <th>Student Name</th>
+                                <th>Assignment Title</th>
+                                <th>Submission Status</th>
+                                <th>Graded Score</th>
+                                <th>Feedback / Notes</th>
+                                <th class="text-end pe-4">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sub in submissions %}
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge bg-light text-dark border font-monospace">{{ sub.student_id }}</span>
+                                </td>
+                                <td><strong class="text-dark">{{ sub.full_name }}</strong></td>
+                                <td>{{ sub.title }}</td>
+                                <td>
+                                    {% if sub.status == 'Completed' %}
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="bi bi-check-circle me-1"></i>Completed</span>
+                                    {% elif sub.status == 'Missing' %}
+                                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="bi bi-x-circle me-1"></i>Missing</span>
+                                    {% elif sub.status == 'Late' %}
+                                        <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="bi bi-clock-history me-1"></i>Late</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary-subtle text-secondary border"><i class="bi bi-hourglass me-1"></i>Pending</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if sub.score is not none %}
+                                        <strong class="text-primary">{{ sub.score }}</strong> <span class="text-muted small">/ {{ sub.max_points }}</span>
+                                    {% else %}
+                                        <span class="text-muted small">Not graded</span>
+                                    {% endif %}
+                                </td>
+                                <td class="small text-muted">{{ sub.feedback or '-' }}</td>
+                                <td class="text-end pe-4">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#gradeModal{{ sub.id }}">
+                                        <i class="bi bi-pencil"></i> Grade
+                                    </button>
+
+                                    <!-- Grade Modal -->
+                                    <div class="modal fade" id="gradeModal{{ sub.id }}" tabindex="-1">
+                                        <div class="modal-dialog text-start">
+                                            <div class="modal-content rounded-4 border-0 shadow">
+                                                <div class="modal-header border-bottom py-3 px-4">
+                                                    <h6 class="modal-title fw-bold">Grade Submission: {{ sub.full_name }}</h6>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <form action="{{ url_for('assignment_grade', sub_id=sub.id) }}" method="POST">
+                                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                    <div class="modal-body p-4">
+                                                        <div class="mb-3">
+                                                            <label class="form-label small fw-semibold text-secondary">Status</label>
+                                                            <select name="status" class="form-select">
+                                                                <option value="Completed" {% if sub.status == 'Completed' %}selected{% endif %}>Completed</option>
+                                                                <option value="Late" {% if sub.status == 'Late' %}selected{% endif %}>Late</option>
+                                                                <option value="Missing" {% if sub.status == 'Missing' %}selected{% endif %}>Missing</option>
+                                                                <option value="Pending" {% if sub.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label small fw-semibold text-secondary">Score</label>
+                                                            <input type="number" step="0.5" name="score" class="form-control" value="{{ sub.score or 0 }}" max="{{ sub.max_points }}" min="0">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label small fw-semibold text-secondary">Feedback / Comments</label>
+                                                            <textarea name="feedback" class="form-control" rows="3">{{ sub.feedback or '' }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer border-top py-3 px-4">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary px-4">Save Grade</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center py-4 text-muted">No student submissions recorded yet.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Create Assignment -->
+<div class="modal fade" id="createAssignmentModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-bottom py-3 px-4">
+                <h5 class="modal-title fw-bold text-primary"><i class="bi bi-plus-circle me-2"></i>Create New Assignment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="{{ url_for('assignment_create') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Department <span class="text-danger">*</span></label>
+                        <select name="department_id" class="form-select" required>
+                            {% for d in departments %}
+                                <option value="{{ d.id }}">{{ d.name }} ({{ d.code }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Subject <span class="text-danger">*</span></label>
+                        <select name="subject_id" class="form-select" required>
+                            {% for sub in subjects %}
+                                <option value="{{ sub.id }}">{{ sub.code }} - {{ sub.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Assignment Title <span class="text-danger">*</span></label>
+                        <input type="text" name="title" class="form-control" placeholder="e.g. Distributed Database Optimization" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Instructions / Description</label>
+                        <textarea name="description" class="form-control" rows="3" placeholder="Provide problem statement, guidelines, or reference links..."></textarea>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Due Date <span class="text-danger">*</span></label>
+                            <input type="date" name="due_date" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Maximum Points</label>
+                            <input type="number" name="max_points" class="form-control" value="100" min="1" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top py-3 px-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm">Publish Assignment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

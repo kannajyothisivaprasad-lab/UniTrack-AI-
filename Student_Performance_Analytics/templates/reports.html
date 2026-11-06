@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Reports & Exports{% endblock %}
+{% block page_title %}Academic Reports & Data Export Center{% endblock %}
+{% block page_subtitle %}Generate verified institutional audit reports and download CSV datasets{% endblock %}
+
+{% block content %}
+<!-- Master Dataset Quick Export Banner -->
+<div class="card mb-4 bg-white border border-primary-subtle shadow-sm p-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <div class="d-flex align-items-center gap-3">
+            <div class="brand-icon rounded-3 bg-primary text-white" style="width: 48px; height: 48px;">
+                <i class="bi bi-file-earmark-spreadsheet fs-4"></i>
+            </div>
+            <div>
+                <h2 class="h6 fw-bold text-dark-blue mb-1">Master Dataset Export (Full 2,500 Student Records)</h2>
+                <p class="text-secondary small mb-0">Contains all 22 historical fields, behavioral metrics, and Random Forest machine learning predictions.</p>
+            </div>
+        </div>
+        <div>
+            <a href="/api/export/all" class="btn btn-primary-custom text-nowrap">
+                <i class="bi bi-cloud-arrow-down-fill"></i> Download Complete CSV
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 4 Specialized Reports Grid -->
+<div class="row g-4 mb-4">
+    <!-- 1. Student Performance Report -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header-clean">
+                <h3 class="card-title-clean">
+                    <i class="bi bi-award-fill text-primary"></i> 1. Student Performance Report
+                </h3>
+                <span class="badge bg-light text-primary border">Performance Audit</span>
+            </div>
+            <div class="card-body-clean">
+                <p class="text-secondary small mb-3">
+                    Aggregated academic performance indicators including login counts, content reads, average assignment turnaround times, and prescriptive improvement suggestions.
+                </p>
+                <div class="p-3 bg-light rounded-3 border mb-3">
+                    <span class="d-block small fw-bold text-muted mb-1 text-uppercase">Exported Schema:</span>
+                    <code class="small text-dark-blue">Student_ID, Course, Logins, Content_Reads, Avg_Assignment_Time, Engagement_Level, Predicted_Engagement, Suggestion</code>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="small text-muted"><i class="bi bi-filetype-csv me-1"></i> Formatted CSV</span>
+                    <a href="/api/export/performance" class="btn btn-outline-custom btn-sm">
+                        <i class="bi bi-download"></i> Download Report CSV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Risk Analysis Report -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header-clean">
+                <h3 class="card-title-clean">
+                    <i class="bi bi-shield-shaded text-danger"></i> 2. Risk Analysis Report
+                </h3>
+                <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Risk Tiers</span>
+            </div>
+            <div class="card-body-clean">
+                <p class="text-secondary small mb-3">
+                    Institutional risk breakdown highlighting students in High Risk and Medium Risk tiers, incorporating early-warning indicators and intervention suggestions.
+                </p>
+                <div class="p-3 bg-light rounded-3 border mb-3">
+                    <span class="d-block small fw-bold text-muted mb-1 text-uppercase">Exported Schema:</span>
+                    <code class="small text-dark-blue">Student_ID, Course, Risk_Score, Risk_Level, Predicted_Risk, Predicted_Early_Risk, Suggestion_New</code>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="small text-muted"><i class="bi bi-filetype-csv me-1"></i> Formatted CSV</span>
+                    <a href="/api/export/risk" class="btn btn-outline-custom btn-sm">
+                        <i class="bi bi-download"></i> Download Report CSV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Engagement Report -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header-clean">
+                <h3 class="card-title-clean">
+                    <i class="bi bi-speedometer2 text-primary"></i> 3. Engagement Report
+                </h3>
+                <span class="badge bg-light text-primary border">LMS Interaction</span>
+            </div>
+            <div class="card-body-clean">
+                <p class="text-secondary small mb-3">
+                    Detailed analysis of LMS student engagement based on daily login frequency, course material reads, forum interaction, and quiz assessments.
+                </p>
+                <div class="p-3 bg-light rounded-3 border mb-3">
+                    <span class="d-block small fw-bold text-muted mb-1 text-uppercase">Exported Schema:</span>
+                    <code class="small text-dark-blue">Student_ID, Course, Logins, Content_Reads, Forum_Posts, Quiz_Reviews, Engagement_Level, Predicted_Engagement</code>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="small text-muted"><i class="bi bi-filetype-csv me-1"></i> Formatted CSV</span>
+                    <a href="/api/export/engagement" class="btn btn-outline-custom btn-sm">
+                        <i class="bi bi-download"></i> Download Report CSV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Dropout Report -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header-clean">
+                <h3 class="card-title-clean">
+                    <i class="bi bi-door-open-fill text-danger"></i> 4. Dropout Report
+                </h3>
+                <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Student Retention</span>
+            </div>
+            <div class="card-body-clean">
+                <p class="text-secondary small mb-3">
+                    Focuses on student attrition and retention metrics, matching actual dropout history against ML predicted dropout classifications.
+                </p>
+                <div class="p-3 bg-light rounded-3 border mb-3">
+                    <span class="d-block small fw-bold text-muted mb-1 text-uppercase">Exported Schema:</span>
+                    <code class="small text-dark-blue">Student_ID, Course, Risk_Score, Risk_Level, Dropout, Predicted_Dropout, Suggestion</code>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="small text-muted"><i class="bi bi-filetype-csv me-1"></i> Formatted CSV</span>
+                    <a href="/api/export/dropout" class="btn btn-outline-custom btn-sm">
+                        <i class="bi bi-download"></i> Download Report CSV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

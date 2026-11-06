@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}Platform Super Admin Portal{% endblock %}
+{% block page_title %}Platform Super Admin Operations{% endblock %}
+{% block page_subtitle %}Global university fleet management, registration approvals, and platform governance{% endblock %}
+
+{% block content %}
+<!-- Platform KPIs -->
+<div class="row g-3 mb-4">
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Total Institutions</span>
+                <span class="stat-value text-primary">{{ stats.uni_stats.total_universities }}</span>
+                <span class="stat-desc text-muted"><i class="bi bi-buildings"></i> Onboarded Fleet</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-bank"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Active Universities</span>
+                <span class="stat-value text-success">{{ stats.uni_stats.active_count }}</span>
+                <span class="stat-desc text-success"><i class="bi bi-check-circle-fill"></i> Operational</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-building-check"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Pending Approval</span>
+                <span class="stat-value text-warning">{{ stats.uni_stats.pending_count }}</span>
+                <span class="stat-desc text-warning"><i class="bi bi-clock-history"></i> Needs Review</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Suspended</span>
+                <span class="stat-value text-danger">{{ stats.uni_stats.suspended_count }}</span>
+                <span class="stat-desc text-danger"><i class="bi bi-slash-circle"></i> Access Restricted</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-shield-slash"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Platform Students</span>
+                <span class="stat-value text-info">{{ stats.total_students }}</span>
+                <span class="stat-desc text-muted"><i class="bi bi-people"></i> Across All Tenants</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-mortarboard"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Platform Staff</span>
+                <span class="stat-value text-secondary">{{ stats.total_staff }}</span>
+                <span class="stat-desc text-muted"><i class="bi bi-person-workspace"></i> Faculty Accounts</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-person-badge"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- Pending Approvals Queue -->
+{% if stats.uni_stats.pending_count > 0 %}
+<div class="card border-0 shadow-sm rounded-4 mb-4 border-start border-warning border-4">
+    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-circle-fill"></i> Action Required</span>
+            <h6 class="fw-bold mb-0">Pending University Registrations</h6>
+        </div>
+        <span class="text-muted small">{{ stats.uni_stats.pending_count }} awaiting verification</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light text-secondary small">
+                    <tr>
+                        <th class="ps-4">University ID</th>
+                        <th>Institution Name</th>
+                        <th>Official Email</th>
+                        <th>Campus Address</th>
+                        <th>Registered Date</th>
+                        <th class="text-end pe-4">Decision Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in stats.universities if u.status == 'pending' %}
+                    <tr>
+                        <td class="ps-4">
+                            <span class="badge bg-light text-primary border font-monospace">{{ u.id }}</span>
+                        </td>
+                        <td>
+                            <strong class="text-dark">{{ u.name }}</strong>
+                        </td>
+                        <td>{{ u.email }}</td>
+                        <td class="text-muted small">{{ u.address or 'N/A' }}</td>
+                        <td class="text-muted small">{{ u.created_at[:10] }}</td>
+                        <td class="text-end pe-4">
+                            <form action="{{ url_for('super_admin_university_action', uni_id=u.id) }}" method="POST" class="d-inline">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="action" value="approve">
+                                <button type="submit" class="btn btn-sm btn-success me-1">
+                                    <i class="bi bi-check-lg"></i> Approve & Activate
+                                </button>
+                            </form>
+                            <form action="{{ url_for('super_admin_university_action', uni_id=u.id) }}" method="POST" class="d-inline">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="action" value="reject">
+                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Reject this university registration?')">
+                                    <i class="bi bi-x-lg"></i> Reject
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- University Fleet Management -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-building-gear me-2"></i>All Registered Universities & Tenants</h6>
+        <span class="badge bg-light text-secondary border">{{ stats.universities|length }} Total Tenants</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light text-secondary small">
+                    <tr>
+                        <th class="ps-4">Tenant ID</th>
+                        <th>Institution Name</th>
+                        <th>Contact Email</th>
+                        <th>Plan</th>
+                        <th>Enrolled Students</th>
+                        <th>Staff Count</th>
+                        <th>Status</th>
+                        <th class="text-end pe-4">Manage Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in stats.universities %}
+                    <tr>
+                        <td class="ps-4">
+                            <span class="badge bg-light text-dark border font-monospace">{{ u.id }}</span>
+                        </td>
+                        <td>
+                            <strong class="text-dark">{{ u.name }}</strong>
+                        </td>
+                        <td class="small">{{ u.email }}</td>
+                        <td>
+                            <span class="badge bg-info-subtle text-info border border-info-subtle">{{ u.subscription_plan or 'Standard' }}</span>
+                        </td>
+                        <td>
+                            <span class="fw-semibold">{{ u.student_count }}</span> <span class="text-muted small">students</span>
+                        </td>
+                        <td>
+                            <span class="fw-semibold">{{ u.user_count }}</span> <span class="text-muted small">accounts</span>
+                        </td>
+                        <td>
+                            {% if u.status == 'active' %}
+                                <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="bi bi-check-circle-fill me-1"></i>Active</span>
+                            {% elif u.status == 'pending' %}
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="bi bi-clock-fill me-1"></i>Pending</span>
+                            {% elif u.status == 'suspended' %}
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="bi bi-slash-circle me-1"></i>Suspended</span>
+                            {% else %}
+                                <span class="badge bg-secondary-subtle text-secondary border"><i class="bi bi-pause-circle me-1"></i>{{ u.status|capitalize }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    Change State
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                                    {% if u.status != 'active' %}
+                                    <li>
+                                        <form action="{{ url_for('super_admin_university_action', uni_id=u.id) }}" method="POST">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="action" value="activate">
+                                            <button type="submit" class="dropdown-item text-success"><i class="bi bi-play-circle me-2"></i>Set Active</button>
+                                        </form>
+                                    </li>
+                                    {% endif %}
+                                    {% if u.status != 'suspended' %}
+                                    <li>
+                                        <form action="{{ url_for('super_admin_university_action', uni_id=u.id) }}" method="POST">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="action" value="suspend">
+                                            <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Suspend this university? All staff and admins will be blocked from logging in.')"><i class="bi bi-slash-circle me-2"></i>Suspend Institution</button>
+                                        </form>
+                                    </li>
+                                    {% endif %}
+                                    {% if u.status != 'inactive' %}
+                                    <li>
+                                        <form action="{{ url_for('super_admin_university_action', uni_id=u.id) }}" method="POST">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="action" value="deactivate">
+                                            <button type="submit" class="dropdown-item text-secondary"><i class="bi bi-pause-circle me-2"></i>Deactivate</button>
+                                        </form>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Platform Audit Trail -->
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-clock-history me-2"></i>Platform Global Audit Trail</h6>
+        <span class="text-muted small">Latest security, authentication & governance events</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive" style="max-height: 380px;">
+            <table class="table table-hover align-middle mb-0 font-monospace small">
+                <thead class="bg-light text-secondary sticky-top">
+                    <tr>
+                        <th class="ps-4">Timestamp</th>
+                        <th>Institution</th>
+                        <th>User Email</th>
+                        <th>Action</th>
+                        <th>Details</th>
+                        <th class="pe-4">IP Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in stats.audit_logs %}
+                    <tr>
+                        <td class="ps-4 text-muted">{{ log.timestamp }}</td>
+                        <td><span class="badge bg-light text-dark border">{{ log.university_name or 'Platform' }}</span></td>
+                        <td class="text-primary">{{ log.user_email or 'System' }}</td>
+                        <td><span class="badge bg-secondary-subtle text-secondary">{{ log.action }}</span></td>
+                        <td class="text-truncate" style="max-width: 250px;">{{ log.details or '-' }}</td>
+                        <td class="pe-4 text-muted">{{ log.ip_address }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

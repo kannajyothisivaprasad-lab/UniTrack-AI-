@@ -1,0 +1,2501 @@
+Student_ID,Course,Logins,Content_Reads,Avg_Assignment_Time,Engagement_Level,Predicted_Engagement,Suggestion
+STU1000,CSE,154,211,30,Low,Low,Maintain performance
+STU1001,IT,251,353,77,High,High,Maintain performance
+STU1002,IT,271,532,135,High,High,Improve consistency
+STU1003,ECE,255,409,52,High,High,Improve consistency
+STU1004,ECE,7,227,191,Low,Low,"Attend mentoring, increase activity"
+STU1005,CSE,80,454,109,Low,Low,Improve consistency
+STU1006,IT,91,774,249,Low,Low,"Attend mentoring, increase activity"
+STU1007,CSE,274,231,209,High,High,Improve consistency
+STU1008,IT,229,392,125,Low,Low,Improve consistency
+STU1009,EEE,22,601,124,Low,Low,Improve consistency
+STU1010,EEE,117,16,151,Low,Low,Improve consistency
+STU1011,CSE,255,281,128,Low,Low,Improve consistency
+STU1012,CSE,237,748,102,High,High,Improve consistency
+STU1013,CSE,283,25,18,Low,Low,Improve consistency
+STU1014,ECE,206,433,82,High,High,Maintain performance
+STU1015,ECE,87,533,35,Low,Low,"Attend mentoring, increase activity"
+STU1016,ECE,129,762,248,High,High,Improve consistency
+STU1017,CSE,179,30,154,Low,Low,Maintain performance
+STU1018,IT,73,699,77,High,High,Improve consistency
+STU1019,EEE,51,237,197,Low,Low,"Attend mentoring, increase activity"
+STU1020,CSE,260,794,140,High,High,Maintain performance
+STU1021,ECE,219,297,230,Low,Low,Improve consistency
+STU1022,ECE,34,143,290,Low,Low,"Attend mentoring, increase activity"
+STU1023,CSE,285,292,286,High,High,Maintain performance
+STU1024,CSE,241,413,149,Low,Low,Improve consistency
+STU1025,ECE,252,674,63,High,High,Improve consistency
+STU1026,IT,29,75,10,Low,Low,Improve consistency
+STU1027,ECE,78,658,137,High,High,Maintain performance
+STU1028,ECE,210,613,10,High,High,Improve consistency
+STU1029,CSE,98,446,182,Low,Low,Improve consistency
+STU1030,IT,131,268,275,Low,Low,Improve consistency
+STU1031,ECE,29,112,265,Low,Low,Improve consistency
+STU1032,ECE,120,576,183,Low,Low,"Attend mentoring, increase activity"
+STU1033,EEE,52,778,54,Low,Low,"Attend mentoring, increase activity"
+STU1034,CSE,230,110,150,Low,Low,Improve consistency
+STU1035,EEE,270,207,36,Low,Low,Maintain performance
+STU1036,EEE,103,235,242,Low,Low,"Attend mentoring, increase activity"
+STU1037,ECE,15,472,218,Low,Low,Improve consistency
+STU1038,CSE,89,246,59,Low,Low,Improve consistency
+STU1039,IT,218,35,70,Low,Low,Maintain performance
+STU1040,ECE,177,130,252,Low,Low,Improve consistency
+STU1041,IT,213,515,278,Low,Low,Improve consistency
+STU1042,IT,68,191,149,Low,Low,Improve consistency
+STU1043,CSE,262,720,166,High,High,Maintain performance
+STU1044,EEE,125,776,94,High,High,Improve consistency
+STU1045,CSE,58,643,93,Low,Low,Improve consistency
+STU1046,IT,276,552,285,High,High,Maintain performance
+STU1047,ECE,245,324,40,Low,Low,Maintain performance
+STU1048,IT,247,627,17,High,High,Improve consistency
+STU1049,ECE,22,745,289,Low,Low,Improve consistency
+STU1050,ECE,191,282,212,Low,Low,Maintain performance
+STU1051,CSE,148,241,42,Low,Low,Improve consistency
+STU1052,IT,266,429,152,High,High,Improve consistency
+STU1053,EEE,243,777,46,High,High,Improve consistency
+STU1054,IT,80,451,156,Low,Low,"Attend mentoring, increase activity"
+STU1055,IT,192,505,237,Low,Low,Improve consistency
+STU1056,EEE,250,33,43,Low,Low,Improve consistency
+STU1057,CSE,134,118,246,Low,Low,"Attend mentoring, increase activity"
+STU1058,IT,287,712,221,High,High,Improve consistency
+STU1059,IT,83,511,149,Low,Low,"Attend mentoring, increase activity"
+STU1060,ECE,76,34,199,Low,Low,Improve consistency
+STU1061,IT,267,196,105,Low,Low,Maintain performance
+STU1062,EEE,195,297,203,Low,Low,Improve consistency
+STU1063,ECE,67,637,161,Low,Low,Improve consistency
+STU1064,CSE,16,347,232,Low,Low,Improve consistency
+STU1065,ECE,145,46,205,Low,Low,Improve consistency
+STU1066,EEE,258,146,97,Low,Low,Maintain performance
+STU1067,EEE,47,517,26,Low,Low,Improve consistency
+STU1068,ECE,21,236,220,Low,Low,Improve consistency
+STU1069,CSE,67,329,241,Low,Low,"Attend mentoring, increase activity"
+STU1070,ECE,257,191,192,Low,Low,Improve consistency
+STU1071,CSE,296,95,171,Low,Low,Improve consistency
+STU1072,ECE,12,476,79,Low,Low,Improve consistency
+STU1073,EEE,94,62,69,Low,Low,Maintain performance
+STU1074,IT,212,244,188,Low,Low,Maintain performance
+STU1075,IT,296,788,86,High,High,Maintain performance
+STU1076,CSE,288,442,44,High,High,Improve consistency
+STU1077,CSE,122,505,25,Low,Low,Improve consistency
+STU1078,CSE,179,109,180,Low,Low,Maintain performance
+STU1079,EEE,80,608,41,Low,Low,Improve consistency
+STU1080,ECE,105,412,272,Low,Low,Improve consistency
+STU1081,EEE,155,405,224,Low,Low,Improve consistency
+STU1082,IT,274,536,55,High,High,Maintain performance
+STU1083,CSE,75,424,198,Low,Low,"Attend mentoring, increase activity"
+STU1084,ECE,184,622,283,High,High,Maintain performance
+STU1085,IT,128,686,80,Low,Low,"Attend mentoring, increase activity"
+STU1086,IT,297,472,97,High,High,Maintain performance
+STU1087,IT,289,550,270,High,High,Improve consistency
+STU1088,EEE,199,635,191,High,High,Improve consistency
+STU1089,CSE,232,628,31,High,High,Maintain performance
+STU1090,IT,279,373,83,High,High,Maintain performance
+STU1091,CSE,110,139,99,Low,Low,Improve consistency
+STU1092,EEE,25,93,175,Low,Low,Improve consistency
+STU1093,IT,68,280,243,Low,Low,"Attend mentoring, increase activity"
+STU1094,EEE,169,253,138,Low,Low,Maintain performance
+STU1095,EEE,31,397,104,Low,Low,Improve consistency
+STU1096,CSE,289,223,37,Low,Low,Maintain performance
+STU1097,IT,152,175,44,Low,Low,"Attend mentoring, increase activity"
+STU1098,EEE,285,68,240,Low,Low,Maintain performance
+STU1099,IT,168,611,134,Low,Low,Improve consistency
+STU1100,CSE,228,513,88,High,Low,Improve consistency
+STU1101,EEE,276,715,70,High,High,Improve consistency
+STU1102,CSE,150,132,226,Low,Low,Improve consistency
+STU1103,IT,34,657,291,Low,Low,Improve consistency
+STU1104,IT,49,422,172,Low,Low,"Attend mentoring, increase activity"
+STU1105,CSE,279,148,66,Low,Low,Improve consistency
+STU1106,ECE,38,238,200,Low,Low,Improve consistency
+STU1107,EEE,145,283,141,Low,Low,Improve consistency
+STU1108,IT,225,448,51,Low,Low,Improve consistency
+STU1109,IT,26,571,182,Low,Low,Improve consistency
+STU1110,EEE,184,127,176,Low,Low,Improve consistency
+STU1111,CSE,235,723,259,High,High,Improve consistency
+STU1112,CSE,42,492,202,Low,Low,"Attend mentoring, increase activity"
+STU1113,CSE,74,404,287,Low,Low,Improve consistency
+STU1114,ECE,120,712,247,High,High,Improve consistency
+STU1115,ECE,243,469,239,High,High,Maintain performance
+STU1116,IT,152,702,174,High,High,Improve consistency
+STU1117,CSE,13,87,252,Low,Low,"Attend mentoring, increase activity"
+STU1118,EEE,292,421,99,High,High,Maintain performance
+STU1119,IT,54,84,188,Low,Low,Improve consistency
+STU1120,EEE,9,304,67,Low,Low,"Attend mentoring, increase activity"
+STU1121,IT,130,30,272,Low,Low,Improve consistency
+STU1122,ECE,79,180,145,Low,Low,Improve consistency
+STU1123,IT,169,24,247,Low,Low,Improve consistency
+STU1124,ECE,282,220,252,High,Low,Improve consistency
+STU1125,IT,294,569,160,High,High,Maintain performance
+STU1126,CSE,81,95,256,Low,Low,Improve consistency
+STU1127,EEE,141,158,228,Low,Low,Improve consistency
+STU1128,CSE,110,709,18,High,High,Improve consistency
+STU1129,IT,99,381,22,Low,Low,Improve consistency
+STU1130,IT,139,489,272,Low,Low,Improve consistency
+STU1131,IT,72,160,234,Low,Low,"Attend mentoring, increase activity"
+STU1132,ECE,151,150,240,Low,Low,"Attend mentoring, increase activity"
+STU1133,EEE,163,78,187,Low,Low,Improve consistency
+STU1134,EEE,167,269,256,Low,Low,Improve consistency
+STU1135,IT,193,530,76,High,High,Improve consistency
+STU1136,IT,99,642,166,High,High,Maintain performance
+STU1137,ECE,185,380,174,High,High,Maintain performance
+STU1138,CSE,292,428,193,High,High,Maintain performance
+STU1139,CSE,191,110,217,Low,Low,Improve consistency
+STU1140,EEE,142,670,25,High,High,Improve consistency
+STU1141,ECE,134,667,250,High,High,Improve consistency
+STU1142,IT,198,252,239,Low,Low,Improve consistency
+STU1143,EEE,277,762,27,High,High,Maintain performance
+STU1144,ECE,148,521,156,Low,Low,Improve consistency
+STU1145,CSE,20,564,253,Low,Low,"Attend mentoring, increase activity"
+STU1146,ECE,249,104,60,Low,Low,Improve consistency
+STU1147,CSE,111,235,268,Low,Low,Improve consistency
+STU1148,ECE,92,527,247,Low,Low,"Attend mentoring, increase activity"
+STU1149,EEE,133,223,255,Low,Low,Improve consistency
+STU1150,CSE,8,727,58,Low,Low,"Attend mentoring, increase activity"
+STU1151,EEE,99,76,293,Low,Low,Improve consistency
+STU1152,EEE,213,405,47,Low,Low,Improve consistency
+STU1153,CSE,229,621,293,High,High,Improve consistency
+STU1154,CSE,51,21,41,Low,Low,Improve consistency
+STU1155,IT,185,246,252,Low,Low,Maintain performance
+STU1156,IT,110,779,50,High,High,Improve consistency
+STU1157,IT,203,408,112,Low,High,"Attend mentoring, increase activity"
+STU1158,EEE,110,416,116,Low,Low,"Attend mentoring, increase activity"
+STU1159,EEE,284,489,255,High,High,Maintain performance
+STU1160,IT,264,656,96,High,High,Maintain performance
+STU1161,EEE,112,231,75,Low,Low,Improve consistency
+STU1162,EEE,23,165,147,Low,Low,"Attend mentoring, increase activity"
+STU1163,CSE,175,663,209,High,High,Improve consistency
+STU1164,CSE,199,437,102,Low,Low,Improve consistency
+STU1165,EEE,16,167,287,Low,Low,"Attend mentoring, increase activity"
+STU1166,IT,199,425,29,High,High,Maintain performance
+STU1167,ECE,287,335,298,Low,Low,Maintain performance
+STU1168,IT,186,380,99,High,High,Maintain performance
+STU1169,ECE,148,353,59,Low,Low,Improve consistency
+STU1170,IT,186,271,19,Low,Low,"Attend mentoring, increase activity"
+STU1171,CSE,34,292,88,Low,Low,"Attend mentoring, increase activity"
+STU1172,EEE,88,238,46,Low,Low,Improve consistency
+STU1173,EEE,170,289,68,Low,Low,Maintain performance
+STU1174,CSE,288,299,97,High,High,Maintain performance
+STU1175,ECE,285,689,113,High,High,Maintain performance
+STU1176,ECE,100,56,286,Low,Low,Improve consistency
+STU1177,ECE,270,724,113,High,High,Maintain performance
+STU1178,CSE,229,223,263,Low,Low,Improve consistency
+STU1179,ECE,46,767,239,Low,Low,Improve consistency
+STU1180,CSE,250,33,46,Low,Low,Maintain performance
+STU1181,IT,212,330,151,Low,Low,Improve consistency
+STU1182,IT,241,283,52,High,High,Maintain performance
+STU1183,CSE,26,565,125,Low,Low,Improve consistency
+STU1184,EEE,189,322,93,Low,Low,Improve consistency
+STU1185,IT,246,372,268,High,High,Maintain performance
+STU1186,ECE,287,677,96,High,High,Maintain performance
+STU1187,CSE,45,389,105,Low,Low,Improve consistency
+STU1188,ECE,166,720,264,Low,High,Improve consistency
+STU1189,ECE,164,683,145,High,High,Improve consistency
+STU1190,EEE,93,479,257,Low,Low,Improve consistency
+STU1191,ECE,16,755,101,Low,Low,Improve consistency
+STU1192,EEE,77,684,256,High,High,Improve consistency
+STU1193,IT,80,125,267,Low,Low,Improve consistency
+STU1194,CSE,205,614,196,High,High,Improve consistency
+STU1195,ECE,14,51,133,Low,Low,Improve consistency
+STU1196,CSE,230,388,269,High,Low,Improve consistency
+STU1197,ECE,180,731,178,High,High,Improve consistency
+STU1198,CSE,280,215,120,Low,Low,Maintain performance
+STU1199,ECE,43,475,299,Low,Low,"Attend mentoring, increase activity"
+STU1200,ECE,64,741,96,Low,Low,Improve consistency
+STU1201,ECE,70,289,22,Low,Low,Improve consistency
+STU1202,ECE,128,657,272,Low,Low,Improve consistency
+STU1203,ECE,168,627,297,High,High,Maintain performance
+STU1204,ECE,163,127,32,Low,Low,Improve consistency
+STU1205,ECE,61,246,209,Low,Low,Improve consistency
+STU1206,ECE,82,318,251,Low,Low,Improve consistency
+STU1207,ECE,198,465,248,Low,Low,Maintain performance
+STU1208,CSE,289,484,174,High,High,Maintain performance
+STU1209,EEE,19,109,235,Low,Low,Improve consistency
+STU1210,ECE,16,270,185,Low,Low,"Attend mentoring, increase activity"
+STU1211,EEE,105,314,38,Low,Low,Improve consistency
+STU1212,ECE,160,363,174,Low,Low,Maintain performance
+STU1213,ECE,129,295,32,Low,Low,Improve consistency
+STU1214,CSE,284,337,53,High,High,Maintain performance
+STU1215,IT,114,112,270,Low,Low,Improve consistency
+STU1216,IT,150,72,189,Low,Low,Improve consistency
+STU1217,CSE,220,696,148,High,High,Improve consistency
+STU1218,EEE,166,291,257,Low,Low,Maintain performance
+STU1219,IT,132,450,250,Low,Low,Improve consistency
+STU1220,CSE,154,302,115,Low,Low,Improve consistency
+STU1221,CSE,40,747,182,Low,Low,"Attend mentoring, increase activity"
+STU1222,IT,177,16,58,Low,Low,Improve consistency
+STU1223,EEE,26,648,132,Low,Low,Improve consistency
+STU1224,CSE,210,101,44,Low,Low,Improve consistency
+STU1225,ECE,131,199,115,Low,Low,Improve consistency
+STU1226,EEE,221,485,205,High,High,Maintain performance
+STU1227,EEE,100,520,118,Low,Low,Improve consistency
+STU1228,IT,168,471,134,High,High,Maintain performance
+STU1229,IT,152,62,46,Low,Low,"Attend mentoring, increase activity"
+STU1230,ECE,22,763,197,Low,Low,"Attend mentoring, increase activity"
+STU1231,CSE,298,495,32,High,High,Maintain performance
+STU1232,IT,199,653,270,High,High,Improve consistency
+STU1233,IT,155,499,203,High,Low,Maintain performance
+STU1234,EEE,127,373,161,Low,Low,Improve consistency
+STU1235,IT,191,121,27,Low,Low,Improve consistency
+STU1236,IT,153,418,36,Low,Low,Improve consistency
+STU1237,IT,108,16,33,Low,Low,Improve consistency
+STU1238,IT,247,751,38,High,High,Maintain performance
+STU1239,EEE,235,677,148,High,High,Improve consistency
+STU1240,ECE,210,206,155,Low,Low,Improve consistency
+STU1241,ECE,202,744,132,High,High,Improve consistency
+STU1242,CSE,91,376,137,Low,Low,Improve consistency
+STU1243,IT,146,259,126,Low,Low,Maintain performance
+STU1244,EEE,203,604,141,High,High,Improve consistency
+STU1245,CSE,50,249,298,Low,Low,"Attend mentoring, increase activity"
+STU1246,CSE,292,389,215,High,High,Maintain performance
+STU1247,ECE,19,480,245,Low,Low,Improve consistency
+STU1248,EEE,48,784,51,Low,Low,Improve consistency
+STU1249,EEE,173,710,169,High,High,Maintain performance
+STU1250,EEE,48,464,261,Low,Low,Improve consistency
+STU1251,ECE,102,375,188,Low,Low,Improve consistency
+STU1252,ECE,265,299,134,High,High,Maintain performance
+STU1253,ECE,113,412,269,Low,Low,Improve consistency
+STU1254,ECE,287,67,285,Low,Low,Improve consistency
+STU1255,ECE,108,530,222,Low,Low,Maintain performance
+STU1256,IT,260,313,199,High,High,Maintain performance
+STU1257,IT,210,124,67,Low,Low,Improve consistency
+STU1258,EEE,47,219,212,Low,Low,Improve consistency
+STU1259,CSE,249,50,89,Low,Low,Maintain performance
+STU1260,EEE,291,182,237,High,High,Maintain performance
+STU1261,CSE,277,243,104,Low,Low,Improve consistency
+STU1262,ECE,87,599,13,High,High,Improve consistency
+STU1263,CSE,114,629,174,Low,Low,"Attend mentoring, increase activity"
+STU1264,EEE,194,412,51,Low,Low,Improve consistency
+STU1265,EEE,292,48,294,Low,Low,Maintain performance
+STU1266,CSE,255,128,238,Low,Low,Improve consistency
+STU1267,IT,216,344,252,High,High,Improve consistency
+STU1268,ECE,295,345,221,Low,Low,Improve consistency
+STU1269,ECE,137,548,64,High,High,Improve consistency
+STU1270,EEE,205,625,182,High,High,Improve consistency
+STU1271,IT,289,83,286,Low,Low,Maintain performance
+STU1272,CSE,99,200,238,Low,Low,Improve consistency
+STU1273,ECE,282,333,39,Low,Low,Improve consistency
+STU1274,IT,223,156,32,Low,Low,Maintain performance
+STU1275,ECE,93,776,14,Low,Low,"Attend mentoring, increase activity"
+STU1276,IT,76,293,72,Low,Low,Improve consistency
+STU1277,IT,251,222,230,High,High,Maintain performance
+STU1278,EEE,133,644,91,High,High,Maintain performance
+STU1279,ECE,216,727,251,High,High,Maintain performance
+STU1280,CSE,100,761,262,High,High,Improve consistency
+STU1281,EEE,79,403,61,Low,Low,Improve consistency
+STU1282,EEE,58,348,48,Low,Low,"Attend mentoring, increase activity"
+STU1283,CSE,58,31,268,Low,Low,"Attend mentoring, increase activity"
+STU1284,EEE,222,780,280,High,High,Improve consistency
+STU1285,IT,20,114,81,Low,Low,"Attend mentoring, increase activity"
+STU1286,IT,103,475,79,Low,Low,"Attend mentoring, increase activity"
+STU1287,ECE,24,468,229,Low,Low,"Attend mentoring, increase activity"
+STU1288,ECE,50,441,13,Low,Low,Improve consistency
+STU1289,CSE,197,779,299,High,High,Improve consistency
+STU1290,ECE,62,725,240,Low,Low,Improve consistency
+STU1291,IT,115,783,89,High,High,Improve consistency
+STU1292,CSE,133,628,75,High,High,Improve consistency
+STU1293,CSE,198,772,145,High,High,Improve consistency
+STU1294,ECE,12,230,200,Low,Low,Improve consistency
+STU1295,IT,33,388,68,Low,Low,"Attend mentoring, increase activity"
+STU1296,CSE,116,231,275,Low,Low,Improve consistency
+STU1297,IT,165,267,16,Low,Low,Improve consistency
+STU1298,IT,135,722,211,High,High,Improve consistency
+STU1299,IT,192,376,246,High,Low,Maintain performance
+STU1300,ECE,167,779,277,High,High,Improve consistency
+STU1301,EEE,201,358,88,High,High,Maintain performance
+STU1302,EEE,208,234,55,Low,Low,Maintain performance
+STU1303,CSE,216,723,252,High,High,Maintain performance
+STU1304,IT,113,747,297,High,High,Improve consistency
+STU1305,ECE,280,245,169,Low,Low,Maintain performance
+STU1306,IT,77,192,124,Low,Low,Improve consistency
+STU1307,IT,171,721,123,High,High,Improve consistency
+STU1308,ECE,264,767,135,High,High,Maintain performance
+STU1309,EEE,247,453,99,High,High,Maintain performance
+STU1310,IT,279,632,70,High,High,Maintain performance
+STU1311,IT,106,15,111,Low,Low,Improve consistency
+STU1312,EEE,177,245,123,Low,Low,Improve consistency
+STU1313,ECE,175,136,183,Low,Low,Improve consistency
+STU1314,CSE,145,113,101,Low,Low,Improve consistency
+STU1315,EEE,192,758,192,High,High,Improve consistency
+STU1316,CSE,90,489,214,Low,Low,Maintain performance
+STU1317,CSE,56,164,204,Low,Low,Improve consistency
+STU1318,EEE,115,266,34,Low,Low,Maintain performance
+STU1319,IT,47,244,243,Low,Low,Improve consistency
+STU1320,CSE,215,509,25,High,High,Improve consistency
+STU1321,CSE,204,298,150,Low,Low,Improve consistency
+STU1322,ECE,244,519,117,High,High,Maintain performance
+STU1323,IT,119,561,89,Low,Low,Improve consistency
+STU1324,CSE,30,718,85,Low,Low,Improve consistency
+STU1325,ECE,81,794,285,Low,Low,Improve consistency
+STU1326,IT,141,785,277,High,High,"Attend mentoring, increase activity"
+STU1327,EEE,24,578,121,Low,Low,Improve consistency
+STU1328,EEE,215,307,84,Low,Low,Improve consistency
+STU1329,ECE,244,619,223,High,High,Maintain performance
+STU1330,EEE,43,146,43,Low,Low,Improve consistency
+STU1331,CSE,272,385,150,High,High,Improve consistency
+STU1332,IT,211,96,175,Low,Low,Improve consistency
+STU1333,CSE,271,428,240,High,High,Maintain performance
+STU1334,CSE,158,763,37,High,High,Improve consistency
+STU1335,EEE,46,208,100,Low,Low,"Attend mentoring, increase activity"
+STU1336,CSE,15,472,124,Low,Low,"Attend mentoring, increase activity"
+STU1337,EEE,298,446,168,High,High,Improve consistency
+STU1338,IT,102,319,267,Low,Low,"Attend mentoring, increase activity"
+STU1339,IT,279,605,99,High,High,Improve consistency
+STU1340,CSE,234,763,254,High,High,Maintain performance
+STU1341,ECE,224,290,40,Low,Low,Maintain performance
+STU1342,EEE,69,332,237,Low,Low,"Attend mentoring, increase activity"
+STU1343,EEE,236,773,137,High,High,Maintain performance
+STU1344,CSE,56,711,279,Low,Low,Improve consistency
+STU1345,EEE,267,161,279,Low,Low,Maintain performance
+STU1346,EEE,271,311,218,High,High,Maintain performance
+STU1347,ECE,158,287,187,Low,Low,Maintain performance
+STU1348,ECE,144,660,200,High,High,Improve consistency
+STU1349,CSE,55,697,77,Low,Low,Improve consistency
+STU1350,ECE,121,17,276,Low,Low,Improve consistency
+STU1351,CSE,50,244,279,Low,Low,"Attend mentoring, increase activity"
+STU1352,IT,92,684,137,Low,Low,Improve consistency
+STU1353,CSE,212,570,273,High,High,Improve consistency
+STU1354,IT,273,311,230,High,High,Improve consistency
+STU1355,CSE,93,47,251,Low,Low,"Attend mentoring, increase activity"
+STU1356,EEE,122,145,253,Low,Low,"Attend mentoring, increase activity"
+STU1357,ECE,58,430,28,Low,Low,Improve consistency
+STU1358,IT,120,228,164,Low,Low,Improve consistency
+STU1359,CSE,122,357,238,Low,Low,Improve consistency
+STU1360,ECE,264,555,67,High,High,Maintain performance
+STU1361,CSE,79,88,290,Low,Low,Improve consistency
+STU1362,ECE,11,757,54,Low,Low,Improve consistency
+STU1363,ECE,126,282,111,Low,Low,Improve consistency
+STU1364,CSE,15,170,57,Low,Low,"Attend mentoring, increase activity"
+STU1365,IT,219,696,59,High,High,Improve consistency
+STU1366,IT,283,317,90,Low,Low,Improve consistency
+STU1367,EEE,32,383,68,Low,Low,"Attend mentoring, increase activity"
+STU1368,ECE,239,742,170,High,High,Improve consistency
+STU1369,EEE,30,18,112,Low,Low,"Attend mentoring, increase activity"
+STU1370,EEE,58,453,283,Low,Low,Improve consistency
+STU1371,CSE,33,122,192,Low,Low,Improve consistency
+STU1372,CSE,168,214,125,Low,Low,Improve consistency
+STU1373,CSE,274,414,276,High,High,Maintain performance
+STU1374,ECE,39,707,173,Low,Low,"Attend mentoring, increase activity"
+STU1375,CSE,290,206,152,Low,Low,Improve consistency
+STU1376,CSE,277,787,103,High,High,Maintain performance
+STU1377,ECE,212,783,259,High,High,Improve consistency
+STU1378,ECE,242,769,249,High,High,Improve consistency
+STU1379,IT,97,124,68,Low,Low,"Attend mentoring, increase activity"
+STU1380,CSE,177,130,24,Low,Low,Improve consistency
+STU1381,CSE,83,662,294,Low,Low,"Attend mentoring, increase activity"
+STU1382,CSE,114,74,212,Low,Low,Maintain performance
+STU1383,IT,221,285,246,Low,Low,Improve consistency
+STU1384,CSE,110,248,296,Low,Low,Improve consistency
+STU1385,IT,51,311,82,Low,Low,Improve consistency
+STU1386,EEE,185,401,223,High,High,Improve consistency
+STU1387,IT,68,531,20,Low,Low,Improve consistency
+STU1388,EEE,250,378,234,High,High,Maintain performance
+STU1389,CSE,248,242,212,High,High,Maintain performance
+STU1390,EEE,91,204,240,Low,Low,Improve consistency
+STU1391,IT,221,21,60,Low,Low,Maintain performance
+STU1392,ECE,11,698,66,Low,Low,Improve consistency
+STU1393,EEE,282,186,141,High,High,Maintain performance
+STU1394,EEE,214,226,289,Low,Low,Improve consistency
+STU1395,CSE,173,20,234,Low,Low,Improve consistency
+STU1396,IT,142,455,183,Low,Low,Maintain performance
+STU1397,EEE,234,639,275,High,High,Improve consistency
+STU1398,EEE,165,173,256,Low,Low,Improve consistency
+STU1399,EEE,5,560,87,Low,Low,"Attend mentoring, increase activity"
+STU1400,EEE,240,62,144,Low,Low,Improve consistency
+STU1401,ECE,192,227,149,Low,Low,Maintain performance
+STU1402,IT,8,727,262,Low,Low,Improve consistency
+STU1403,CSE,136,369,185,Low,Low,Improve consistency
+STU1404,CSE,222,394,69,High,High,Maintain performance
+STU1405,ECE,264,65,263,Low,Low,Improve consistency
+STU1406,IT,5,127,17,Low,Low,"Attend mentoring, increase activity"
+STU1407,EEE,75,262,116,Low,Low,Improve consistency
+STU1408,ECE,182,789,180,High,High,Improve consistency
+STU1409,IT,193,189,67,Low,Low,Improve consistency
+STU1410,EEE,295,424,299,High,High,Maintain performance
+STU1411,ECE,12,244,93,Low,Low,"Attend mentoring, increase activity"
+STU1412,IT,257,717,126,High,High,Maintain performance
+STU1413,CSE,296,89,209,High,High,Maintain performance
+STU1414,CSE,248,656,31,High,High,Improve consistency
+STU1415,IT,127,31,228,Low,Low,Improve consistency
+STU1416,CSE,287,486,235,High,High,Maintain performance
+STU1417,IT,36,449,280,Low,Low,"Attend mentoring, increase activity"
+STU1418,EEE,150,746,111,High,High,Improve consistency
+STU1419,IT,160,579,154,Low,Low,"Attend mentoring, increase activity"
+STU1420,EEE,20,102,156,Low,Low,Improve consistency
+STU1421,ECE,51,201,270,Low,Low,Maintain performance
+STU1422,IT,255,112,288,Low,Low,Improve consistency
+STU1423,ECE,191,405,23,Low,Low,Maintain performance
+STU1424,CSE,35,16,275,Low,Low,Improve consistency
+STU1425,EEE,264,649,296,High,High,Maintain performance
+STU1426,IT,21,576,150,Low,Low,"Attend mentoring, increase activity"
+STU1427,ECE,43,240,40,Low,Low,"Attend mentoring, increase activity"
+STU1428,EEE,43,583,180,Low,Low,Improve consistency
+STU1429,EEE,136,249,214,Low,Low,Improve consistency
+STU1430,CSE,34,99,120,Low,Low,"Attend mentoring, increase activity"
+STU1431,CSE,162,241,77,Low,Low,"Attend mentoring, increase activity"
+STU1432,EEE,282,466,192,High,High,Maintain performance
+STU1433,EEE,207,242,205,Low,Low,Improve consistency
+STU1434,IT,70,363,135,Low,Low,Improve consistency
+STU1435,EEE,112,342,184,Low,Low,"Attend mentoring, increase activity"
+STU1436,IT,272,448,271,High,High,Maintain performance
+STU1437,EEE,226,384,295,Low,Low,Improve consistency
+STU1438,CSE,296,301,164,High,High,Maintain performance
+STU1439,IT,22,354,78,Low,Low,Improve consistency
+STU1440,ECE,94,673,117,Low,Low,"Attend mentoring, increase activity"
+STU1441,CSE,185,437,44,Low,Low,Improve consistency
+STU1442,IT,259,666,53,High,High,Improve consistency
+STU1443,IT,257,139,152,Low,Low,Maintain performance
+STU1444,ECE,261,150,220,Low,Low,Maintain performance
+STU1445,IT,91,424,294,Low,Low,Improve consistency
+STU1446,EEE,94,102,15,Low,Low,Improve consistency
+STU1447,ECE,241,635,227,High,High,Improve consistency
+STU1448,CSE,74,293,36,Low,Low,Improve consistency
+STU1449,CSE,48,664,236,Low,Low,"Attend mentoring, increase activity"
+STU1450,EEE,204,232,293,Low,Low,Improve consistency
+STU1451,CSE,156,753,65,High,High,"Attend mentoring, increase activity"
+STU1452,IT,90,472,114,Low,Low,Improve consistency
+STU1453,IT,23,554,27,Low,Low,"Attend mentoring, increase activity"
+STU1454,EEE,105,285,214,Low,Low,"Attend mentoring, increase activity"
+STU1455,CSE,99,691,52,Low,Low,Improve consistency
+STU1456,CSE,258,149,98,Low,Low,Maintain performance
+STU1457,EEE,34,366,83,Low,Low,Improve consistency
+STU1458,ECE,253,722,166,High,High,Maintain performance
+STU1459,CSE,37,32,275,Low,Low,"Attend mentoring, increase activity"
+STU1460,ECE,233,745,143,High,High,Improve consistency
+STU1461,CSE,16,279,98,Low,Low,"Attend mentoring, increase activity"
+STU1462,CSE,122,674,245,Low,Low,Improve consistency
+STU1463,CSE,159,342,141,Low,Low,Improve consistency
+STU1464,CSE,250,94,238,Low,Low,Maintain performance
+STU1465,IT,251,630,43,High,High,Improve consistency
+STU1466,ECE,33,40,92,Low,Low,"Attend mentoring, increase activity"
+STU1467,ECE,165,750,141,High,High,Improve consistency
+STU1468,CSE,239,249,213,Low,Low,Maintain performance
+STU1469,CSE,194,372,296,Low,Low,Improve consistency
+STU1470,ECE,121,398,267,Low,Low,"Attend mentoring, increase activity"
+STU1471,IT,275,662,134,High,High,Improve consistency
+STU1472,EEE,262,677,160,High,High,Maintain performance
+STU1473,EEE,184,308,256,Low,Low,Improve consistency
+STU1474,ECE,176,380,184,Low,Low,Improve consistency
+STU1475,CSE,278,108,89,Low,Low,Maintain performance
+STU1476,CSE,263,56,116,Low,Low,Improve consistency
+STU1477,IT,139,431,67,Low,Low,Improve consistency
+STU1478,EEE,175,489,100,Low,Low,Improve consistency
+STU1479,IT,214,588,144,High,High,Maintain performance
+STU1480,EEE,240,71,178,Low,Low,Improve consistency
+STU1481,ECE,190,118,131,Low,Low,Improve consistency
+STU1482,EEE,99,688,245,Low,Low,"Attend mentoring, increase activity"
+STU1483,IT,15,558,85,Low,Low,Improve consistency
+STU1484,IT,72,128,32,Low,Low,Improve consistency
+STU1485,IT,214,607,82,High,High,Maintain performance
+STU1486,ECE,200,391,97,Low,Low,Improve consistency
+STU1487,EEE,102,401,112,Low,Low,Improve consistency
+STU1488,EEE,97,61,103,Low,Low,Improve consistency
+STU1489,IT,26,612,275,Low,Low,Improve consistency
+STU1490,EEE,176,298,262,Low,Low,Improve consistency
+STU1491,CSE,138,346,67,Low,Low,"Attend mentoring, increase activity"
+STU1492,CSE,29,213,18,Low,Low,Improve consistency
+STU1493,CSE,189,247,22,Low,Low,Maintain performance
+STU1494,EEE,89,391,140,Low,Low,Improve consistency
+STU1495,ECE,59,676,231,Low,Low,Improve consistency
+STU1496,ECE,255,761,162,High,High,Maintain performance
+STU1497,ECE,148,145,80,Low,Low,Improve consistency
+STU1498,ECE,171,416,29,Low,Low,"Attend mentoring, increase activity"
+STU1499,CSE,228,517,90,Low,Low,Improve consistency
+STU1500,CSE,224,371,237,Low,Low,Maintain performance
+STU1501,IT,183,390,28,Low,Low,Improve consistency
+STU1502,EEE,123,585,174,Low,Low,"Attend mentoring, increase activity"
+STU1503,EEE,269,644,116,High,High,Maintain performance
+STU1504,ECE,154,263,223,Low,Low,Improve consistency
+STU1505,CSE,219,486,248,High,High,Improve consistency
+STU1506,ECE,201,123,156,Low,Low,Improve consistency
+STU1507,IT,46,29,190,Low,Low,Improve consistency
+STU1508,EEE,57,537,207,Low,Low,"Attend mentoring, increase activity"
+STU1509,EEE,255,154,296,Low,Low,Maintain performance
+STU1510,ECE,299,217,62,Low,Low,Maintain performance
+STU1511,IT,275,540,249,High,High,Improve consistency
+STU1512,EEE,127,385,299,Low,Low,Improve consistency
+STU1513,IT,270,513,296,High,High,Maintain performance
+STU1514,IT,33,175,197,Low,Low,"Attend mentoring, increase activity"
+STU1515,ECE,39,559,15,Low,Low,Improve consistency
+STU1516,CSE,10,190,292,Low,Low,"Attend mentoring, increase activity"
+STU1517,ECE,115,626,272,Low,Low,Improve consistency
+STU1518,CSE,298,621,58,High,High,Maintain performance
+STU1519,IT,81,611,209,Low,Low,Improve consistency
+STU1520,CSE,151,453,69,Low,Low,Improve consistency
+STU1521,IT,71,341,42,Low,Low,"Attend mentoring, increase activity"
+STU1522,EEE,12,512,253,Low,Low,Improve consistency
+STU1523,EEE,126,88,181,Low,Low,Improve consistency
+STU1524,EEE,179,594,216,High,High,Improve consistency
+STU1525,ECE,183,697,292,High,High,Improve consistency
+STU1526,ECE,89,405,31,Low,Low,"Attend mentoring, increase activity"
+STU1527,IT,49,617,56,Low,Low,Improve consistency
+STU1528,EEE,140,112,167,Low,Low,Improve consistency
+STU1529,ECE,20,411,267,Low,Low,"Attend mentoring, increase activity"
+STU1530,EEE,199,233,152,Low,Low,Improve consistency
+STU1531,ECE,13,527,56,Low,Low,Improve consistency
+STU1532,CSE,19,643,36,Low,Low,Improve consistency
+STU1533,CSE,106,245,36,Low,Low,Improve consistency
+STU1534,EEE,230,436,154,Low,Low,Improve consistency
+STU1535,IT,282,125,84,Low,Low,Maintain performance
+STU1536,ECE,117,172,196,Low,Low,Improve consistency
+STU1537,ECE,5,235,19,Low,Low,"Attend mentoring, increase activity"
+STU1538,CSE,270,239,130,Low,Low,Maintain performance
+STU1539,CSE,212,191,298,Low,Low,Improve consistency
+STU1540,IT,114,258,174,Low,Low,Improve consistency
+STU1541,IT,204,327,273,Low,Low,Improve consistency
+STU1542,IT,16,219,170,Low,Low,"Attend mentoring, increase activity"
+STU1543,EEE,192,665,127,High,High,Improve consistency
+STU1544,CSE,158,401,272,Low,Low,Improve consistency
+STU1545,EEE,283,105,93,High,High,Maintain performance
+STU1546,CSE,175,765,155,High,High,Improve consistency
+STU1547,CSE,138,95,180,Low,Low,Improve consistency
+STU1548,ECE,29,424,23,Low,Low,"Attend mentoring, increase activity"
+STU1549,CSE,22,403,158,Low,Low,"Attend mentoring, increase activity"
+STU1550,CSE,194,705,260,High,High,Improve consistency
+STU1551,EEE,145,642,66,Low,Low,Improve consistency
+STU1552,CSE,47,510,142,Low,Low,Improve consistency
+STU1553,EEE,288,613,179,High,High,Maintain performance
+STU1554,IT,150,591,111,Low,High,Improve consistency
+STU1555,CSE,96,142,115,Low,Low,"Attend mentoring, increase activity"
+STU1556,CSE,183,658,180,High,High,Improve consistency
+STU1557,EEE,60,323,137,Low,Low,"Attend mentoring, increase activity"
+STU1558,IT,159,708,259,Low,Low,Improve consistency
+STU1559,ECE,164,230,41,Low,Low,"Attend mentoring, increase activity"
+STU1560,IT,115,447,225,Low,Low,Improve consistency
+STU1561,EEE,141,55,271,Low,Low,Improve consistency
+STU1562,IT,236,799,253,High,High,Improve consistency
+STU1563,EEE,224,201,294,Low,Low,Improve consistency
+STU1564,EEE,72,529,299,Low,Low,Improve consistency
+STU1565,ECE,253,388,272,High,High,Maintain performance
+STU1566,CSE,10,797,94,Low,Low,"Attend mentoring, increase activity"
+STU1567,EEE,284,700,54,High,High,Improve consistency
+STU1568,EEE,98,343,209,Low,Low,"Attend mentoring, increase activity"
+STU1569,ECE,273,48,210,Low,Low,Maintain performance
+STU1570,EEE,201,302,177,Low,Low,Improve consistency
+STU1571,CSE,29,699,249,Low,Low,Improve consistency
+STU1572,ECE,152,171,295,Low,Low,Improve consistency
+STU1573,CSE,122,340,199,Low,Low,Improve consistency
+STU1574,CSE,70,113,80,Low,Low,"Attend mentoring, increase activity"
+STU1575,ECE,179,170,154,Low,Low,Maintain performance
+STU1576,EEE,80,644,218,Low,Low,"Attend mentoring, increase activity"
+STU1577,CSE,118,63,217,Low,Low,Improve consistency
+STU1578,CSE,115,43,231,Low,Low,"Attend mentoring, increase activity"
+STU1579,CSE,253,251,296,Low,Low,Improve consistency
+STU1580,CSE,207,122,172,Low,Low,Improve consistency
+STU1581,ECE,151,327,81,Low,Low,Improve consistency
+STU1582,ECE,39,32,249,Low,Low,Improve consistency
+STU1583,IT,30,567,136,Low,Low,"Attend mentoring, increase activity"
+STU1584,IT,242,656,94,High,High,Improve consistency
+STU1585,CSE,18,127,24,Low,Low,"Attend mentoring, increase activity"
+STU1586,EEE,49,710,257,Low,Low,Improve consistency
+STU1587,CSE,220,652,292,High,High,Maintain performance
+STU1588,EEE,237,221,11,Low,Low,Maintain performance
+STU1589,CSE,197,427,83,High,High,Improve consistency
+STU1590,IT,55,122,73,Low,Low,"Attend mentoring, increase activity"
+STU1591,IT,218,53,270,Low,Low,Improve consistency
+STU1592,EEE,155,137,248,Low,Low,Improve consistency
+STU1593,CSE,279,167,288,High,High,Maintain performance
+STU1594,EEE,80,794,210,High,High,Improve consistency
+STU1595,IT,224,403,295,Low,Low,Improve consistency
+STU1596,CSE,191,521,230,Low,High,Improve consistency
+STU1597,CSE,293,54,171,Low,Low,Improve consistency
+STU1598,EEE,32,117,192,Low,Low,Improve consistency
+STU1599,ECE,184,228,274,Low,Low,Improve consistency
+STU1600,EEE,257,452,141,High,High,Improve consistency
+STU1601,IT,130,324,129,Low,Low,Improve consistency
+STU1602,IT,181,186,228,Low,Low,Maintain performance
+STU1603,IT,41,237,169,Low,Low,Improve consistency
+STU1604,IT,103,712,118,High,High,Improve consistency
+STU1605,IT,102,681,247,Low,Low,Improve consistency
+STU1606,ECE,131,276,76,Low,Low,Improve consistency
+STU1607,CSE,172,388,196,Low,Low,Improve consistency
+STU1608,EEE,84,498,45,Low,Low,Improve consistency
+STU1609,EEE,298,711,58,High,High,Improve consistency
+STU1610,IT,130,696,265,High,High,Improve consistency
+STU1611,EEE,154,299,116,Low,Low,Improve consistency
+STU1612,IT,20,366,17,Low,Low,"Attend mentoring, increase activity"
+STU1613,ECE,32,666,245,Low,Low,"Attend mentoring, increase activity"
+STU1614,ECE,177,753,187,High,High,Improve consistency
+STU1615,CSE,50,213,251,Low,Low,Improve consistency
+STU1616,ECE,240,222,50,Low,Low,Improve consistency
+STU1617,ECE,218,561,254,High,High,Maintain performance
+STU1618,CSE,89,796,122,High,High,Improve consistency
+STU1619,EEE,286,332,265,Low,Low,Improve consistency
+STU1620,IT,236,603,175,High,High,Improve consistency
+STU1621,IT,89,190,87,Low,Low,Improve consistency
+STU1622,EEE,69,508,216,Low,Low,Improve consistency
+STU1623,CSE,138,329,205,Low,Low,Improve consistency
+STU1624,EEE,155,92,73,Low,Low,Improve consistency
+STU1625,ECE,119,312,149,Low,Low,"Attend mentoring, increase activity"
+STU1626,CSE,68,271,51,Low,Low,Improve consistency
+STU1627,CSE,162,793,218,High,High,Improve consistency
+STU1628,CSE,81,209,82,Low,Low,Maintain performance
+STU1629,IT,150,249,162,Low,Low,Improve consistency
+STU1630,EEE,229,701,144,High,High,Maintain performance
+STU1631,CSE,107,692,273,Low,Low,"Attend mentoring, increase activity"
+STU1632,CSE,92,304,225,Low,Low,"Attend mentoring, increase activity"
+STU1633,CSE,172,521,218,High,High,Improve consistency
+STU1634,EEE,174,698,213,Low,Low,Improve consistency
+STU1635,IT,139,405,119,Low,Low,Improve consistency
+STU1636,ECE,54,758,40,High,High,Improve consistency
+STU1637,IT,138,147,21,Low,Low,Improve consistency
+STU1638,CSE,141,138,136,Low,Low,Improve consistency
+STU1639,IT,249,58,203,Low,Low,Maintain performance
+STU1640,IT,113,685,149,High,High,Improve consistency
+STU1641,ECE,291,798,36,High,High,Improve consistency
+STU1642,EEE,25,302,55,Low,Low,Improve consistency
+STU1643,EEE,94,637,144,Low,Low,Improve consistency
+STU1644,IT,116,545,67,Low,Low,"Attend mentoring, increase activity"
+STU1645,IT,81,320,22,Low,Low,"Attend mentoring, increase activity"
+STU1646,EEE,181,546,109,Low,Low,Improve consistency
+STU1647,EEE,152,648,58,High,High,Improve consistency
+STU1648,ECE,105,243,103,Low,Low,"Attend mentoring, increase activity"
+STU1649,CSE,250,218,104,Low,Low,Improve consistency
+STU1650,IT,121,614,154,Low,Low,Improve consistency
+STU1651,EEE,96,103,81,Low,Low,Improve consistency
+STU1652,IT,32,336,19,Low,Low,Improve consistency
+STU1653,IT,29,234,171,Low,Low,Improve consistency
+STU1654,EEE,62,20,223,Low,Low,Improve consistency
+STU1655,ECE,138,338,13,Low,Low,Improve consistency
+STU1656,IT,253,21,233,Low,Low,Improve consistency
+STU1657,ECE,42,44,38,Low,Low,Improve consistency
+STU1658,EEE,79,456,212,Low,Low,"Attend mentoring, increase activity"
+STU1659,CSE,146,461,86,Low,Low,Improve consistency
+STU1660,CSE,172,749,68,High,High,Improve consistency
+STU1661,IT,263,229,205,Low,Low,Maintain performance
+STU1662,EEE,229,450,116,High,Low,Improve consistency
+STU1663,ECE,156,662,18,High,High,Maintain performance
+STU1664,IT,23,544,29,Low,Low,"Attend mentoring, increase activity"
+STU1665,EEE,150,604,158,High,High,Maintain performance
+STU1666,EEE,245,238,26,Low,Low,Maintain performance
+STU1667,ECE,241,353,21,Low,Low,Improve consistency
+STU1668,IT,39,89,91,Low,Low,"Attend mentoring, increase activity"
+STU1669,EEE,194,362,76,Low,Low,"Attend mentoring, increase activity"
+STU1670,EEE,5,405,142,Low,Low,Improve consistency
+STU1671,EEE,157,299,62,Low,Low,Improve consistency
+STU1672,ECE,130,464,215,Low,Low,"Attend mentoring, increase activity"
+STU1673,IT,230,680,242,High,High,Maintain performance
+STU1674,IT,225,137,63,Low,Low,Improve consistency
+STU1675,IT,215,711,77,High,High,Improve consistency
+STU1676,IT,29,552,178,Low,Low,Improve consistency
+STU1677,CSE,20,368,170,Low,Low,"Attend mentoring, increase activity"
+STU1678,CSE,186,536,24,Low,High,Improve consistency
+STU1679,IT,133,322,200,Low,Low,Improve consistency
+STU1680,ECE,46,84,24,Low,Low,Improve consistency
+STU1681,CSE,240,555,296,High,High,Maintain performance
+STU1682,EEE,38,205,19,Low,Low,Improve consistency
+STU1683,CSE,49,38,66,Low,Low,Improve consistency
+STU1684,EEE,138,715,208,Low,Low,Improve consistency
+STU1685,IT,25,25,170,Low,Low,"Attend mentoring, increase activity"
+STU1686,CSE,126,432,272,Low,Low,Maintain performance
+STU1687,ECE,74,598,262,Low,Low,"Attend mentoring, increase activity"
+STU1688,CSE,52,602,128,Low,Low,"Attend mentoring, increase activity"
+STU1689,CSE,43,414,89,Low,Low,"Attend mentoring, increase activity"
+STU1690,CSE,291,645,133,High,High,Maintain performance
+STU1691,IT,14,540,81,Low,Low,Improve consistency
+STU1692,ECE,34,623,177,Low,Low,"Attend mentoring, increase activity"
+STU1693,CSE,248,86,293,Low,Low,Maintain performance
+STU1694,ECE,278,238,45,High,High,Maintain performance
+STU1695,IT,92,306,184,Low,Low,Improve consistency
+STU1696,EEE,248,519,208,High,High,Maintain performance
+STU1697,CSE,19,724,125,Low,Low,"Attend mentoring, increase activity"
+STU1698,ECE,8,582,229,Low,Low,"Attend mentoring, increase activity"
+STU1699,ECE,195,547,75,High,High,Improve consistency
+STU1700,IT,172,592,274,Low,Low,Improve consistency
+STU1701,CSE,13,624,143,Low,Low,Improve consistency
+STU1702,EEE,113,335,128,Low,Low,Maintain performance
+STU1703,ECE,141,372,131,Low,Low,"Attend mentoring, increase activity"
+STU1704,CSE,158,678,96,High,High,Improve consistency
+STU1705,EEE,213,368,298,Low,Low,Improve consistency
+STU1706,ECE,276,715,146,High,High,Maintain performance
+STU1707,ECE,147,796,62,High,High,Improve consistency
+STU1708,EEE,103,333,214,Low,Low,Improve consistency
+STU1709,EEE,73,707,60,High,High,Improve consistency
+STU1710,IT,251,335,49,Low,Low,Improve consistency
+STU1711,CSE,265,634,259,High,High,Maintain performance
+STU1712,CSE,280,174,227,Low,Low,Maintain performance
+STU1713,IT,83,582,188,Low,Low,Improve consistency
+STU1714,ECE,150,613,48,High,High,Improve consistency
+STU1715,EEE,115,464,192,Low,Low,"Attend mentoring, increase activity"
+STU1716,EEE,262,162,233,Low,Low,Maintain performance
+STU1717,EEE,97,746,173,High,High,Improve consistency
+STU1718,ECE,17,136,243,Low,Low,"Attend mentoring, increase activity"
+STU1719,EEE,264,202,202,Low,Low,Improve consistency
+STU1720,EEE,113,636,94,Low,Low,Improve consistency
+STU1721,IT,193,783,252,High,High,Improve consistency
+STU1722,ECE,99,539,182,Low,Low,Improve consistency
+STU1723,CSE,109,19,46,Low,Low,Improve consistency
+STU1724,IT,12,101,96,Low,Low,"Attend mentoring, increase activity"
+STU1725,IT,71,148,138,Low,Low,"Attend mentoring, increase activity"
+STU1726,CSE,195,490,203,Low,Low,"Attend mentoring, increase activity"
+STU1727,IT,260,458,52,High,High,Maintain performance
+STU1728,ECE,13,342,168,Low,Low,Improve consistency
+STU1729,EEE,121,349,114,Low,Low,Improve consistency
+STU1730,ECE,271,61,238,Low,Low,Improve consistency
+STU1731,CSE,103,716,226,Low,Low,Improve consistency
+STU1732,CSE,168,475,273,Low,Low,Improve consistency
+STU1733,IT,145,727,58,High,High,Maintain performance
+STU1734,ECE,272,484,132,High,High,Maintain performance
+STU1735,ECE,41,410,34,Low,Low,"Attend mentoring, increase activity"
+STU1736,CSE,78,448,140,Low,Low,Improve consistency
+STU1737,ECE,77,614,233,Low,Low,"Attend mentoring, increase activity"
+STU1738,CSE,203,666,108,High,High,Improve consistency
+STU1739,ECE,134,607,299,High,High,Improve consistency
+STU1740,ECE,250,518,206,High,High,Improve consistency
+STU1741,ECE,64,162,118,Low,Low,Improve consistency
+STU1742,CSE,283,523,229,High,High,Improve consistency
+STU1743,IT,107,512,273,Low,Low,Improve consistency
+STU1744,ECE,155,781,217,High,High,"Attend mentoring, increase activity"
+STU1745,CSE,161,685,91,High,High,Improve consistency
+STU1746,CSE,210,15,34,Low,Low,Maintain performance
+STU1747,ECE,183,509,195,High,High,Maintain performance
+STU1748,ECE,201,670,17,High,High,Maintain performance
+STU1749,IT,227,726,133,High,High,Maintain performance
+STU1750,CSE,93,127,158,Low,Low,Improve consistency
+STU1751,CSE,291,494,107,High,High,Maintain performance
+STU1752,EEE,280,610,225,High,High,Maintain performance
+STU1753,CSE,240,675,110,High,High,Improve consistency
+STU1754,IT,187,688,227,High,High,Improve consistency
+STU1755,EEE,213,477,268,High,Low,Maintain performance
+STU1756,EEE,134,170,20,Low,Low,Improve consistency
+STU1757,EEE,157,279,68,Low,Low,Improve consistency
+STU1758,ECE,17,65,259,Low,Low,"Attend mentoring, increase activity"
+STU1759,ECE,126,237,149,Low,Low,"Attend mentoring, increase activity"
+STU1760,CSE,224,158,47,Low,Low,Maintain performance
+STU1761,EEE,110,55,131,Low,Low,"Attend mentoring, increase activity"
+STU1762,IT,74,153,74,Low,Low,Improve consistency
+STU1763,ECE,199,759,155,High,High,Improve consistency
+STU1764,IT,190,793,134,High,High,Improve consistency
+STU1765,IT,103,641,200,High,High,Improve consistency
+STU1766,ECE,86,349,272,Low,Low,"Attend mentoring, increase activity"
+STU1767,ECE,79,422,191,Low,Low,"Attend mentoring, increase activity"
+STU1768,ECE,196,741,168,High,High,Improve consistency
+STU1769,ECE,218,529,296,High,High,Maintain performance
+STU1770,EEE,148,353,171,Low,Low,Maintain performance
+STU1771,EEE,220,396,272,Low,Low,Improve consistency
+STU1772,EEE,19,482,226,Low,Low,"Attend mentoring, increase activity"
+STU1773,EEE,221,284,190,Low,Low,Maintain performance
+STU1774,CSE,39,362,100,Low,Low,"Attend mentoring, increase activity"
+STU1775,EEE,187,75,26,Low,Low,Maintain performance
+STU1776,ECE,274,88,134,Low,Low,Improve consistency
+STU1777,IT,104,607,269,Low,Low,Improve consistency
+STU1778,EEE,11,645,223,Low,Low,Improve consistency
+STU1779,CSE,34,211,248,Low,Low,Improve consistency
+STU1780,ECE,148,671,189,High,High,Improve consistency
+STU1781,IT,115,567,181,Low,Low,Improve consistency
+STU1782,IT,236,122,152,Low,Low,Improve consistency
+STU1783,EEE,183,100,253,Low,Low,Improve consistency
+STU1784,IT,76,150,241,Low,Low,Improve consistency
+STU1785,EEE,214,298,181,Low,Low,Improve consistency
+STU1786,EEE,224,739,286,High,High,Maintain performance
+STU1787,ECE,84,598,86,Low,Low,Improve consistency
+STU1788,ECE,87,420,58,Low,Low,Improve consistency
+STU1789,CSE,46,386,257,Low,Low,Improve consistency
+STU1790,ECE,277,393,292,High,High,Improve consistency
+STU1791,ECE,195,161,296,Low,Low,Improve consistency
+STU1792,EEE,177,760,41,High,High,Maintain performance
+STU1793,ECE,11,636,167,Low,Low,Improve consistency
+STU1794,EEE,159,328,27,Low,Low,Improve consistency
+STU1795,EEE,14,378,72,Low,Low,Improve consistency
+STU1796,ECE,38,615,137,Low,Low,Improve consistency
+STU1797,CSE,40,569,25,Low,Low,"Attend mentoring, increase activity"
+STU1798,CSE,10,712,172,Low,Low,"Attend mentoring, increase activity"
+STU1799,IT,219,471,260,High,High,Improve consistency
+STU1800,IT,138,21,146,Low,Low,Improve consistency
+STU1801,ECE,289,165,188,Low,Low,Maintain performance
+STU1802,CSE,130,693,238,High,High,Improve consistency
+STU1803,EEE,178,486,189,Low,Low,Improve consistency
+STU1804,IT,156,410,81,Low,Low,Improve consistency
+STU1805,EEE,30,186,92,Low,Low,"Attend mentoring, increase activity"
+STU1806,IT,119,350,145,Low,Low,Improve consistency
+STU1807,ECE,288,66,227,Low,Low,Improve consistency
+STU1808,CSE,79,457,118,Low,Low,Improve consistency
+STU1809,IT,170,212,128,Low,Low,"Attend mentoring, increase activity"
+STU1810,CSE,193,706,27,High,High,Maintain performance
+STU1811,EEE,82,642,163,Low,Low,Improve consistency
+STU1812,ECE,94,747,20,High,High,Improve consistency
+STU1813,CSE,180,211,147,Low,Low,Improve consistency
+STU1814,ECE,25,339,71,Low,Low,"Attend mentoring, increase activity"
+STU1815,CSE,58,372,80,Low,Low,"Attend mentoring, increase activity"
+STU1816,EEE,188,463,70,Low,Low,Improve consistency
+STU1817,EEE,226,365,141,High,Low,Maintain performance
+STU1818,ECE,183,225,70,Low,Low,Improve consistency
+STU1819,EEE,280,564,278,High,High,Maintain performance
+STU1820,IT,116,32,21,Low,Low,Improve consistency
+STU1821,CSE,228,164,44,Low,Low,Maintain performance
+STU1822,EEE,218,195,60,Low,Low,Improve consistency
+STU1823,IT,63,258,52,Low,Low,Improve consistency
+STU1824,ECE,113,758,237,Low,Low,Improve consistency
+STU1825,IT,161,143,120,Low,Low,Improve consistency
+STU1826,ECE,195,330,24,Low,Low,Improve consistency
+STU1827,ECE,204,399,186,High,High,Improve consistency
+STU1828,CSE,200,443,171,High,High,Maintain performance
+STU1829,CSE,39,31,48,Low,Low,Improve consistency
+STU1830,IT,250,609,35,High,High,Improve consistency
+STU1831,CSE,241,674,121,High,High,Maintain performance
+STU1832,CSE,108,134,60,Low,Low,"Attend mentoring, increase activity"
+STU1833,CSE,11,88,107,Low,Low,"Attend mentoring, increase activity"
+STU1834,IT,287,60,179,Low,Low,Maintain performance
+STU1835,EEE,5,737,65,Low,Low,"Attend mentoring, increase activity"
+STU1836,CSE,223,185,230,Low,Low,Improve consistency
+STU1837,CSE,234,262,155,Low,Low,Improve consistency
+STU1838,IT,176,255,269,Low,Low,Maintain performance
+STU1839,EEE,91,748,138,High,Low,Improve consistency
+STU1840,CSE,45,115,59,Low,Low,Improve consistency
+STU1841,ECE,127,202,29,Low,Low,Improve consistency
+STU1842,IT,182,325,183,Low,Low,Improve consistency
+STU1843,CSE,67,311,292,Low,Low,"Attend mentoring, increase activity"
+STU1844,CSE,169,557,35,Low,Low,Improve consistency
+STU1845,ECE,191,725,169,High,High,Maintain performance
+STU1846,ECE,213,788,19,High,High,Improve consistency
+STU1847,IT,231,277,91,High,High,Maintain performance
+STU1848,IT,52,179,265,Low,Low,Improve consistency
+STU1849,ECE,228,560,114,High,High,Maintain performance
+STU1850,IT,7,464,149,Low,Low,"Attend mentoring, increase activity"
+STU1851,ECE,179,660,211,High,High,"Attend mentoring, increase activity"
+STU1852,CSE,103,301,33,Low,Low,Improve consistency
+STU1853,ECE,120,573,55,Low,Low,Improve consistency
+STU1854,ECE,274,150,226,Low,Low,Improve consistency
+STU1855,EEE,257,155,64,Low,Low,Improve consistency
+STU1856,ECE,99,434,87,Low,Low,Improve consistency
+STU1857,ECE,277,323,168,High,Low,Maintain performance
+STU1858,EEE,28,193,281,Low,Low,Improve consistency
+STU1859,IT,120,673,157,Low,Low,Improve consistency
+STU1860,EEE,155,722,47,High,High,Improve consistency
+STU1861,CSE,54,137,120,Low,Low,"Attend mentoring, increase activity"
+STU1862,EEE,210,296,24,Low,Low,Improve consistency
+STU1863,CSE,83,262,87,Low,Low,"Attend mentoring, increase activity"
+STU1864,IT,74,787,85,High,High,Improve consistency
+STU1865,EEE,31,709,284,Low,Low,Improve consistency
+STU1866,EEE,275,395,206,High,High,Maintain performance
+STU1867,IT,54,239,228,Low,Low,Improve consistency
+STU1868,CSE,296,280,72,Low,Low,Improve consistency
+STU1869,EEE,251,780,41,High,High,Maintain performance
+STU1870,CSE,268,424,242,High,High,Maintain performance
+STU1871,EEE,83,207,119,Low,Low,Improve consistency
+STU1872,ECE,194,332,174,Low,Low,Improve consistency
+STU1873,EEE,51,65,203,Low,Low,Improve consistency
+STU1874,IT,193,212,16,Low,Low,Maintain performance
+STU1875,IT,260,792,148,High,High,Maintain performance
+STU1876,CSE,226,630,296,High,High,Maintain performance
+STU1877,EEE,245,637,65,High,High,Improve consistency
+STU1878,CSE,273,613,169,High,High,Improve consistency
+STU1879,CSE,5,147,158,Low,Low,"Attend mentoring, increase activity"
+STU1880,ECE,38,431,296,Low,Low,"Attend mentoring, increase activity"
+STU1881,ECE,83,66,266,Low,Low,"Attend mentoring, increase activity"
+STU1882,IT,240,571,148,High,High,Maintain performance
+STU1883,CSE,102,80,196,Low,Low,Improve consistency
+STU1884,IT,86,603,193,High,High,Maintain performance
+STU1885,EEE,196,381,271,Low,Low,Improve consistency
+STU1886,CSE,257,626,154,High,High,Improve consistency
+STU1887,CSE,42,609,270,Low,Low,Improve consistency
+STU1888,EEE,18,523,11,Low,Low,"Attend mentoring, increase activity"
+STU1889,EEE,213,93,21,Low,Low,Improve consistency
+STU1890,IT,93,52,270,Low,Low,Improve consistency
+STU1891,IT,60,675,178,Low,Low,"Attend mentoring, increase activity"
+STU1892,EEE,98,615,157,Low,Low,"Attend mentoring, increase activity"
+STU1893,IT,97,142,209,Low,Low,Maintain performance
+STU1894,EEE,89,404,79,Low,Low,Improve consistency
+STU1895,CSE,249,74,63,Low,Low,Maintain performance
+STU1896,CSE,26,299,268,Low,Low,"Attend mentoring, increase activity"
+STU1897,ECE,295,385,37,High,High,Improve consistency
+STU1898,CSE,276,778,129,High,High,Maintain performance
+STU1899,EEE,126,476,142,Low,Low,Improve consistency
+STU1900,IT,132,222,99,Low,Low,"Attend mentoring, increase activity"
+STU1901,ECE,117,157,25,Low,Low,Improve consistency
+STU1902,IT,277,582,296,High,High,Improve consistency
+STU1903,EEE,134,480,293,High,Low,Maintain performance
+STU1904,CSE,136,158,239,Low,Low,Improve consistency
+STU1905,ECE,89,97,146,Low,Low,Improve consistency
+STU1906,EEE,85,333,236,Low,Low,"Attend mentoring, increase activity"
+STU1907,ECE,73,405,36,Low,Low,Improve consistency
+STU1908,ECE,152,799,126,High,High,Improve consistency
+STU1909,CSE,20,413,98,Low,Low,"Attend mentoring, increase activity"
+STU1910,EEE,109,91,116,Low,Low,Improve consistency
+STU1911,IT,169,650,230,Low,Low,Improve consistency
+STU1912,ECE,205,295,232,Low,Low,Improve consistency
+STU1913,ECE,201,391,131,Low,Low,Improve consistency
+STU1914,IT,189,279,42,Low,Low,Maintain performance
+STU1915,EEE,269,301,100,Low,High,Improve consistency
+STU1916,ECE,104,462,193,Low,Low,Improve consistency
+STU1917,ECE,218,724,267,High,High,Improve consistency
+STU1918,ECE,282,33,22,Low,Low,Maintain performance
+STU1919,EEE,166,320,33,Low,Low,Improve consistency
+STU1920,EEE,161,470,43,Low,Low,Improve consistency
+STU1921,IT,255,217,256,Low,Low,Improve consistency
+STU1922,EEE,101,726,28,High,High,Improve consistency
+STU1923,EEE,22,673,39,Low,Low,"Attend mentoring, increase activity"
+STU1924,CSE,101,447,58,Low,Low,Improve consistency
+STU1925,IT,5,547,189,Low,Low,"Attend mentoring, increase activity"
+STU1926,ECE,220,715,235,High,High,Improve consistency
+STU1927,EEE,136,345,87,Low,Low,Improve consistency
+STU1928,ECE,264,431,216,High,High,Improve consistency
+STU1929,ECE,129,759,44,Low,High,Improve consistency
+STU1930,CSE,86,330,259,Low,Low,Improve consistency
+STU1931,EEE,287,506,80,High,High,Maintain performance
+STU1932,IT,175,596,288,High,High,Maintain performance
+STU1933,EEE,63,172,161,Low,Low,Improve consistency
+STU1934,ECE,36,550,236,Low,Low,Improve consistency
+STU1935,IT,165,174,252,Low,Low,Improve consistency
+STU1936,EEE,288,707,19,High,High,Maintain performance
+STU1937,ECE,110,575,57,Low,Low,"Attend mentoring, increase activity"
+STU1938,ECE,109,304,121,Low,Low,"Attend mentoring, increase activity"
+STU1939,CSE,232,51,213,Low,Low,Improve consistency
+STU1940,CSE,192,294,166,Low,Low,Improve consistency
+STU1941,CSE,74,396,35,Low,Low,"Attend mentoring, increase activity"
+STU1942,ECE,294,147,175,Low,Low,Maintain performance
+STU1943,EEE,91,196,258,Low,Low,Improve consistency
+STU1944,CSE,60,725,271,Low,Low,Improve consistency
+STU1945,EEE,117,440,273,Low,Low,Improve consistency
+STU1946,CSE,17,563,26,Low,Low,Improve consistency
+STU1947,IT,22,425,85,Low,Low,"Attend mentoring, increase activity"
+STU1948,IT,186,435,263,High,High,Maintain performance
+STU1949,CSE,117,425,215,Low,Low,Improve consistency
+STU1950,ECE,233,35,43,Low,Low,Maintain performance
+STU1951,CSE,175,380,156,Low,Low,Improve consistency
+STU1952,CSE,299,394,237,High,High,Improve consistency
+STU1953,ECE,193,65,127,Low,Low,Improve consistency
+STU1954,IT,83,262,174,Low,Low,Improve consistency
+STU1955,EEE,150,643,47,High,High,Improve consistency
+STU1956,CSE,186,115,146,Low,Low,Maintain performance
+STU1957,ECE,290,139,255,Low,Low,Improve consistency
+STU1958,CSE,254,679,207,High,High,Maintain performance
+STU1959,ECE,200,385,75,Low,Low,Maintain performance
+STU1960,EEE,75,752,89,Low,Low,Improve consistency
+STU1961,EEE,252,317,61,Low,Low,Improve consistency
+STU1962,IT,150,100,138,Low,Low,Maintain performance
+STU1963,ECE,110,402,10,Low,Low,Improve consistency
+STU1964,ECE,267,543,176,High,High,Improve consistency
+STU1965,IT,74,119,25,Low,Low,Improve consistency
+STU1966,IT,197,570,154,High,High,Maintain performance
+STU1967,ECE,72,650,121,Low,Low,Improve consistency
+STU1968,IT,56,594,111,Low,Low,Improve consistency
+STU1969,EEE,289,349,91,High,High,Maintain performance
+STU1970,CSE,13,574,108,Low,Low,"Attend mentoring, increase activity"
+STU1971,EEE,255,365,168,High,High,Improve consistency
+STU1972,IT,188,177,49,Low,Low,Improve consistency
+STU1973,ECE,183,566,164,High,High,Improve consistency
+STU1974,ECE,202,461,45,High,High,Maintain performance
+STU1975,EEE,132,114,256,Low,Low,Improve consistency
+STU1976,ECE,24,159,13,Low,Low,"Attend mentoring, increase activity"
+STU1977,IT,69,155,290,Low,Low,Improve consistency
+STU1978,EEE,186,725,258,High,High,Improve consistency
+STU1979,ECE,245,308,21,Low,Low,Improve consistency
+STU1980,CSE,28,176,292,Low,Low,Improve consistency
+STU1981,CSE,87,722,225,High,High,Improve consistency
+STU1982,IT,189,655,91,High,High,Improve consistency
+STU1983,ECE,103,732,23,Low,Low,Improve consistency
+STU1984,IT,66,57,65,Low,Low,Improve consistency
+STU1985,EEE,290,647,291,High,High,Improve consistency
+STU1986,CSE,26,248,208,Low,Low,Improve consistency
+STU1987,EEE,216,16,175,Low,Low,Improve consistency
+STU1988,ECE,130,473,155,Low,Low,Improve consistency
+STU1989,IT,46,462,87,Low,Low,"Attend mentoring, increase activity"
+STU1990,IT,102,793,121,High,High,Improve consistency
+STU1991,IT,35,380,32,Low,Low,Improve consistency
+STU1992,EEE,162,558,125,High,High,Maintain performance
+STU1993,CSE,116,496,151,Low,Low,Improve consistency
+STU1994,EEE,251,220,206,Low,Low,Improve consistency
+STU1995,EEE,126,174,287,Low,Low,"Attend mentoring, increase activity"
+STU1996,ECE,277,134,37,Low,Low,Maintain performance
+STU1997,ECE,298,346,85,High,High,Improve consistency
+STU1998,ECE,211,201,27,Low,Low,Improve consistency
+STU1999,CSE,114,739,109,Low,High,Improve consistency
+STU2000,CSE,282,223,133,Low,Low,Maintain performance
+STU2001,ECE,60,583,134,Low,Low,Improve consistency
+STU2002,ECE,61,337,16,Low,Low,Improve consistency
+STU2003,CSE,295,390,32,High,High,Improve consistency
+STU2004,IT,118,682,171,High,High,"Attend mentoring, increase activity"
+STU2005,CSE,202,587,126,High,High,Improve consistency
+STU2006,CSE,183,248,30,Low,Low,Improve consistency
+STU2007,CSE,223,541,261,High,High,Maintain performance
+STU2008,ECE,281,709,93,High,High,Improve consistency
+STU2009,IT,20,91,50,Low,Low,"Attend mentoring, increase activity"
+STU2010,CSE,65,372,212,Low,Low,"Attend mentoring, increase activity"
+STU2011,ECE,58,514,137,Low,Low,"Attend mentoring, increase activity"
+STU2012,EEE,172,211,151,Low,Low,Improve consistency
+STU2013,EEE,30,513,112,Low,Low,"Attend mentoring, increase activity"
+STU2014,CSE,69,653,116,Low,Low,"Attend mentoring, increase activity"
+STU2015,EEE,104,46,26,Low,Low,Improve consistency
+STU2016,IT,78,653,34,Low,Low,"Attend mentoring, increase activity"
+STU2017,EEE,196,598,73,High,High,Improve consistency
+STU2018,EEE,175,610,246,High,High,Improve consistency
+STU2019,IT,277,411,185,High,High,Maintain performance
+STU2020,CSE,191,774,165,High,High,Maintain performance
+STU2021,CSE,27,715,62,Low,Low,Improve consistency
+STU2022,IT,185,185,82,Low,Low,Improve consistency
+STU2023,IT,112,554,192,Low,Low,Improve consistency
+STU2024,IT,166,579,198,Low,Low,Improve consistency
+STU2025,EEE,210,476,22,High,Low,Improve consistency
+STU2026,IT,82,210,56,Low,Low,Improve consistency
+STU2027,ECE,20,549,169,Low,Low,Improve consistency
+STU2028,EEE,100,556,293,Low,Low,Improve consistency
+STU2029,CSE,151,646,62,Low,Low,Improve consistency
+STU2030,CSE,6,403,296,Low,Low,Improve consistency
+STU2031,CSE,14,51,17,Low,Low,Improve consistency
+STU2032,EEE,129,606,81,High,High,Improve consistency
+STU2033,ECE,85,402,107,Low,Low,Improve consistency
+STU2034,IT,144,709,96,High,High,Improve consistency
+STU2035,IT,154,632,110,Low,Low,Improve consistency
+STU2036,CSE,292,792,290,High,High,Maintain performance
+STU2037,CSE,133,450,298,Low,Low,Improve consistency
+STU2038,EEE,243,626,246,High,High,Improve consistency
+STU2039,ECE,62,515,205,Low,Low,Improve consistency
+STU2040,IT,202,329,106,Low,Low,Maintain performance
+STU2041,EEE,215,562,105,High,High,Maintain performance
+STU2042,IT,49,224,270,Low,Low,"Attend mentoring, increase activity"
+STU2043,CSE,101,80,130,Low,Low,"Attend mentoring, increase activity"
+STU2044,IT,283,577,282,High,High,Maintain performance
+STU2045,ECE,27,245,61,Low,Low,Improve consistency
+STU2046,ECE,48,290,172,Low,Low,Improve consistency
+STU2047,CSE,31,626,199,Low,Low,"Attend mentoring, increase activity"
+STU2048,ECE,286,171,286,High,High,Maintain performance
+STU2049,ECE,101,200,94,Low,Low,"Attend mentoring, increase activity"
+STU2050,EEE,40,18,203,Low,Low,Improve consistency
+STU2051,IT,113,69,190,Low,Low,"Attend mentoring, increase activity"
+STU2052,CSE,59,234,30,Low,Low,Improve consistency
+STU2053,CSE,196,709,212,High,High,Improve consistency
+STU2054,CSE,223,591,211,High,High,Improve consistency
+STU2055,CSE,189,296,160,Low,Low,Maintain performance
+STU2056,CSE,73,178,168,Low,Low,Improve consistency
+STU2057,ECE,134,71,35,Low,Low,Maintain performance
+STU2058,EEE,59,358,75,Low,Low,Improve consistency
+STU2059,CSE,101,451,272,Low,Low,Improve consistency
+STU2060,EEE,91,23,176,Low,Low,Improve consistency
+STU2061,EEE,298,173,297,High,Low,Improve consistency
+STU2062,ECE,123,429,163,Low,Low,"Attend mentoring, increase activity"
+STU2063,CSE,212,766,215,High,High,Maintain performance
+STU2064,ECE,158,529,162,High,Low,Improve consistency
+STU2065,CSE,39,675,193,Low,Low,Improve consistency
+STU2066,ECE,83,557,168,Low,Low,"Attend mentoring, increase activity"
+STU2067,EEE,71,569,203,Low,Low,Improve consistency
+STU2068,CSE,38,606,11,Low,Low,"Attend mentoring, increase activity"
+STU2069,IT,101,37,224,Low,Low,Improve consistency
+STU2070,EEE,173,717,184,High,High,Improve consistency
+STU2071,IT,173,455,84,High,High,Maintain performance
+STU2072,EEE,155,217,294,Low,Low,Improve consistency
+STU2073,ECE,75,479,136,Low,Low,Improve consistency
+STU2074,CSE,7,725,58,Low,Low,Improve consistency
+STU2075,EEE,36,113,41,Low,Low,Improve consistency
+STU2076,ECE,291,751,167,High,High,Improve consistency
+STU2077,CSE,86,435,24,Low,Low,"Attend mentoring, increase activity"
+STU2078,CSE,47,110,252,Low,Low,Improve consistency
+STU2079,EEE,109,550,26,High,High,"Attend mentoring, increase activity"
+STU2080,CSE,5,648,31,Low,Low,Improve consistency
+STU2081,EEE,65,531,253,Low,Low,Improve consistency
+STU2082,CSE,274,115,90,Low,Low,Maintain performance
+STU2083,IT,184,688,153,High,High,Improve consistency
+STU2084,ECE,228,778,17,High,High,Improve consistency
+STU2085,IT,10,286,176,Low,Low,Improve consistency
+STU2086,EEE,107,74,296,Low,Low,"Attend mentoring, increase activity"
+STU2087,IT,14,792,277,Low,Low,Improve consistency
+STU2088,EEE,75,197,298,Low,Low,Improve consistency
+STU2089,CSE,94,326,195,Low,Low,Improve consistency
+STU2090,CSE,230,147,21,Low,Low,Improve consistency
+STU2091,EEE,162,352,290,Low,Low,Improve consistency
+STU2092,IT,232,114,92,Low,Low,Maintain performance
+STU2093,CSE,130,555,64,Low,Low,Improve consistency
+STU2094,ECE,213,389,140,Low,Low,Improve consistency
+STU2095,CSE,101,119,134,Low,Low,Improve consistency
+STU2096,ECE,78,554,60,Low,Low,"Attend mentoring, increase activity"
+STU2097,IT,119,363,36,Low,Low,Improve consistency
+STU2098,ECE,195,752,174,High,High,Maintain performance
+STU2099,ECE,174,326,290,Low,Low,Improve consistency
+STU2100,ECE,208,275,42,Low,Low,Improve consistency
+STU2101,ECE,60,703,71,Low,Low,Improve consistency
+STU2102,CSE,212,74,154,Low,Low,Improve consistency
+STU2103,ECE,45,342,180,Low,Low,"Attend mentoring, increase activity"
+STU2104,CSE,36,522,295,Low,Low,"Attend mentoring, increase activity"
+STU2105,ECE,19,142,126,Low,Low,"Attend mentoring, increase activity"
+STU2106,EEE,66,601,13,Low,Low,"Attend mentoring, increase activity"
+STU2107,IT,159,792,75,High,High,Improve consistency
+STU2108,ECE,288,762,69,High,High,Maintain performance
+STU2109,EEE,213,549,296,High,High,Improve consistency
+STU2110,ECE,191,744,238,High,High,Improve consistency
+STU2111,ECE,134,544,109,Low,Low,Improve consistency
+STU2112,ECE,131,505,128,Low,Low,Improve consistency
+STU2113,EEE,296,630,78,High,High,Maintain performance
+STU2114,IT,118,628,161,Low,Low,"Attend mentoring, increase activity"
+STU2115,EEE,203,666,289,High,High,Improve consistency
+STU2116,IT,17,378,230,Low,Low,"Attend mentoring, increase activity"
+STU2117,ECE,275,660,232,High,High,Maintain performance
+STU2118,CSE,93,108,174,Low,Low,Maintain performance
+STU2119,ECE,219,326,220,Low,Low,Improve consistency
+STU2120,IT,282,132,288,Low,Low,Improve consistency
+STU2121,EEE,207,329,72,High,High,Maintain performance
+STU2122,ECE,78,602,271,Low,Low,Improve consistency
+STU2123,EEE,29,504,15,Low,Low,Improve consistency
+STU2124,EEE,105,466,257,Low,Low,Improve consistency
+STU2125,EEE,180,531,238,High,High,Maintain performance
+STU2126,ECE,121,529,295,Low,Low,Improve consistency
+STU2127,EEE,170,726,266,High,High,Maintain performance
+STU2128,EEE,45,324,72,Low,Low,"Attend mentoring, increase activity"
+STU2129,ECE,124,718,37,High,High,Improve consistency
+STU2130,EEE,101,719,62,Low,Low,"Attend mentoring, increase activity"
+STU2131,ECE,149,551,261,Low,Low,"Attend mentoring, increase activity"
+STU2132,IT,220,488,47,High,High,Maintain performance
+STU2133,IT,233,29,148,Low,Low,Maintain performance
+STU2134,IT,134,569,62,Low,Low,"Attend mentoring, increase activity"
+STU2135,EEE,141,139,103,Low,Low,"Attend mentoring, increase activity"
+STU2136,CSE,277,302,103,Low,Low,Maintain performance
+STU2137,CSE,121,141,272,Low,Low,"Attend mentoring, increase activity"
+STU2138,EEE,98,365,146,Low,Low,"Attend mentoring, increase activity"
+STU2139,CSE,172,63,265,Low,Low,Improve consistency
+STU2140,ECE,207,396,46,High,High,Maintain performance
+STU2141,CSE,153,274,151,Low,Low,Improve consistency
+STU2142,EEE,187,224,156,Low,Low,Improve consistency
+STU2143,EEE,156,469,17,Low,Low,Improve consistency
+STU2144,ECE,78,467,260,Low,Low,Improve consistency
+STU2145,IT,278,52,144,Low,Low,Maintain performance
+STU2146,EEE,46,595,68,Low,Low,Improve consistency
+STU2147,ECE,216,287,132,Low,Low,Improve consistency
+STU2148,CSE,105,763,272,Low,Low,"Attend mentoring, increase activity"
+STU2149,CSE,49,139,129,Low,Low,Improve consistency
+STU2150,ECE,86,359,268,Low,Low,"Attend mentoring, increase activity"
+STU2151,ECE,21,715,27,Low,Low,Improve consistency
+STU2152,EEE,77,553,101,Low,Low,"Attend mentoring, increase activity"
+STU2153,CSE,18,115,173,Low,Low,"Attend mentoring, increase activity"
+STU2154,ECE,161,725,153,High,High,Maintain performance
+STU2155,CSE,227,10,247,Low,Low,Improve consistency
+STU2156,ECE,136,766,183,High,High,Improve consistency
+STU2157,CSE,51,593,92,Low,Low,Improve consistency
+STU2158,IT,111,441,166,Low,Low,Improve consistency
+STU2159,EEE,112,315,118,Low,Low,Improve consistency
+STU2160,CSE,269,536,187,High,High,Improve consistency
+STU2161,IT,209,62,259,Low,Low,Improve consistency
+STU2162,CSE,83,529,262,Low,Low,Improve consistency
+STU2163,CSE,159,339,64,Low,Low,Improve consistency
+STU2164,IT,275,567,164,High,High,Maintain performance
+STU2165,CSE,251,334,100,Low,Low,Improve consistency
+STU2166,CSE,23,123,135,Low,Low,Improve consistency
+STU2167,EEE,30,156,178,Low,Low,"Attend mentoring, increase activity"
+STU2168,IT,221,175,148,Low,Low,Maintain performance
+STU2169,IT,158,388,14,Low,Low,Improve consistency
+STU2170,ECE,158,148,75,Low,Low,Improve consistency
+STU2171,CSE,178,638,120,High,High,Maintain performance
+STU2172,EEE,96,308,193,Low,Low,Improve consistency
+STU2173,CSE,185,285,277,Low,Low,Maintain performance
+STU2174,CSE,135,798,179,High,High,Improve consistency
+STU2175,ECE,279,187,253,High,Low,Maintain performance
+STU2176,CSE,277,363,147,High,High,Maintain performance
+STU2177,EEE,80,163,37,Low,Low,Improve consistency
+STU2178,EEE,181,210,16,Low,Low,Improve consistency
+STU2179,ECE,188,124,60,Low,Low,Maintain performance
+STU2180,CSE,135,680,145,Low,Low,"Attend mentoring, increase activity"
+STU2181,EEE,53,563,187,Low,Low,"Attend mentoring, increase activity"
+STU2182,CSE,59,768,138,Low,Low,Improve consistency
+STU2183,CSE,158,77,206,Low,Low,Improve consistency
+STU2184,CSE,204,454,276,High,High,Maintain performance
+STU2185,ECE,122,454,116,Low,Low,Improve consistency
+STU2186,CSE,267,335,57,High,High,Maintain performance
+STU2187,EEE,50,717,147,Low,Low,"Attend mentoring, increase activity"
+STU2188,CSE,193,611,112,High,High,Improve consistency
+STU2189,EEE,133,632,56,Low,Low,Improve consistency
+STU2190,CSE,53,368,162,Low,Low,"Attend mentoring, increase activity"
+STU2191,EEE,29,154,15,Low,Low,Improve consistency
+STU2192,EEE,270,284,20,High,High,Maintain performance
+STU2193,CSE,122,518,26,Low,Low,"Attend mentoring, increase activity"
+STU2194,CSE,148,188,152,Low,Low,Improve consistency
+STU2195,EEE,204,762,281,High,High,Improve consistency
+STU2196,IT,161,486,75,High,Low,Improve consistency
+STU2197,ECE,138,423,265,Low,Low,Improve consistency
+STU2198,IT,152,162,136,Low,Low,Improve consistency
+STU2199,IT,75,113,140,Low,Low,Improve consistency
+STU2200,CSE,237,84,27,Low,Low,Maintain performance
+STU2201,ECE,158,137,216,Low,Low,Improve consistency
+STU2202,IT,94,720,98,High,High,Improve consistency
+STU2203,CSE,203,675,252,High,High,Improve consistency
+STU2204,IT,165,577,26,High,High,Improve consistency
+STU2205,IT,30,799,232,Low,Low,Improve consistency
+STU2206,CSE,125,354,219,Low,Low,Improve consistency
+STU2207,CSE,216,540,108,Low,Low,Improve consistency
+STU2208,CSE,67,168,22,Low,Low,"Attend mentoring, increase activity"
+STU2209,ECE,72,547,279,Low,Low,Improve consistency
+STU2210,IT,257,435,196,Low,Low,Improve consistency
+STU2211,CSE,6,690,283,Low,Low,Improve consistency
+STU2212,EEE,112,32,142,Low,Low,"Attend mentoring, increase activity"
+STU2213,IT,290,56,23,Low,Low,Maintain performance
+STU2214,EEE,53,534,290,Low,Low,Improve consistency
+STU2215,ECE,144,738,53,Low,Low,"Attend mentoring, increase activity"
+STU2216,CSE,222,715,113,High,High,Maintain performance
+STU2217,EEE,48,153,71,Low,Low,"Attend mentoring, increase activity"
+STU2218,ECE,273,594,62,High,High,Maintain performance
+STU2219,CSE,82,677,127,Low,Low,"Attend mentoring, increase activity"
+STU2220,EEE,220,598,140,High,High,Improve consistency
+STU2221,EEE,102,428,208,Low,Low,Improve consistency
+STU2222,ECE,240,690,45,High,High,Improve consistency
+STU2223,CSE,286,94,288,Low,Low,Improve consistency
+STU2224,CSE,153,425,225,High,High,Improve consistency
+STU2225,EEE,70,703,83,Low,Low,Improve consistency
+STU2226,EEE,238,491,64,Low,Low,Improve consistency
+STU2227,EEE,91,465,21,Low,Low,Improve consistency
+STU2228,CSE,83,306,92,Low,Low,Improve consistency
+STU2229,ECE,209,121,41,Low,Low,Improve consistency
+STU2230,ECE,283,239,95,High,High,Improve consistency
+STU2231,CSE,258,105,241,Low,Low,Maintain performance
+STU2232,IT,134,689,284,High,High,Improve consistency
+STU2233,ECE,88,387,210,Low,Low,Improve consistency
+STU2234,EEE,280,165,60,Low,Low,Maintain performance
+STU2235,IT,191,430,265,Low,Low,Improve consistency
+STU2236,IT,50,114,250,Low,Low,Improve consistency
+STU2237,ECE,187,714,214,High,High,Improve consistency
+STU2238,IT,272,339,205,Low,Low,Maintain performance
+STU2239,IT,104,448,253,Low,Low,Improve consistency
+STU2240,ECE,82,141,10,Low,Low,Improve consistency
+STU2241,ECE,276,391,98,High,High,Maintain performance
+STU2242,IT,166,147,291,Low,Low,Improve consistency
+STU2243,EEE,48,279,148,Low,Low,Improve consistency
+STU2244,CSE,242,559,96,High,High,Maintain performance
+STU2245,IT,138,405,11,Low,Low,Improve consistency
+STU2246,IT,196,566,177,High,High,Maintain performance
+STU2247,EEE,282,473,128,High,High,Maintain performance
+STU2248,IT,22,684,89,Low,Low,"Attend mentoring, increase activity"
+STU2249,IT,16,459,120,Low,Low,Improve consistency
+STU2250,CSE,184,340,174,Low,Low,"Attend mentoring, increase activity"
+STU2251,CSE,127,262,228,Low,Low,Improve consistency
+STU2252,CSE,250,690,14,High,High,Maintain performance
+STU2253,ECE,226,294,224,Low,Low,Improve consistency
+STU2254,ECE,55,283,204,Low,Low,Improve consistency
+STU2255,CSE,75,29,291,Low,Low,"Attend mentoring, increase activity"
+STU2256,CSE,52,248,15,Low,Low,Improve consistency
+STU2257,ECE,23,279,67,Low,Low,"Attend mentoring, increase activity"
+STU2258,EEE,266,427,111,High,High,Improve consistency
+STU2259,IT,88,319,57,Low,Low,Maintain performance
+STU2260,IT,159,40,285,Low,Low,Improve consistency
+STU2261,CSE,57,113,172,Low,Low,Improve consistency
+STU2262,EEE,111,691,205,High,High,Improve consistency
+STU2263,ECE,139,195,141,Low,Low,Improve consistency
+STU2264,CSE,73,137,75,Low,Low,Improve consistency
+STU2265,EEE,15,219,92,Low,Low,"Attend mentoring, increase activity"
+STU2266,EEE,147,423,274,Low,Low,Improve consistency
+STU2267,EEE,196,290,238,Low,Low,Improve consistency
+STU2268,ECE,73,262,282,Low,Low,Improve consistency
+STU2269,ECE,27,28,228,Low,Low,Improve consistency
+STU2270,IT,185,721,234,High,High,"Attend mentoring, increase activity"
+STU2271,IT,297,741,122,High,High,Maintain performance
+STU2272,EEE,13,145,149,Low,Low,Improve consistency
+STU2273,EEE,275,232,194,Low,High,Maintain performance
+STU2274,ECE,97,12,182,Low,Low,"Attend mentoring, increase activity"
+STU2275,IT,21,245,20,Low,Low,Improve consistency
+STU2276,EEE,158,474,168,Low,Low,"Attend mentoring, increase activity"
+STU2277,IT,153,237,214,Low,Low,Maintain performance
+STU2278,IT,271,663,239,High,High,Maintain performance
+STU2279,EEE,110,508,35,Low,Low,Improve consistency
+STU2280,ECE,39,530,168,Low,Low,"Attend mentoring, increase activity"
+STU2281,EEE,123,711,287,High,High,Improve consistency
+STU2282,EEE,18,686,157,Low,Low,Improve consistency
+STU2283,IT,18,148,275,Low,Low,"Attend mentoring, increase activity"
+STU2284,EEE,270,285,92,Low,Low,Improve consistency
+STU2285,ECE,144,300,35,Low,Low,Maintain performance
+STU2286,EEE,298,62,80,Low,Low,Maintain performance
+STU2287,ECE,123,696,46,Low,Low,Improve consistency
+STU2288,ECE,242,119,142,Low,Low,Improve consistency
+STU2289,IT,38,724,135,Low,Low,Improve consistency
+STU2290,CSE,173,657,124,High,High,Improve consistency
+STU2291,CSE,14,13,101,Low,Low,"Attend mentoring, increase activity"
+STU2292,IT,126,676,251,High,Low,Improve consistency
+STU2293,EEE,149,693,209,High,High,Maintain performance
+STU2294,IT,227,56,216,Low,Low,Maintain performance
+STU2295,ECE,261,103,126,Low,Low,Maintain performance
+STU2296,CSE,272,569,228,High,High,Improve consistency
+STU2297,IT,8,761,252,Low,Low,"Attend mentoring, increase activity"
+STU2298,EEE,110,222,291,Low,Low,Improve consistency
+STU2299,IT,89,445,181,Low,Low,Maintain performance
+STU2300,CSE,218,517,85,High,High,Improve consistency
+STU2301,IT,125,660,218,Low,Low,Improve consistency
+STU2302,IT,136,214,114,Low,Low,Improve consistency
+STU2303,CSE,201,390,35,High,High,Maintain performance
+STU2304,ECE,23,82,88,Low,Low,"Attend mentoring, increase activity"
+STU2305,ECE,134,525,137,Low,Low,Improve consistency
+STU2306,CSE,16,85,146,Low,Low,Improve consistency
+STU2307,IT,85,86,45,Low,Low,Improve consistency
+STU2308,CSE,266,777,68,High,High,Maintain performance
+STU2309,ECE,129,419,239,Low,Low,"Attend mentoring, increase activity"
+STU2310,EEE,271,623,133,High,High,Maintain performance
+STU2311,IT,144,115,97,Low,Low,Improve consistency
+STU2312,ECE,6,560,150,Low,Low,"Attend mentoring, increase activity"
+STU2313,IT,12,485,282,Low,Low,Improve consistency
+STU2314,CSE,254,284,60,Low,Low,Improve consistency
+STU2315,EEE,143,97,64,Low,Low,Improve consistency
+STU2316,CSE,128,732,159,Low,Low,Improve consistency
+STU2317,EEE,232,86,162,Low,Low,Improve consistency
+STU2318,IT,14,86,228,Low,Low,Improve consistency
+STU2319,IT,216,451,228,High,High,Improve consistency
+STU2320,CSE,116,549,267,Low,Low,"Attend mentoring, increase activity"
+STU2321,EEE,12,254,54,Low,Low,Improve consistency
+STU2322,EEE,296,587,278,High,High,Maintain performance
+STU2323,IT,257,787,169,High,High,Maintain performance
+STU2324,CSE,18,391,287,Low,Low,"Attend mentoring, increase activity"
+STU2325,EEE,244,726,64,High,High,Improve consistency
+STU2326,IT,246,579,154,High,High,Improve consistency
+STU2327,ECE,153,722,244,High,High,Maintain performance
+STU2328,CSE,240,746,188,High,High,Maintain performance
+STU2329,ECE,171,151,217,Low,Low,Improve consistency
+STU2330,CSE,24,377,145,Low,Low,Improve consistency
+STU2331,IT,220,93,284,Low,Low,Improve consistency
+STU2332,EEE,139,152,192,Low,Low,Improve consistency
+STU2333,EEE,133,361,70,Low,Low,Improve consistency
+STU2334,EEE,298,554,72,High,High,Maintain performance
+STU2335,CSE,250,161,224,Low,Low,Improve consistency
+STU2336,IT,193,167,148,Low,Low,Improve consistency
+STU2337,ECE,48,455,143,Low,Low,Improve consistency
+STU2338,IT,90,662,43,Low,Low,Improve consistency
+STU2339,ECE,48,772,202,Low,Low,Improve consistency
+STU2340,CSE,149,312,96,Low,Low,Improve consistency
+STU2341,CSE,55,633,219,Low,Low,"Attend mentoring, increase activity"
+STU2342,ECE,246,665,90,High,High,Improve consistency
+STU2343,ECE,298,459,199,High,High,Maintain performance
+STU2344,ECE,55,730,242,High,High,Improve consistency
+STU2345,IT,270,233,178,Low,Low,Maintain performance
+STU2346,ECE,124,52,260,Low,Low,Improve consistency
+STU2347,CSE,204,273,177,Low,Low,Improve consistency
+STU2348,CSE,252,765,240,High,High,Improve consistency
+STU2349,EEE,74,12,159,Low,Low,Improve consistency
+STU2350,ECE,61,646,161,Low,Low,"Attend mentoring, increase activity"
+STU2351,IT,43,277,47,Low,Low,"Attend mentoring, increase activity"
+STU2352,IT,293,605,284,High,High,Maintain performance
+STU2353,IT,22,25,114,Low,Low,"Attend mentoring, increase activity"
+STU2354,EEE,224,343,71,Low,Low,Improve consistency
+STU2355,CSE,248,473,25,High,High,Maintain performance
+STU2356,IT,287,68,159,Low,Low,Improve consistency
+STU2357,CSE,78,186,151,Low,Low,"Attend mentoring, increase activity"
+STU2358,EEE,114,72,125,Low,Low,"Attend mentoring, increase activity"
+STU2359,ECE,184,570,74,High,High,Improve consistency
+STU2360,ECE,36,316,203,Low,Low,"Attend mentoring, increase activity"
+STU2361,ECE,238,255,170,High,High,Maintain performance
+STU2362,IT,286,298,287,High,High,Maintain performance
+STU2363,ECE,29,341,48,Low,Low,"Attend mentoring, increase activity"
+STU2364,IT,283,536,178,High,High,Maintain performance
+STU2365,EEE,230,264,77,Low,Low,Improve consistency
+STU2366,EEE,61,613,16,Low,Low,"Attend mentoring, increase activity"
+STU2367,IT,184,519,94,Low,Low,Improve consistency
+STU2368,CSE,236,727,208,High,High,Improve consistency
+STU2369,ECE,291,615,141,High,High,Improve consistency
+STU2370,ECE,68,746,85,High,Low,Improve consistency
+STU2371,ECE,236,472,259,High,High,Improve consistency
+STU2372,IT,293,208,218,High,High,Maintain performance
+STU2373,EEE,217,280,93,Low,Low,Maintain performance
+STU2374,ECE,262,755,232,High,High,Maintain performance
+STU2375,EEE,22,567,262,Low,Low,"Attend mentoring, increase activity"
+STU2376,ECE,179,73,40,Low,Low,"Attend mentoring, increase activity"
+STU2377,ECE,233,239,210,Low,Low,Improve consistency
+STU2378,IT,230,258,61,High,High,Improve consistency
+STU2379,CSE,88,255,81,Low,Low,Improve consistency
+STU2380,IT,295,596,30,High,High,Maintain performance
+STU2381,ECE,250,166,25,Low,Low,Improve consistency
+STU2382,ECE,114,744,25,High,High,Maintain performance
+STU2383,CSE,258,711,184,High,High,Maintain performance
+STU2384,EEE,92,573,87,Low,Low,Improve consistency
+STU2385,EEE,76,97,249,Low,Low,Improve consistency
+STU2386,ECE,34,322,46,Low,Low,"Attend mentoring, increase activity"
+STU2387,EEE,176,75,241,Low,Low,Improve consistency
+STU2388,ECE,181,671,222,Low,Low,"Attend mentoring, increase activity"
+STU2389,CSE,143,29,202,Low,Low,Improve consistency
+STU2390,CSE,198,42,69,Low,Low,Improve consistency
+STU2391,ECE,190,567,198,Low,Low,Improve consistency
+STU2392,CSE,222,82,276,Low,Low,Improve consistency
+STU2393,IT,168,352,135,Low,Low,Maintain performance
+STU2394,IT,165,142,212,Low,Low,Improve consistency
+STU2395,CSE,17,64,41,Low,Low,Improve consistency
+STU2396,ECE,93,70,270,Low,Low,Improve consistency
+STU2397,ECE,46,529,103,Low,Low,Improve consistency
+STU2398,CSE,214,281,109,Low,Low,Improve consistency
+STU2399,EEE,233,255,294,High,High,Maintain performance
+STU2400,IT,279,185,34,Low,Low,Improve consistency
+STU2401,EEE,283,637,126,High,High,Maintain performance
+STU2402,ECE,255,326,208,High,High,Maintain performance
+STU2403,ECE,212,792,288,High,High,"Attend mentoring, increase activity"
+STU2404,EEE,144,714,79,High,High,Improve consistency
+STU2405,CSE,284,671,88,High,High,Improve consistency
+STU2406,EEE,38,140,23,Low,Low,Improve consistency
+STU2407,EEE,22,111,38,Low,Low,"Attend mentoring, increase activity"
+STU2408,IT,61,319,153,Low,Low,Improve consistency
+STU2409,IT,116,791,19,High,High,Improve consistency
+STU2410,EEE,9,301,56,Low,Low,Improve consistency
+STU2411,EEE,186,731,269,High,High,Improve consistency
+STU2412,ECE,17,504,21,Low,Low,"Attend mentoring, increase activity"
+STU2413,IT,289,370,235,High,High,Maintain performance
+STU2414,IT,263,347,269,High,High,Maintain performance
+STU2415,ECE,94,588,93,Low,Low,Improve consistency
+STU2416,CSE,108,19,15,Low,Low,Improve consistency
+STU2417,IT,190,58,256,Low,Low,Improve consistency
+STU2418,IT,254,496,44,High,High,Maintain performance
+STU2419,CSE,259,632,184,High,High,Maintain performance
+STU2420,IT,80,330,74,Low,Low,Improve consistency
+STU2421,IT,112,740,156,High,High,Improve consistency
+STU2422,CSE,160,578,66,High,High,Maintain performance
+STU2423,CSE,86,634,202,Low,Low,Improve consistency
+STU2424,EEE,81,142,22,Low,Low,Improve consistency
+STU2425,ECE,262,592,27,High,High,Improve consistency
+STU2426,ECE,131,92,255,Low,Low,Improve consistency
+STU2427,CSE,286,66,172,Low,Low,Improve consistency
+STU2428,CSE,92,385,123,Low,Low,Improve consistency
+STU2429,IT,208,358,291,High,High,Maintain performance
+STU2430,EEE,20,280,242,Low,Low,"Attend mentoring, increase activity"
+STU2431,EEE,155,492,175,Low,Low,Improve consistency
+STU2432,CSE,258,120,35,Low,Low,Improve consistency
+STU2433,IT,192,85,135,Low,Low,Improve consistency
+STU2434,IT,36,167,290,Low,Low,"Attend mentoring, increase activity"
+STU2435,ECE,275,541,295,High,High,Improve consistency
+STU2436,ECE,9,652,292,Low,Low,"Attend mentoring, increase activity"
+STU2437,IT,173,338,148,Low,Low,Improve consistency
+STU2438,ECE,185,131,110,Low,Low,Maintain performance
+STU2439,CSE,182,50,20,Low,Low,Improve consistency
+STU2440,IT,147,176,225,Low,Low,Improve consistency
+STU2441,ECE,252,651,39,High,High,Maintain performance
+STU2442,EEE,131,32,103,Low,Low,Improve consistency
+STU2443,IT,267,288,125,Low,Low,Improve consistency
+STU2444,IT,44,772,280,Low,Low,"Attend mentoring, increase activity"
+STU2445,EEE,259,478,48,High,High,Maintain performance
+STU2446,CSE,147,409,33,Low,Low,Improve consistency
+STU2447,EEE,244,18,273,Low,Low,Maintain performance
+STU2448,IT,232,22,52,Low,Low,Maintain performance
+STU2449,CSE,202,61,179,Low,Low,Maintain performance
+STU2450,ECE,69,218,178,Low,Low,"Attend mentoring, increase activity"
+STU2451,ECE,15,559,35,Low,Low,Improve consistency
+STU2452,ECE,112,621,189,Low,Low,Improve consistency
+STU2453,IT,30,714,159,Low,Low,"Attend mentoring, increase activity"
+STU2454,EEE,155,411,142,Low,Low,Improve consistency
+STU2455,CSE,225,200,152,Low,Low,Improve consistency
+STU2456,ECE,241,60,173,Low,Low,Improve consistency
+STU2457,CSE,241,402,110,Low,Low,Improve consistency
+STU2458,IT,223,662,72,High,High,Maintain performance
+STU2459,ECE,155,689,102,Low,High,"Attend mentoring, increase activity"
+STU2460,IT,127,630,216,High,High,Improve consistency
+STU2461,EEE,148,728,81,High,High,"Attend mentoring, increase activity"
+STU2462,IT,193,309,69,Low,Low,Improve consistency
+STU2463,IT,259,631,38,High,High,Maintain performance
+STU2464,EEE,72,205,28,Low,Low,"Attend mentoring, increase activity"
+STU2465,CSE,108,426,82,Low,Low,"Attend mentoring, increase activity"
+STU2466,EEE,163,673,255,Low,Low,Improve consistency
+STU2467,EEE,94,429,96,Low,Low,Improve consistency
+STU2468,IT,260,764,192,High,High,Improve consistency
+STU2469,CSE,224,649,206,High,High,Maintain performance
+STU2470,ECE,13,626,253,Low,Low,"Attend mentoring, increase activity"
+STU2471,EEE,16,531,127,Low,Low,Improve consistency
+STU2472,CSE,248,365,91,High,High,Maintain performance
+STU2473,EEE,186,157,256,Low,Low,Improve consistency
+STU2474,EEE,288,374,243,High,High,Maintain performance
+STU2475,EEE,103,373,162,Low,Low,"Attend mentoring, increase activity"
+STU2476,EEE,201,661,281,High,High,Maintain performance
+STU2477,IT,230,711,44,High,High,Improve consistency
+STU2478,CSE,107,411,222,Low,Low,"Attend mentoring, increase activity"
+STU2479,CSE,110,615,220,High,High,Improve consistency
+STU2480,CSE,62,501,148,Low,Low,Improve consistency
+STU2481,EEE,82,238,198,Low,Low,"Attend mentoring, increase activity"
+STU2482,IT,79,584,261,Low,Low,Improve consistency
+STU2483,EEE,46,546,159,Low,Low,"Attend mentoring, increase activity"
+STU2484,EEE,185,277,228,Low,Low,Maintain performance
+STU2485,CSE,37,414,91,Low,Low,Improve consistency
+STU2486,EEE,75,20,199,Low,Low,"Attend mentoring, increase activity"
+STU2487,ECE,60,329,243,Low,Low,Improve consistency
+STU2488,EEE,109,722,185,High,High,Improve consistency
+STU2489,ECE,204,135,241,Low,Low,Improve consistency
+STU2490,EEE,105,315,72,Low,Low,"Attend mentoring, increase activity"
+STU2491,IT,260,711,246,High,High,Maintain performance
+STU2492,IT,78,520,42,Low,Low,Improve consistency
+STU2493,CSE,175,98,222,Low,Low,Improve consistency
+STU2494,EEE,147,364,69,Low,Low,Improve consistency
+STU2495,ECE,170,637,11,Low,Low,Improve consistency
+STU2496,ECE,265,361,66,Low,Low,Improve consistency
+STU2497,EEE,225,698,296,High,High,Maintain performance
+STU2498,ECE,87,23,147,Low,Low,Improve consistency
+STU2499,IT,186,266,288,Low,Low,Improve consistency
+STU2500,ECE,14,218,223,Low,Low,"Attend mentoring, increase activity"
+STU2501,CSE,8,290,248,Low,Low,"Attend mentoring, increase activity"
+STU2502,IT,296,452,294,High,High,Maintain performance
+STU2503,IT,285,398,40,High,High,Maintain performance
+STU2504,IT,219,626,215,High,High,Improve consistency
+STU2505,EEE,102,492,283,Low,Low,"Attend mentoring, increase activity"
+STU2506,EEE,105,156,20,Low,Low,Improve consistency
+STU2507,IT,13,288,56,Low,Low,"Attend mentoring, increase activity"
+STU2508,EEE,65,530,12,Low,Low,Improve consistency
+STU2509,ECE,150,639,139,High,High,Improve consistency
+STU2510,EEE,67,615,81,Low,Low,Improve consistency
+STU2511,EEE,125,443,168,Low,Low,Improve consistency
+STU2512,IT,230,153,139,Low,Low,Maintain performance
+STU2513,CSE,109,298,31,Low,Low,Maintain performance
+STU2514,CSE,264,395,144,High,High,Maintain performance
+STU2515,CSE,259,23,29,Low,Low,Maintain performance
+STU2516,ECE,211,266,229,Low,Low,"Attend mentoring, increase activity"
+STU2517,EEE,32,355,139,Low,Low,"Attend mentoring, increase activity"
+STU2518,CSE,174,707,41,High,High,Maintain performance
+STU2519,IT,80,354,99,Low,Low,"Attend mentoring, increase activity"
+STU2520,CSE,120,409,268,Low,Low,"Attend mentoring, increase activity"
+STU2521,CSE,73,216,258,Low,Low,Improve consistency
+STU2522,EEE,238,181,182,Low,Low,Maintain performance
+STU2523,EEE,5,473,56,Low,Low,"Attend mentoring, increase activity"
+STU2524,EEE,171,279,206,Low,Low,Improve consistency
+STU2525,ECE,222,230,43,Low,Low,Maintain performance
+STU2526,ECE,277,161,263,Low,Low,Improve consistency
+STU2527,CSE,255,632,257,High,High,Maintain performance
+STU2528,EEE,178,192,51,Low,Low,Improve consistency
+STU2529,CSE,174,408,298,Low,Low,Improve consistency
+STU2530,IT,250,81,132,Low,Low,Improve consistency
+STU2531,IT,94,427,36,Low,Low,Improve consistency
+STU2532,EEE,53,292,68,Low,Low,Improve consistency
+STU2533,EEE,298,83,156,Low,Low,Improve consistency
+STU2534,IT,154,364,124,Low,Low,Improve consistency
+STU2535,EEE,136,736,208,High,High,Improve consistency
+STU2536,ECE,63,506,137,Low,Low,Improve consistency
+STU2537,ECE,203,337,162,Low,Low,Improve consistency
+STU2538,EEE,219,544,280,High,High,Maintain performance
+STU2539,IT,53,589,92,Low,Low,Improve consistency
+STU2540,CSE,236,456,32,Low,Low,Improve consistency
+STU2541,EEE,251,382,20,High,High,Improve consistency
+STU2542,EEE,243,371,196,Low,Low,Maintain performance
+STU2543,CSE,172,102,125,Low,Low,Improve consistency
+STU2544,EEE,52,330,171,Low,Low,Improve consistency
+STU2545,CSE,55,333,112,Low,Low,Improve consistency
+STU2546,IT,102,393,252,Low,Low,Improve consistency
+STU2547,ECE,220,584,16,High,High,Improve consistency
+STU2548,IT,181,745,181,High,High,Maintain performance
+STU2549,ECE,84,746,265,High,High,Improve consistency
+STU2550,CSE,189,355,256,Low,Low,Maintain performance
+STU2551,ECE,31,112,201,Low,Low,Improve consistency
+STU2552,IT,199,224,123,Low,Low,Improve consistency
+STU2553,ECE,218,201,32,Low,Low,Improve consistency
+STU2554,CSE,118,681,285,Low,Low,"Attend mentoring, increase activity"
+STU2555,ECE,246,728,145,High,High,Improve consistency
+STU2556,EEE,128,790,204,High,High,Improve consistency
+STU2557,IT,80,203,267,Low,Low,Improve consistency
+STU2558,EEE,200,389,287,High,High,Improve consistency
+STU2559,CSE,48,412,79,Low,Low,Improve consistency
+STU2560,ECE,190,673,45,High,High,Maintain performance
+STU2561,EEE,250,758,117,High,High,Maintain performance
+STU2562,EEE,88,609,33,Low,Low,Improve consistency
+STU2563,ECE,211,20,149,Low,Low,Maintain performance
+STU2564,ECE,155,196,31,Low,Low,Improve consistency
+STU2565,IT,160,735,213,High,High,Improve consistency
+STU2566,EEE,20,24,233,Low,Low,"Attend mentoring, increase activity"
+STU2567,EEE,169,787,232,High,High,Improve consistency
+STU2568,CSE,149,306,90,Low,Low,Improve consistency
+STU2569,IT,41,420,200,Low,Low,Improve consistency
+STU2570,CSE,49,594,295,Low,Low,Improve consistency
+STU2571,EEE,210,61,156,Low,Low,Improve consistency
+STU2572,CSE,66,649,291,Low,Low,"Attend mentoring, increase activity"
+STU2573,EEE,23,37,20,Low,Low,Improve consistency
+STU2574,EEE,11,586,285,Low,Low,"Attend mentoring, increase activity"
+STU2575,CSE,253,26,65,Low,Low,Maintain performance
+STU2576,CSE,121,360,182,Low,Low,Improve consistency
+STU2577,ECE,72,437,213,Low,Low,Improve consistency
+STU2578,ECE,38,659,257,Low,Low,"Attend mentoring, increase activity"
+STU2579,ECE,198,238,275,Low,Low,Improve consistency
+STU2580,EEE,59,775,31,Low,Low,Improve consistency
+STU2581,CSE,270,219,33,Low,Low,Maintain performance
+STU2582,IT,46,440,203,Low,Low,"Attend mentoring, increase activity"
+STU2583,EEE,235,303,105,Low,Low,Maintain performance
+STU2584,IT,14,752,272,Low,Low,Improve consistency
+STU2585,CSE,132,762,81,Low,Low,Improve consistency
+STU2586,EEE,183,591,252,Low,Low,Improve consistency
+STU2587,IT,197,113,47,Low,Low,Improve consistency
+STU2588,IT,96,213,98,Low,Low,"Attend mentoring, increase activity"
+STU2589,ECE,235,62,37,Low,Low,Maintain performance
+STU2590,ECE,82,384,101,Low,Low,"Attend mentoring, increase activity"
+STU2591,ECE,89,63,63,Low,Low,Improve consistency
+STU2592,EEE,34,285,168,Low,Low,Improve consistency
+STU2593,CSE,217,344,237,Low,Low,Maintain performance
+STU2594,CSE,53,40,50,Low,Low,"Attend mentoring, increase activity"
+STU2595,ECE,269,144,46,High,High,Improve consistency
+STU2596,ECE,149,67,134,Low,Low,Improve consistency
+STU2597,ECE,73,114,188,Low,Low,Improve consistency
+STU2598,IT,62,275,46,Low,Low,Improve consistency
+STU2599,ECE,189,531,110,High,High,Improve consistency
+STU2600,IT,66,505,40,Low,Low,"Attend mentoring, increase activity"
+STU2601,CSE,170,262,199,Low,Low,Improve consistency
+STU2602,EEE,175,304,155,Low,Low,Improve consistency
+STU2603,EEE,67,677,99,Low,Low,Improve consistency
+STU2604,EEE,151,167,15,Low,Low,Improve consistency
+STU2605,EEE,165,558,148,Low,Low,Improve consistency
+STU2606,IT,145,640,104,Low,Low,Improve consistency
+STU2607,IT,101,76,128,Low,Low,Maintain performance
+STU2608,ECE,225,763,129,High,High,Improve consistency
+STU2609,IT,47,308,132,Low,Low,"Attend mentoring, increase activity"
+STU2610,ECE,296,472,294,High,High,Maintain performance
+STU2611,ECE,112,734,188,High,High,Improve consistency
+STU2612,EEE,270,110,16,Low,Low,Improve consistency
+STU2613,IT,99,65,136,Low,Low,"Attend mentoring, increase activity"
+STU2614,IT,266,341,86,High,High,Improve consistency
+STU2615,ECE,75,760,243,Low,Low,Improve consistency
+STU2616,ECE,223,402,83,Low,Low,Maintain performance
+STU2617,CSE,25,752,280,Low,Low,Improve consistency
+STU2618,CSE,96,390,129,Low,Low,Improve consistency
+STU2619,ECE,131,101,44,Low,Low,Improve consistency
+STU2620,CSE,84,456,216,Low,Low,Improve consistency
+STU2621,CSE,242,118,279,Low,Low,Improve consistency
+STU2622,ECE,186,326,102,Low,Low,Maintain performance
+STU2623,ECE,29,177,186,Low,Low,Improve consistency
+STU2624,IT,160,444,283,High,High,Improve consistency
+STU2625,ECE,9,451,188,Low,Low,Improve consistency
+STU2626,ECE,124,227,138,Low,Low,Improve consistency
+STU2627,EEE,281,231,134,High,Low,Maintain performance
+STU2628,IT,22,682,36,Low,Low,Improve consistency
+STU2629,IT,202,537,73,High,High,Improve consistency
+STU2630,IT,61,287,69,Low,Low,"Attend mentoring, increase activity"
+STU2631,EEE,97,578,228,Low,Low,Improve consistency
+STU2632,ECE,23,583,226,Low,Low,"Attend mentoring, increase activity"
+STU2633,IT,197,475,178,Low,Low,Maintain performance
+STU2634,IT,241,763,158,High,High,Improve consistency
+STU2635,CSE,281,611,279,High,High,Maintain performance
+STU2636,IT,231,593,125,High,High,Improve consistency
+STU2637,ECE,237,39,254,Low,Low,Improve consistency
+STU2638,ECE,44,368,157,Low,Low,"Attend mentoring, increase activity"
+STU2639,CSE,157,297,101,Low,Low,Improve consistency
+STU2640,IT,131,95,94,Low,Low,Improve consistency
+STU2641,IT,241,243,96,High,High,Maintain performance
+STU2642,IT,59,756,129,Low,Low,"Attend mentoring, increase activity"
+STU2643,EEE,176,322,33,Low,Low,Improve consistency
+STU2644,IT,113,374,98,Low,Low,Improve consistency
+STU2645,ECE,188,786,46,High,High,Improve consistency
+STU2646,ECE,202,278,280,Low,Low,Improve consistency
+STU2647,EEE,91,707,21,Low,Low,"Attend mentoring, increase activity"
+STU2648,EEE,205,140,104,Low,Low,Maintain performance
+STU2649,IT,279,798,40,High,High,Maintain performance
+STU2650,CSE,215,360,242,Low,Low,Improve consistency
+STU2651,EEE,122,189,295,Low,Low,"Attend mentoring, increase activity"
+STU2652,EEE,195,489,44,High,High,Maintain performance
+STU2653,IT,46,172,30,Low,Low,Improve consistency
+STU2654,IT,46,792,120,Low,Low,"Attend mentoring, increase activity"
+STU2655,EEE,280,105,154,Low,Low,Maintain performance
+STU2656,CSE,21,783,21,Low,Low,Improve consistency
+STU2657,EEE,287,519,253,High,High,Maintain performance
+STU2658,IT,262,374,155,High,High,Improve consistency
+STU2659,IT,67,362,248,Low,Low,Improve consistency
+STU2660,EEE,66,445,101,Low,Low,"Attend mentoring, increase activity"
+STU2661,CSE,104,92,124,Low,Low,"Attend mentoring, increase activity"
+STU2662,EEE,23,234,24,Low,Low,"Attend mentoring, increase activity"
+STU2663,EEE,21,421,281,Low,Low,"Attend mentoring, increase activity"
+STU2664,IT,250,744,31,High,High,Maintain performance
+STU2665,CSE,255,127,127,Low,Low,Maintain performance
+STU2666,ECE,85,491,104,Low,Low,Improve consistency
+STU2667,CSE,43,201,266,Low,Low,Improve consistency
+STU2668,EEE,40,600,271,Low,Low,Improve consistency
+STU2669,EEE,201,599,96,High,High,Improve consistency
+STU2670,EEE,162,668,67,Low,Low,"Attend mentoring, increase activity"
+STU2671,CSE,208,116,239,Low,Low,Improve consistency
+STU2672,IT,200,391,117,Low,Low,Improve consistency
+STU2673,EEE,220,792,28,High,High,Maintain performance
+STU2674,EEE,289,399,150,High,High,Maintain performance
+STU2675,CSE,200,253,169,Low,Low,Maintain performance
+STU2676,ECE,156,594,109,Low,Low,Improve consistency
+STU2677,ECE,18,477,274,Low,Low,Improve consistency
+STU2678,IT,150,547,247,Low,Low,Improve consistency
+STU2679,IT,61,219,247,Low,Low,"Attend mentoring, increase activity"
+STU2680,EEE,215,613,58,High,High,Maintain performance
+STU2681,CSE,272,646,174,High,High,Improve consistency
+STU2682,EEE,214,82,296,Low,Low,Improve consistency
+STU2683,IT,21,644,68,Low,Low,Improve consistency
+STU2684,CSE,290,318,192,High,High,Maintain performance
+STU2685,CSE,207,705,156,High,High,Improve consistency
+STU2686,IT,103,708,105,High,High,Improve consistency
+STU2687,ECE,283,719,52,High,High,Maintain performance
+STU2688,ECE,213,599,266,High,High,Improve consistency
+STU2689,CSE,133,195,222,Low,Low,Improve consistency
+STU2690,EEE,292,262,198,High,Low,Maintain performance
+STU2691,ECE,256,22,140,Low,Low,Maintain performance
+STU2692,EEE,269,308,298,High,High,Maintain performance
+STU2693,ECE,275,85,146,Low,Low,Maintain performance
+STU2694,ECE,192,60,39,Low,Low,Maintain performance
+STU2695,EEE,218,796,155,High,High,Improve consistency
+STU2696,IT,287,158,114,Low,Low,Improve consistency
+STU2697,ECE,215,740,296,High,High,Improve consistency
+STU2698,ECE,80,131,200,Low,Low,"Attend mentoring, increase activity"
+STU2699,EEE,152,220,187,Low,Low,Improve consistency
+STU2700,IT,217,289,248,Low,Low,Maintain performance
+STU2701,ECE,113,547,10,Low,Low,Improve consistency
+STU2702,ECE,133,694,119,High,High,Improve consistency
+STU2703,IT,14,165,284,Low,Low,Improve consistency
+STU2704,ECE,51,247,243,Low,Low,"Attend mentoring, increase activity"
+STU2705,IT,100,385,73,Low,Low,Improve consistency
+STU2706,IT,107,91,253,Low,Low,Improve consistency
+STU2707,EEE,150,501,62,Low,Low,Improve consistency
+STU2708,CSE,31,365,271,Low,Low,Improve consistency
+STU2709,IT,224,282,26,High,High,Improve consistency
+STU2710,EEE,22,589,243,Low,Low,Improve consistency
+STU2711,CSE,171,53,82,Low,Low,Improve consistency
+STU2712,ECE,86,582,100,Low,Low,Improve consistency
+STU2713,CSE,76,132,15,Low,Low,"Attend mentoring, increase activity"
+STU2714,IT,258,358,207,High,High,Maintain performance
+STU2715,IT,166,717,205,High,High,Maintain performance
+STU2716,IT,42,339,146,Low,Low,"Attend mentoring, increase activity"
+STU2717,IT,205,418,276,High,High,Improve consistency
+STU2718,IT,204,332,125,High,High,Maintain performance
+STU2719,EEE,259,120,52,Low,Low,Improve consistency
+STU2720,IT,183,779,240,High,High,Maintain performance
+STU2721,EEE,39,98,67,Low,Low,Improve consistency
+STU2722,ECE,86,442,215,Low,Low,Improve consistency
+STU2723,IT,224,719,103,High,High,Improve consistency
+STU2724,IT,162,721,45,Low,Low,Improve consistency
+STU2725,CSE,8,108,239,Low,Low,Improve consistency
+STU2726,ECE,171,548,236,Low,Low,Maintain performance
+STU2727,IT,208,610,192,High,High,Maintain performance
+STU2728,IT,198,155,271,Low,Low,Improve consistency
+STU2729,ECE,239,703,140,High,High,Improve consistency
+STU2730,EEE,210,266,74,Low,Low,Improve consistency
+STU2731,IT,154,198,195,Low,Low,Improve consistency
+STU2732,CSE,163,249,126,Low,Low,Improve consistency
+STU2733,IT,283,512,195,High,High,Improve consistency
+STU2734,CSE,170,717,283,High,High,Improve consistency
+STU2735,CSE,72,686,160,Low,Low,"Attend mentoring, increase activity"
+STU2736,IT,92,280,160,Low,Low,Improve consistency
+STU2737,IT,221,529,45,High,High,Improve consistency
+STU2738,CSE,5,559,104,Low,Low,"Attend mentoring, increase activity"
+STU2739,ECE,139,123,143,Low,Low,Improve consistency
+STU2740,ECE,189,348,171,Low,Low,Improve consistency
+STU2741,IT,144,577,53,Low,Low,Improve consistency
+STU2742,EEE,110,368,292,Low,Low,Improve consistency
+STU2743,ECE,137,659,249,High,High,Improve consistency
+STU2744,IT,112,623,61,Low,Low,Improve consistency
+STU2745,ECE,182,343,290,Low,Low,Maintain performance
+STU2746,EEE,150,698,83,High,High,Improve consistency
+STU2747,IT,78,178,247,Low,Low,Improve consistency
+STU2748,EEE,112,348,176,Low,Low,Improve consistency
+STU2749,IT,126,270,149,Low,Low,Improve consistency
+STU2750,EEE,21,744,148,Low,Low,Improve consistency
+STU2751,ECE,200,208,244,Low,Low,Improve consistency
+STU2752,ECE,256,220,12,Low,Low,Maintain performance
+STU2753,EEE,123,296,265,Low,Low,Improve consistency
+STU2754,EEE,166,701,287,Low,Low,Improve consistency
+STU2755,EEE,202,771,13,High,High,Maintain performance
+STU2756,IT,49,752,279,Low,Low,"Attend mentoring, increase activity"
+STU2757,ECE,183,481,221,Low,Low,"Attend mentoring, increase activity"
+STU2758,IT,48,491,225,Low,Low,"Attend mentoring, increase activity"
+STU2759,ECE,275,32,279,Low,Low,Maintain performance
+STU2760,CSE,82,569,25,Low,Low,Improve consistency
+STU2761,IT,182,118,73,Low,Low,Improve consistency
+STU2762,ECE,7,305,248,Low,Low,"Attend mentoring, increase activity"
+STU2763,ECE,218,15,25,Low,Low,Maintain performance
+STU2764,IT,78,559,61,Low,Low,Improve consistency
+STU2765,IT,55,690,28,High,High,"Attend mentoring, increase activity"
+STU2766,ECE,71,212,102,Low,Low,"Attend mentoring, increase activity"
+STU2767,IT,97,334,270,Low,Low,Improve consistency
+STU2768,EEE,180,794,26,High,High,Improve consistency
+STU2769,IT,149,253,120,Low,Low,Improve consistency
+STU2770,IT,11,336,103,Low,Low,Improve consistency
+STU2771,IT,273,56,19,Low,Low,Maintain performance
+STU2772,ECE,8,770,221,Low,Low,"Attend mentoring, increase activity"
+STU2773,EEE,142,600,246,High,High,Improve consistency
+STU2774,CSE,235,631,263,High,High,Improve consistency
+STU2775,CSE,92,22,25,Low,Low,"Attend mentoring, increase activity"
+STU2776,EEE,21,389,153,Low,Low,Improve consistency
+STU2777,EEE,56,374,51,Low,Low,"Attend mentoring, increase activity"
+STU2778,EEE,138,611,12,High,High,Maintain performance
+STU2779,ECE,215,351,165,High,High,Maintain performance
+STU2780,CSE,223,230,182,Low,Low,Maintain performance
+STU2781,EEE,209,82,33,Low,Low,Improve consistency
+STU2782,ECE,215,755,284,High,High,Improve consistency
+STU2783,CSE,281,781,84,High,High,Maintain performance
+STU2784,IT,28,634,49,Low,Low,Improve consistency
+STU2785,ECE,8,55,49,Low,Low,"Attend mentoring, increase activity"
+STU2786,CSE,156,513,71,Low,Low,"Attend mentoring, increase activity"
+STU2787,ECE,263,283,247,Low,Low,Improve consistency
+STU2788,CSE,172,564,254,Low,Low,Improve consistency
+STU2789,CSE,180,217,27,Low,Low,Improve consistency
+STU2790,IT,295,624,149,High,High,Improve consistency
+STU2791,ECE,60,133,91,Low,Low,Improve consistency
+STU2792,EEE,112,19,198,Low,Low,Improve consistency
+STU2793,IT,145,338,117,Low,Low,Improve consistency
+STU2794,IT,159,196,243,Low,Low,"Attend mentoring, increase activity"
+STU2795,CSE,266,552,277,High,High,Maintain performance
+STU2796,EEE,277,677,113,High,High,Improve consistency
+STU2797,ECE,236,69,143,Low,Low,Improve consistency
+STU2798,EEE,245,770,42,High,High,Maintain performance
+STU2799,EEE,262,791,246,High,High,Maintain performance
+STU2800,EEE,253,451,187,Low,Low,Improve consistency
+STU2801,EEE,81,226,21,Low,Low,Improve consistency
+STU2802,EEE,184,11,238,Low,Low,Improve consistency
+STU2803,CSE,70,545,278,Low,Low,"Attend mentoring, increase activity"
+STU2804,CSE,175,727,140,High,High,Maintain performance
+STU2805,IT,26,720,258,Low,Low,Improve consistency
+STU2806,CSE,111,365,67,Low,Low,Improve consistency
+STU2807,IT,231,635,13,High,High,Improve consistency
+STU2808,IT,220,676,245,High,High,Improve consistency
+STU2809,ECE,73,174,182,Low,Low,Improve consistency
+STU2810,EEE,88,743,45,Low,Low,"Attend mentoring, increase activity"
+STU2811,CSE,107,100,288,Low,Low,Improve consistency
+STU2812,ECE,43,176,246,Low,Low,Improve consistency
+STU2813,CSE,17,216,284,Low,Low,Improve consistency
+STU2814,IT,185,291,67,Low,Low,Improve consistency
+STU2815,CSE,272,74,27,Low,Low,Maintain performance
+STU2816,EEE,17,525,45,Low,Low,"Attend mentoring, increase activity"
+STU2817,IT,124,166,138,Low,Low,Improve consistency
+STU2818,IT,61,770,10,Low,Low,"Attend mentoring, increase activity"
+STU2819,ECE,44,778,73,High,High,Improve consistency
+STU2820,EEE,132,756,71,High,High,Improve consistency
+STU2821,IT,177,315,155,Low,Low,"Attend mentoring, increase activity"
+STU2822,EEE,39,404,281,Low,Low,Improve consistency
+STU2823,CSE,263,83,26,Low,Low,Improve consistency
+STU2824,EEE,9,196,289,Low,Low,"Attend mentoring, increase activity"
+STU2825,IT,222,583,107,Low,Low,Improve consistency
+STU2826,ECE,15,346,236,Low,Low,"Attend mentoring, increase activity"
+STU2827,IT,121,685,252,High,High,Improve consistency
+STU2828,EEE,188,577,210,High,High,Maintain performance
+STU2829,EEE,120,632,188,Low,Low,Improve consistency
+STU2830,IT,166,739,279,High,High,Improve consistency
+STU2831,EEE,71,249,243,Low,Low,Improve consistency
+STU2832,CSE,204,542,121,High,High,Maintain performance
+STU2833,IT,35,150,75,Low,Low,Improve consistency
+STU2834,ECE,79,274,254,Low,Low,"Attend mentoring, increase activity"
+STU2835,IT,241,148,254,Low,Low,Improve consistency
+STU2836,CSE,70,468,81,Low,Low,Improve consistency
+STU2837,CSE,74,79,58,Low,Low,Improve consistency
+STU2838,CSE,24,394,199,Low,Low,Improve consistency
+STU2839,CSE,230,639,186,High,High,Improve consistency
+STU2840,CSE,203,207,170,Low,Low,Maintain performance
+STU2841,ECE,43,214,159,Low,Low,Improve consistency
+STU2842,EEE,149,735,79,Low,Low,"Attend mentoring, increase activity"
+STU2843,CSE,49,577,42,Low,Low,"Attend mentoring, increase activity"
+STU2844,CSE,95,696,293,Low,Low,"Attend mentoring, increase activity"
+STU2845,IT,242,649,269,High,High,Improve consistency
+STU2846,ECE,74,440,86,Low,Low,Improve consistency
+STU2847,ECE,170,334,119,Low,Low,Maintain performance
+STU2848,EEE,134,451,148,Low,Low,Improve consistency
+STU2849,ECE,218,297,44,Low,Low,Improve consistency
+STU2850,IT,93,235,244,Low,Low,Improve consistency
+STU2851,IT,256,73,209,Low,Low,Improve consistency
+STU2852,EEE,76,569,160,Low,Low,Improve consistency
+STU2853,IT,169,723,43,High,High,Maintain performance
+STU2854,CSE,53,507,133,Low,Low,Improve consistency
+STU2855,CSE,56,69,41,Low,Low,Improve consistency
+STU2856,IT,293,406,281,High,High,Maintain performance
+STU2857,EEE,282,266,133,Low,Low,Improve consistency
+STU2858,ECE,118,586,87,High,High,Improve consistency
+STU2859,EEE,243,248,85,Low,Low,Improve consistency
+STU2860,ECE,137,47,69,Low,Low,Improve consistency
+STU2861,IT,278,34,94,Low,Low,Maintain performance
+STU2862,IT,170,419,89,Low,Low,Maintain performance
+STU2863,CSE,297,470,181,High,High,Maintain performance
+STU2864,ECE,247,580,267,High,High,Improve consistency
+STU2865,EEE,142,426,288,Low,Low,Maintain performance
+STU2866,IT,83,366,230,Low,Low,Improve consistency
+STU2867,EEE,174,392,55,Low,Low,Improve consistency
+STU2868,CSE,127,167,82,Low,Low,Improve consistency
+STU2869,ECE,180,578,63,Low,Low,Improve consistency
+STU2870,ECE,86,442,230,Low,Low,Improve consistency
+STU2871,IT,91,57,18,Low,Low,"Attend mentoring, increase activity"
+STU2872,ECE,229,337,181,High,High,Maintain performance
+STU2873,IT,20,442,93,Low,Low,Improve consistency
+STU2874,CSE,167,440,21,Low,Low,Improve consistency
+STU2875,ECE,102,65,41,Low,Low,Improve consistency
+STU2876,IT,160,586,298,High,Low,Improve consistency
+STU2877,EEE,6,277,281,Low,Low,Improve consistency
+STU2878,IT,173,78,187,Low,Low,Maintain performance
+STU2879,ECE,96,737,123,High,Low,Improve consistency
+STU2880,CSE,185,610,35,High,High,Maintain performance
+STU2881,ECE,235,458,246,High,High,Improve consistency
+STU2882,ECE,152,266,181,Low,Low,Improve consistency
+STU2883,IT,284,681,242,High,High,Improve consistency
+STU2884,EEE,193,499,46,High,High,Improve consistency
+STU2885,ECE,132,755,274,High,High,Improve consistency
+STU2886,EEE,11,652,22,Low,Low,Improve consistency
+STU2887,IT,51,58,115,Low,Low,Improve consistency
+STU2888,EEE,57,668,135,Low,Low,"Attend mentoring, increase activity"
+STU2889,IT,191,325,139,Low,Low,Improve consistency
+STU2890,CSE,42,422,265,Low,Low,Improve consistency
+STU2891,EEE,230,443,124,High,High,Improve consistency
+STU2892,EEE,57,11,133,Low,Low,Improve consistency
+STU2893,CSE,228,154,265,Low,Low,Maintain performance
+STU2894,EEE,158,375,148,Low,Low,Maintain performance
+STU2895,CSE,52,429,215,Low,Low,Improve consistency
+STU2896,ECE,151,582,56,Low,Low,Improve consistency
+STU2897,IT,68,794,226,Low,Low,"Attend mentoring, increase activity"
+STU2898,CSE,186,570,132,High,High,Maintain performance
+STU2899,EEE,129,453,40,Low,Low,Improve consistency
+STU2900,CSE,183,443,64,Low,Low,Maintain performance
+STU2901,EEE,43,652,162,Low,Low,Improve consistency
+STU2902,ECE,264,564,295,High,High,Improve consistency
+STU2903,CSE,7,66,45,Low,Low,Improve consistency
+STU2904,ECE,68,571,294,Low,Low,Improve consistency
+STU2905,IT,33,187,265,Low,Low,Improve consistency
+STU2906,EEE,15,302,187,Low,Low,Improve consistency
+STU2907,EEE,101,55,45,Low,Low,Improve consistency
+STU2908,ECE,207,179,263,Low,Low,Maintain performance
+STU2909,IT,25,280,171,Low,Low,Improve consistency
+STU2910,CSE,43,426,30,Low,Low,"Attend mentoring, increase activity"
+STU2911,CSE,227,148,84,Low,Low,Improve consistency
+STU2912,EEE,106,256,216,Low,Low,Improve consistency
+STU2913,ECE,50,157,187,Low,Low,Improve consistency
+STU2914,ECE,70,239,46,Low,Low,Improve consistency
+STU2915,CSE,95,646,129,Low,High,"Attend mentoring, increase activity"
+STU2916,IT,168,713,127,High,High,Improve consistency
+STU2917,IT,115,383,10,Low,Low,"Attend mentoring, increase activity"
+STU2918,CSE,127,89,218,Low,Low,Improve consistency
+STU2919,CSE,197,615,217,High,High,Improve consistency
+STU2920,ECE,103,747,163,High,High,Improve consistency
+STU2921,IT,295,74,259,Low,Low,Maintain performance
+STU2922,CSE,163,97,180,Low,Low,Improve consistency
+STU2923,CSE,107,97,116,Low,Low,Improve consistency
+STU2924,EEE,285,722,152,High,High,Maintain performance
+STU2925,CSE,47,735,17,Low,Low,"Attend mentoring, increase activity"
+STU2926,CSE,88,213,103,Low,Low,Improve consistency
+STU2927,IT,195,391,106,High,High,Maintain performance
+STU2928,ECE,55,610,16,Low,Low,Improve consistency
+STU2929,IT,214,485,283,Low,High,Improve consistency
+STU2930,ECE,130,582,21,High,High,Improve consistency
+STU2931,EEE,73,792,11,High,High,Improve consistency
+STU2932,CSE,269,615,16,High,High,Improve consistency
+STU2933,EEE,262,548,21,High,High,Maintain performance
+STU2934,ECE,192,223,66,Low,Low,Maintain performance
+STU2935,IT,234,83,87,Low,Low,Improve consistency
+STU2936,IT,193,70,83,Low,Low,Maintain performance
+STU2937,EEE,14,707,242,Low,Low,"Attend mentoring, increase activity"
+STU2938,ECE,118,552,288,Low,High,Improve consistency
+STU2939,EEE,80,228,39,Low,Low,Improve consistency
+STU2940,EEE,168,21,104,Low,Low,Improve consistency
+STU2941,CSE,89,424,65,Low,Low,"Attend mentoring, increase activity"
+STU2942,EEE,53,41,19,Low,Low,Maintain performance
+STU2943,CSE,181,169,156,Low,Low,Improve consistency
+STU2944,CSE,222,246,96,Low,Low,Improve consistency
+STU2945,IT,193,748,262,High,High,Improve consistency
+STU2946,CSE,234,190,196,Low,Low,Improve consistency
+STU2947,CSE,259,567,242,High,High,Maintain performance
+STU2948,IT,240,350,262,Low,Low,"Attend mentoring, increase activity"
+STU2949,EEE,30,467,233,Low,Low,Improve consistency
+STU2950,ECE,76,89,13,Low,Low,"Attend mentoring, increase activity"
+STU2951,ECE,265,656,121,High,High,Improve consistency
+STU2952,ECE,258,781,202,High,High,Maintain performance
+STU2953,EEE,275,768,150,High,High,Maintain performance
+STU2954,CSE,127,482,149,Low,Low,"Attend mentoring, increase activity"
+STU2955,ECE,148,680,104,High,High,Maintain performance
+STU2956,EEE,261,724,50,High,High,Maintain performance
+STU2957,CSE,148,121,11,Low,Low,Improve consistency
+STU2958,IT,263,301,287,High,High,Maintain performance
+STU2959,ECE,51,640,159,Low,Low,Improve consistency
+STU2960,CSE,17,392,50,Low,Low,"Attend mentoring, increase activity"
+STU2961,ECE,212,26,125,Low,Low,"Attend mentoring, increase activity"
+STU2962,ECE,239,502,129,Low,Low,Improve consistency
+STU2963,ECE,153,340,246,Low,Low,Improve consistency
+STU2964,CSE,159,748,279,High,High,Improve consistency
+STU2965,EEE,170,495,18,High,High,Maintain performance
+STU2966,CSE,94,415,248,Low,Low,"Attend mentoring, increase activity"
+STU2967,ECE,190,126,127,Low,Low,Improve consistency
+STU2968,CSE,178,564,19,Low,Low,Improve consistency
+STU2969,IT,221,124,34,Low,Low,Improve consistency
+STU2970,EEE,268,558,182,High,High,Maintain performance
+STU2971,CSE,101,634,234,Low,Low,"Attend mentoring, increase activity"
+STU2972,IT,121,556,20,Low,Low,Improve consistency
+STU2973,EEE,203,653,110,High,High,Improve consistency
+STU2974,IT,25,345,274,Low,Low,"Attend mentoring, increase activity"
+STU2975,EEE,204,345,92,High,High,Maintain performance
+STU2976,CSE,252,749,285,High,High,Maintain performance
+STU2977,IT,280,156,270,High,Low,Maintain performance
+STU2978,ECE,268,131,230,Low,Low,Improve consistency
+STU2979,IT,62,90,228,Low,Low,"Attend mentoring, increase activity"
+STU2980,EEE,35,694,98,Low,Low,"Attend mentoring, increase activity"
+STU2981,CSE,253,675,24,High,High,Maintain performance
+STU2982,EEE,97,671,255,Low,Low,"Attend mentoring, increase activity"
+STU2983,IT,269,384,185,High,High,Improve consistency
+STU2984,IT,275,579,13,High,High,Maintain performance
+STU2985,ECE,98,72,30,Low,Low,"Attend mentoring, increase activity"
+STU2986,CSE,158,513,217,Low,Low,Improve consistency
+STU2987,CSE,289,677,146,High,High,Improve consistency
+STU2988,IT,84,458,225,Low,Low,Improve consistency
+STU2989,CSE,296,437,126,High,High,Improve consistency
+STU2990,ECE,88,436,188,Low,Low,Improve consistency
+STU2991,EEE,41,430,255,Low,Low,"Attend mentoring, increase activity"
+STU2992,CSE,236,331,137,High,Low,Maintain performance
+STU2993,IT,97,689,87,High,Low,Improve consistency
+STU2994,EEE,106,175,238,Low,Low,Improve consistency
+STU2995,EEE,170,606,271,Low,Low,Improve consistency
+STU2996,ECE,163,658,91,Low,Low,Improve consistency
+STU2997,IT,18,470,75,Low,Low,Improve consistency
+STU2998,CSE,229,468,105,Low,Low,Maintain performance
+STU2999,IT,77,198,154,Low,Low,"Attend mentoring, increase activity"
+STU3000,EEE,253,473,74,Low,Low,Maintain performance
+STU3001,IT,95,388,18,Low,Low,"Attend mentoring, increase activity"
+STU3002,CSE,220,11,195,Low,Low,Maintain performance
+STU3003,CSE,94,627,167,High,High,Maintain performance
+STU3004,ECE,33,373,40,Low,Low,Improve consistency
+STU3005,CSE,224,81,160,Low,Low,Improve consistency
+STU3006,CSE,219,436,251,Low,Low,Improve consistency
+STU3007,IT,225,647,165,High,High,Improve consistency
+STU3008,IT,46,179,68,Low,Low,Improve consistency
+STU3009,EEE,139,214,19,Low,Low,Maintain performance
+STU3010,ECE,46,346,133,Low,Low,"Attend mentoring, increase activity"
+STU3011,IT,168,481,291,Low,Low,Improve consistency
+STU3012,CSE,287,204,246,Low,Low,Improve consistency
+STU3013,EEE,62,679,26,Low,Low,Improve consistency
+STU3014,IT,29,662,32,Low,Low,"Attend mentoring, increase activity"
+STU3015,ECE,77,284,18,Low,Low,"Attend mentoring, increase activity"
+STU3016,ECE,133,16,216,Low,Low,Maintain performance
+STU3017,EEE,91,575,54,Low,Low,"Attend mentoring, increase activity"
+STU3018,EEE,157,625,36,Low,High,"Attend mentoring, increase activity"
+STU3019,EEE,186,582,197,Low,Low,Improve consistency
+STU3020,EEE,129,608,149,High,High,Improve consistency
+STU3021,EEE,71,779,18,High,High,Improve consistency
+STU3022,CSE,10,187,243,Low,Low,Improve consistency
+STU3023,CSE,129,251,101,Low,Low,Improve consistency
+STU3024,IT,57,212,86,Low,Low,Improve consistency
+STU3025,ECE,70,552,253,Low,Low,"Attend mentoring, increase activity"
+STU3026,CSE,86,471,164,Low,Low,Improve consistency
+STU3027,CSE,91,89,227,Low,Low,"Attend mentoring, increase activity"
+STU3028,CSE,6,532,294,Low,Low,"Attend mentoring, increase activity"
+STU3029,IT,208,426,159,Low,Low,Improve consistency
+STU3030,EEE,154,775,97,High,High,Improve consistency
+STU3031,IT,297,393,115,High,High,Improve consistency
+STU3032,ECE,107,400,104,Low,Low,Improve consistency
+STU3033,ECE,28,697,262,Low,Low,"Attend mentoring, increase activity"
+STU3034,ECE,216,135,48,Low,Low,Improve consistency
+STU3035,ECE,69,503,264,Low,Low,"Attend mentoring, increase activity"
+STU3036,CSE,213,56,63,Low,Low,Improve consistency
+STU3037,CSE,255,727,252,High,High,Improve consistency
+STU3038,IT,121,485,119,Low,Low,Improve consistency
+STU3039,EEE,120,628,263,Low,Low,Improve consistency
+STU3040,ECE,241,473,121,High,High,Maintain performance
+STU3041,IT,109,796,183,High,High,Improve consistency
+STU3042,CSE,263,132,198,Low,Low,Maintain performance
+STU3043,CSE,50,483,230,Low,Low,Improve consistency
+STU3044,EEE,220,143,258,Low,Low,Improve consistency
+STU3045,EEE,28,628,61,Low,Low,"Attend mentoring, increase activity"
+STU3046,EEE,39,571,171,Low,Low,Improve consistency
+STU3047,IT,28,616,44,Low,Low,Improve consistency
+STU3048,CSE,32,789,46,High,High,Improve consistency
+STU3049,CSE,20,32,120,Low,Low,"Attend mentoring, increase activity"
+STU3050,EEE,63,575,186,Low,Low,"Attend mentoring, increase activity"
+STU3051,ECE,247,775,18,High,High,Maintain performance
+STU3052,EEE,211,244,284,Low,Low,Improve consistency
+STU3053,IT,275,68,130,Low,Low,Improve consistency
+STU3054,EEE,253,173,114,Low,Low,Maintain performance
+STU3055,EEE,271,780,165,High,High,"Attend mentoring, increase activity"
+STU3056,IT,197,225,35,Low,Low,Maintain performance
+STU3057,EEE,222,192,34,Low,Low,Improve consistency
+STU3058,CSE,119,578,78,Low,Low,"Attend mentoring, increase activity"
+STU3059,ECE,72,666,160,Low,Low,"Attend mentoring, increase activity"
+STU3060,EEE,79,99,74,Low,Low,"Attend mentoring, increase activity"
+STU3061,IT,107,320,159,Low,Low,Improve consistency
+STU3062,ECE,182,566,254,Low,Low,"Attend mentoring, increase activity"
+STU3063,IT,219,266,67,High,High,Maintain performance
+STU3064,ECE,43,542,165,Low,Low,Improve consistency
+STU3065,ECE,263,542,121,High,High,Maintain performance
+STU3066,EEE,208,61,132,Low,Low,"Attend mentoring, increase activity"
+STU3067,CSE,11,347,212,Low,Low,Improve consistency
+STU3068,EEE,53,180,13,Low,Low,"Attend mentoring, increase activity"
+STU3069,IT,30,76,138,Low,Low,Improve consistency
+STU3070,IT,165,634,35,High,High,Improve consistency
+STU3071,ECE,180,309,298,Low,Low,Maintain performance
+STU3072,ECE,83,681,36,Low,Low,Improve consistency
+STU3073,CSE,6,787,51,Low,Low,"Attend mentoring, increase activity"
+STU3074,EEE,136,241,80,Low,Low,Improve consistency
+STU3075,IT,280,77,73,Low,Low,Improve consistency
+STU3076,ECE,121,515,34,High,High,Improve consistency
+STU3077,CSE,168,37,81,Low,Low,Maintain performance
+STU3078,IT,292,637,277,High,High,Maintain performance
+STU3079,ECE,32,60,104,Low,Low,"Attend mentoring, increase activity"
+STU3080,IT,5,702,126,Low,Low,Improve consistency
+STU3081,CSE,192,269,173,Low,Low,Maintain performance
+STU3082,CSE,60,600,287,Low,Low,"Attend mentoring, increase activity"
+STU3083,IT,39,794,74,Low,Low,"Attend mentoring, increase activity"
+STU3084,EEE,116,629,269,Low,Low,Improve consistency
+STU3085,IT,290,595,237,High,High,Maintain performance
+STU3086,ECE,40,696,209,Low,Low,"Attend mentoring, increase activity"
+STU3087,EEE,221,193,229,Low,Low,Maintain performance
+STU3088,ECE,84,32,189,Low,Low,Improve consistency
+STU3089,IT,87,795,237,High,High,Improve consistency
+STU3090,EEE,69,138,261,Low,Low,Improve consistency
+STU3091,ECE,132,300,13,Low,Low,Improve consistency
+STU3092,IT,26,510,150,Low,Low,Improve consistency
+STU3093,IT,220,195,175,Low,Low,Improve consistency
+STU3094,EEE,111,488,263,Low,Low,Improve consistency
+STU3095,IT,113,580,162,Low,Low,Improve consistency
+STU3096,CSE,185,501,76,High,Low,Maintain performance
+STU3097,ECE,168,522,64,High,High,Maintain performance
+STU3098,ECE,72,652,105,Low,Low,"Attend mentoring, increase activity"
+STU3099,IT,296,76,176,Low,Low,Maintain performance
+STU3100,IT,184,476,71,Low,Low,Improve consistency
+STU3101,CSE,185,294,183,Low,Low,Maintain performance
+STU3102,EEE,173,610,262,High,High,Improve consistency
+STU3103,IT,26,426,121,Low,Low,"Attend mentoring, increase activity"
+STU3104,IT,70,109,224,Low,Low,Improve consistency
+STU3105,IT,25,198,248,Low,Low,"Attend mentoring, increase activity"
+STU3106,IT,104,397,236,Low,Low,Improve consistency
+STU3107,ECE,107,250,239,Low,Low,Improve consistency
+STU3108,IT,51,791,242,High,High,Improve consistency
+STU3109,ECE,43,740,172,Low,Low,Improve consistency
+STU3110,IT,289,426,135,High,High,Maintain performance
+STU3111,EEE,94,185,262,Low,Low,Improve consistency
+STU3112,CSE,89,396,208,Low,Low,"Attend mentoring, increase activity"
+STU3113,EEE,277,480,206,High,High,Maintain performance
+STU3114,IT,192,242,131,Low,Low,Maintain performance
+STU3115,IT,163,672,273,Low,Low,Improve consistency
+STU3116,IT,247,461,63,High,High,Maintain performance
+STU3117,EEE,77,286,144,Low,Low,"Attend mentoring, increase activity"
+STU3118,IT,53,238,160,Low,Low,Improve consistency
+STU3119,EEE,105,180,109,Low,Low,Improve consistency
+STU3120,ECE,6,744,243,Low,Low,Improve consistency
+STU3121,CSE,248,222,41,Low,Low,Improve consistency
+STU3122,CSE,180,291,71,Low,Low,Improve consistency
+STU3123,EEE,242,50,205,Low,Low,Maintain performance
+STU3124,ECE,63,131,39,Low,Low,Improve consistency
+STU3125,EEE,103,236,252,Low,Low,Improve consistency
+STU3126,ECE,6,303,115,Low,Low,"Attend mentoring, increase activity"
+STU3127,IT,247,609,142,High,High,Maintain performance
+STU3128,ECE,215,276,31,High,High,Maintain performance
+STU3129,ECE,127,550,165,Low,Low,"Attend mentoring, increase activity"
+STU3130,ECE,233,768,223,High,High,Maintain performance
+STU3131,CSE,86,460,235,Low,Low,"Attend mentoring, increase activity"
+STU3132,ECE,148,458,294,Low,Low,Maintain performance
+STU3133,IT,144,765,180,High,High,Improve consistency
+STU3134,IT,33,70,51,Low,Low,Improve consistency
+STU3135,IT,274,511,69,High,High,Maintain performance
+STU3136,ECE,251,156,86,Low,Low,Improve consistency
+STU3137,EEE,16,695,211,Low,Low,Improve consistency
+STU3138,EEE,110,799,229,High,High,Improve consistency
+STU3139,IT,36,343,196,Low,Low,Improve consistency
+STU3140,CSE,78,151,105,Low,Low,Improve consistency
+STU3141,EEE,175,53,221,Low,Low,"Attend mentoring, increase activity"
+STU3142,ECE,73,153,271,Low,Low,Improve consistency
+STU3143,EEE,141,342,86,Low,Low,Improve consistency
+STU3144,IT,104,506,40,Low,Low,Improve consistency
+STU3145,CSE,150,405,48,Low,Low,"Attend mentoring, increase activity"
+STU3146,EEE,13,64,223,Low,Low,Improve consistency
+STU3147,EEE,66,316,135,Low,Low,"Attend mentoring, increase activity"
+STU3148,IT,189,432,174,Low,Low,Improve consistency
+STU3149,CSE,33,426,255,Low,Low,Improve consistency
+STU3150,CSE,118,682,118,High,High,Improve consistency
+STU3151,IT,147,334,97,Low,Low,Improve consistency
+STU3152,ECE,124,719,209,High,High,Improve consistency
+STU3153,EEE,174,680,280,High,High,Improve consistency
+STU3154,ECE,161,89,60,Low,Low,Improve consistency
+STU3155,EEE,264,40,207,Low,Low,Improve consistency
+STU3156,EEE,86,121,32,Low,Low,Improve consistency
+STU3157,ECE,246,567,162,High,High,Maintain performance
+STU3158,IT,176,726,232,High,High,"Attend mentoring, increase activity"
+STU3159,IT,235,573,230,High,High,Maintain performance
+STU3160,EEE,212,659,160,High,High,Improve consistency
+STU3161,IT,79,481,275,Low,Low,Improve consistency
+STU3162,EEE,274,83,82,Low,Low,Improve consistency
+STU3163,IT,118,562,86,High,High,Improve consistency
+STU3164,EEE,66,488,41,Low,Low,Improve consistency
+STU3165,IT,106,598,74,Low,Low,Improve consistency
+STU3166,CSE,214,396,27,Low,Low,Improve consistency
+STU3167,ECE,259,708,173,High,High,Maintain performance
+STU3168,CSE,24,573,296,Low,Low,Improve consistency
+STU3169,ECE,62,442,63,Low,Low,"Attend mentoring, increase activity"
+STU3170,ECE,116,421,72,Low,Low,Maintain performance
+STU3171,EEE,200,476,266,Low,Low,Improve consistency
+STU3172,ECE,96,608,248,Low,Low,Improve consistency
+STU3173,CSE,56,630,18,Low,Low,Improve consistency
+STU3174,CSE,297,746,129,High,High,Maintain performance
+STU3175,IT,12,257,99,Low,Low,"Attend mentoring, increase activity"
+STU3176,CSE,102,590,184,Low,Low,Improve consistency
+STU3177,IT,240,129,12,Low,Low,Maintain performance
+STU3178,ECE,73,76,139,Low,Low,Improve consistency
+STU3179,CSE,49,582,63,Low,Low,Improve consistency
+STU3180,ECE,141,336,193,Low,Low,Improve consistency
+STU3181,CSE,238,712,233,High,High,Maintain performance
+STU3182,CSE,36,479,21,Low,Low,Improve consistency
+STU3183,IT,293,502,204,High,High,Maintain performance
+STU3184,ECE,130,710,256,High,High,Maintain performance
+STU3185,CSE,71,672,163,High,High,Improve consistency
+STU3186,EEE,34,295,87,Low,Low,"Attend mentoring, increase activity"
+STU3187,ECE,118,617,149,Low,Low,"Attend mentoring, increase activity"
+STU3188,ECE,208,321,99,Low,Low,Improve consistency
+STU3189,ECE,33,318,153,Low,Low,"Attend mentoring, increase activity"
+STU3190,IT,135,784,81,High,High,"Attend mentoring, increase activity"
+STU3191,EEE,189,106,186,Low,Low,"Attend mentoring, increase activity"
+STU3192,ECE,257,122,272,Low,Low,Maintain performance
+STU3193,CSE,290,646,280,High,High,Improve consistency
+STU3194,CSE,66,465,114,Low,Low,"Attend mentoring, increase activity"
+STU3195,IT,7,472,81,Low,Low,"Attend mentoring, increase activity"
+STU3196,CSE,72,141,83,Low,Low,Improve consistency
+STU3197,ECE,29,130,152,Low,Low,"Attend mentoring, increase activity"
+STU3198,CSE,183,206,71,Low,Low,Improve consistency
+STU3199,ECE,145,491,155,Low,Low,Improve consistency
+STU3200,CSE,235,643,55,High,High,Improve consistency
+STU3201,EEE,167,781,238,High,High,Improve consistency
+STU3202,IT,134,48,114,Low,Low,Improve consistency
+STU3203,IT,250,575,118,High,High,Improve consistency
+STU3204,EEE,176,521,130,High,High,Improve consistency
+STU3205,EEE,68,483,52,Low,Low,Improve consistency
+STU3206,IT,35,170,108,Low,Low,"Attend mentoring, increase activity"
+STU3207,EEE,51,298,203,Low,Low,Improve consistency
+STU3208,ECE,134,209,223,Low,Low,Maintain performance
+STU3209,CSE,114,797,238,High,High,Improve consistency
+STU3210,IT,73,537,194,Low,Low,Improve consistency
+STU3211,EEE,62,694,121,Low,Low,Improve consistency
+STU3212,ECE,110,512,281,Low,Low,Improve consistency
+STU3213,IT,260,257,111,Low,Low,Improve consistency
+STU3214,EEE,175,392,219,Low,Low,Improve consistency
+STU3215,IT,166,227,236,Low,Low,Improve consistency
+STU3216,EEE,290,96,290,Low,Low,Improve consistency
+STU3217,IT,75,91,31,Low,Low,Improve consistency
+STU3218,ECE,259,71,257,Low,Low,Improve consistency
+STU3219,ECE,59,509,168,Low,Low,"Attend mentoring, increase activity"
+STU3220,CSE,7,51,238,Low,Low,Improve consistency
+STU3221,IT,30,21,196,Low,Low,"Attend mentoring, increase activity"
+STU3222,CSE,130,755,152,High,High,Improve consistency
+STU3223,IT,57,652,33,Low,Low,"Attend mentoring, increase activity"
+STU3224,EEE,202,124,150,Low,Low,Maintain performance
+STU3225,EEE,192,227,249,Low,Low,Maintain performance
+STU3226,CSE,190,658,91,Low,Low,"Attend mentoring, increase activity"
+STU3227,IT,208,115,57,Low,Low,Improve consistency
+STU3228,CSE,15,700,180,Low,Low,"Attend mentoring, increase activity"
+STU3229,ECE,150,537,271,High,High,Improve consistency
+STU3230,CSE,89,481,77,Low,Low,Improve consistency
+STU3231,CSE,104,763,23,High,High,Improve consistency
+STU3232,EEE,108,396,39,Low,Low,Improve consistency
+STU3233,CSE,50,235,119,Low,Low,Improve consistency
+STU3234,IT,48,490,221,Low,Low,Improve consistency
+STU3235,EEE,282,763,273,High,High,Maintain performance
+STU3236,CSE,185,417,211,Low,Low,"Attend mentoring, increase activity"
+STU3237,ECE,191,466,93,High,High,Improve consistency
+STU3238,CSE,118,662,62,High,High,Improve consistency
+STU3239,CSE,259,720,265,High,High,Maintain performance
+STU3240,CSE,34,633,83,Low,Low,"Attend mentoring, increase activity"
+STU3241,EEE,268,648,229,High,High,Maintain performance
+STU3242,IT,102,30,152,Low,Low,Improve consistency
+STU3243,ECE,119,668,109,Low,Low,Improve consistency
+STU3244,CSE,280,610,138,High,High,Maintain performance
+STU3245,IT,285,212,228,High,High,Maintain performance
+STU3246,IT,279,426,280,High,High,Maintain performance
+STU3247,EEE,265,425,31,Low,High,Improve consistency
+STU3248,ECE,211,457,187,Low,Low,Improve consistency
+STU3249,EEE,215,521,57,High,High,Improve consistency
+STU3250,IT,219,94,126,Low,Low,Improve consistency
+STU3251,IT,44,176,188,Low,Low,Improve consistency
+STU3252,IT,30,393,282,Low,Low,"Attend mentoring, increase activity"
+STU3253,EEE,31,477,188,Low,Low,Improve consistency
+STU3254,ECE,194,81,58,Low,Low,Improve consistency
+STU3255,CSE,87,530,264,Low,Low,Improve consistency
+STU3256,EEE,174,482,39,Low,Low,Maintain performance
+STU3257,IT,171,267,94,Low,Low,Improve consistency
+STU3258,EEE,192,284,286,Low,Low,"Attend mentoring, increase activity"
+STU3259,IT,173,759,43,High,High,Improve consistency
+STU3260,CSE,293,29,107,Low,Low,Maintain performance
+STU3261,CSE,233,499,85,Low,Low,"Attend mentoring, increase activity"
+STU3262,ECE,101,754,184,High,High,Improve consistency
+STU3263,IT,20,499,258,Low,Low,Improve consistency
+STU3264,ECE,283,742,143,High,High,Improve consistency
+STU3265,ECE,139,335,187,Low,Low,Maintain performance
+STU3266,CSE,30,538,237,Low,Low,"Attend mentoring, increase activity"
+STU3267,EEE,16,98,72,Low,Low,Improve consistency
+STU3268,EEE,76,495,277,Low,Low,Improve consistency
+STU3269,ECE,137,717,267,High,High,Maintain performance
+STU3270,CSE,110,359,153,Low,Low,Improve consistency
+STU3271,IT,224,93,61,Low,Low,Improve consistency
+STU3272,EEE,181,396,108,Low,Low,Improve consistency
+STU3273,ECE,286,96,54,Low,Low,Improve consistency
+STU3274,EEE,137,316,51,Low,Low,Improve consistency
+STU3275,EEE,26,163,66,Low,Low,"Attend mentoring, increase activity"
+STU3276,IT,273,449,42,High,High,Improve consistency
+STU3277,CSE,165,749,123,High,High,Maintain performance
+STU3278,IT,111,273,123,Low,Low,Improve consistency
+STU3279,CSE,283,744,65,High,High,Improve consistency
+STU3280,EEE,239,430,53,High,High,Maintain performance
+STU3281,ECE,22,502,221,Low,Low,Improve consistency
+STU3282,IT,246,642,43,High,High,"Attend mentoring, increase activity"
+STU3283,CSE,121,420,279,Low,Low,"Attend mentoring, increase activity"
+STU3284,EEE,290,182,205,Low,Low,Improve consistency
+STU3285,CSE,286,13,134,Low,Low,Maintain performance
+STU3286,CSE,148,649,88,High,High,Improve consistency
+STU3287,CSE,209,481,264,Low,High,Improve consistency
+STU3288,EEE,43,119,154,Low,Low,Improve consistency
+STU3289,ECE,158,46,92,Low,Low,Improve consistency
+STU3290,ECE,180,592,239,Low,Low,Improve consistency
+STU3291,ECE,245,40,146,Low,Low,Improve consistency
+STU3292,CSE,138,390,36,Low,Low,Maintain performance
+STU3293,EEE,50,277,186,Low,Low,"Attend mentoring, increase activity"
+STU3294,CSE,54,20,216,Low,Low,"Attend mentoring, increase activity"
+STU3295,ECE,170,353,222,Low,Low,"Attend mentoring, increase activity"
+STU3296,ECE,110,553,46,High,High,Maintain performance
+STU3297,EEE,220,578,188,Low,Low,Improve consistency
+STU3298,CSE,150,175,169,Low,Low,Improve consistency
+STU3299,IT,76,709,21,Low,Low,Improve consistency
+STU3300,IT,277,351,178,High,High,Maintain performance
+STU3301,ECE,251,491,89,High,High,Maintain performance
+STU3302,EEE,190,28,23,Low,Low,Improve consistency
+STU3303,CSE,74,637,63,Low,Low,"Attend mentoring, increase activity"
+STU3304,CSE,154,193,263,Low,Low,Improve consistency
+STU3305,ECE,250,791,74,High,High,Improve consistency
+STU3306,ECE,266,554,67,High,High,Maintain performance
+STU3307,CSE,30,19,105,Low,Low,Improve consistency
+STU3308,CSE,144,601,30,Low,Low,"Attend mentoring, increase activity"
+STU3309,ECE,103,201,269,Low,Low,Improve consistency
+STU3310,CSE,282,329,82,Low,Low,Improve consistency
+STU3311,IT,55,711,257,Low,Low,Improve consistency
+STU3312,ECE,155,589,136,High,High,Improve consistency
+STU3313,CSE,108,484,55,Low,Low,Improve consistency
+STU3314,ECE,93,646,277,High,High,Improve consistency
+STU3315,EEE,145,436,137,Low,Low,Improve consistency
+STU3316,ECE,217,68,39,Low,Low,Improve consistency
+STU3317,ECE,237,445,103,High,High,Maintain performance
+STU3318,EEE,187,106,233,Low,Low,Improve consistency
+STU3319,IT,255,505,109,High,High,Maintain performance
+STU3320,CSE,13,796,80,Low,Low,"Attend mentoring, increase activity"
+STU3321,EEE,83,670,90,Low,Low,"Attend mentoring, increase activity"
+STU3322,ECE,56,287,117,Low,Low,Improve consistency
+STU3323,CSE,273,274,111,High,High,Maintain performance
+STU3324,EEE,230,18,100,Low,Low,Improve consistency
+STU3325,CSE,55,466,25,Low,Low,"Attend mentoring, increase activity"
+STU3326,CSE,190,282,119,Low,Low,Improve consistency
+STU3327,EEE,38,17,272,Low,Low,Improve consistency
+STU3328,CSE,295,217,169,High,Low,Maintain performance
+STU3329,IT,234,646,262,High,High,Improve consistency
+STU3330,EEE,135,132,98,Low,Low,Improve consistency
+STU3331,IT,124,42,104,Low,Low,Improve consistency
+STU3332,ECE,251,522,281,High,High,Improve consistency
+STU3333,CSE,196,213,256,Low,Low,Maintain performance
+STU3334,ECE,214,527,215,High,High,Maintain performance
+STU3335,ECE,107,526,295,Low,Low,Improve consistency
+STU3336,CSE,137,452,257,Low,Low,Improve consistency
+STU3337,EEE,143,601,76,Low,Low,Improve consistency
+STU3338,CSE,125,795,55,Low,Low,Improve consistency
+STU3339,ECE,98,698,52,High,Low,Improve consistency
+STU3340,ECE,133,348,238,Low,Low,Maintain performance
+STU3341,EEE,95,447,243,Low,Low,Improve consistency
+STU3342,CSE,96,454,208,Low,Low,Improve consistency
+STU3343,ECE,67,145,41,Low,Low,Improve consistency
+STU3344,IT,33,396,273,Low,Low,"Attend mentoring, increase activity"
+STU3345,ECE,214,34,122,Low,Low,Improve consistency
+STU3346,ECE,16,515,285,Low,Low,"Attend mentoring, increase activity"
+STU3347,EEE,134,334,155,Low,Low,Maintain performance
+STU3348,IT,297,704,15,High,High,Maintain performance
+STU3349,ECE,177,689,117,High,High,Maintain performance
+STU3350,ECE,212,347,269,High,High,Maintain performance
+STU3351,IT,28,699,80,Low,Low,"Attend mentoring, increase activity"
+STU3352,CSE,103,104,171,Low,Low,Improve consistency
+STU3353,CSE,143,554,109,Low,Low,"Attend mentoring, increase activity"
+STU3354,ECE,178,632,42,Low,Low,Improve consistency
+STU3355,ECE,33,155,152,Low,Low,Improve consistency
+STU3356,CSE,147,240,253,Low,Low,Maintain performance
+STU3357,EEE,46,793,233,Low,Low,Improve consistency
+STU3358,IT,212,504,223,High,High,Maintain performance
+STU3359,IT,196,47,129,Low,Low,Improve consistency
+STU3360,EEE,164,434,177,Low,Low,Improve consistency
+STU3361,EEE,68,656,226,Low,Low,"Attend mentoring, increase activity"
+STU3362,EEE,247,756,226,High,High,Maintain performance
+STU3363,EEE,262,446,63,High,High,Improve consistency
+STU3364,EEE,156,377,217,Low,Low,Improve consistency
+STU3365,EEE,219,354,89,Low,Low,Improve consistency
+STU3366,IT,170,169,160,Low,Low,Improve consistency
+STU3367,EEE,35,559,64,Low,Low,"Attend mentoring, increase activity"
+STU3368,CSE,236,671,14,High,High,Maintain performance
+STU3369,EEE,286,550,44,High,High,Maintain performance
+STU3370,EEE,33,153,128,Low,Low,"Attend mentoring, increase activity"
+STU3371,IT,199,597,206,High,High,Improve consistency
+STU3372,IT,260,666,63,High,High,Improve consistency
+STU3373,EEE,285,750,268,High,High,Maintain performance
+STU3374,IT,298,585,271,High,High,Maintain performance
+STU3375,ECE,91,354,11,Low,Low,"Attend mentoring, increase activity"
+STU3376,IT,153,278,91,Low,Low,Improve consistency
+STU3377,IT,253,705,14,High,High,Maintain performance
+STU3378,IT,287,782,183,High,High,Maintain performance
+STU3379,IT,202,277,148,Low,Low,Maintain performance
+STU3380,CSE,48,178,202,Low,Low,Improve consistency
+STU3381,CSE,32,780,147,Low,Low,"Attend mentoring, increase activity"
+STU3382,CSE,21,748,125,Low,Low,"Attend mentoring, increase activity"
+STU3383,EEE,131,42,53,Low,Low,Improve consistency
+STU3384,EEE,172,386,298,Low,Low,Improve consistency
+STU3385,ECE,248,223,228,Low,Low,Improve consistency
+STU3386,CSE,80,571,65,Low,Low,Improve consistency
+STU3387,EEE,235,449,251,High,High,Improve consistency
+STU3388,IT,208,501,267,High,High,Improve consistency
+STU3389,IT,252,402,10,High,High,Maintain performance
+STU3390,CSE,218,498,298,High,High,Maintain performance
+STU3391,ECE,219,731,112,High,High,Improve consistency
+STU3392,ECE,162,38,158,Low,Low,Improve consistency
+STU3393,IT,73,48,93,Low,Low,"Attend mentoring, increase activity"
+STU3394,ECE,89,621,35,Low,Low,"Attend mentoring, increase activity"
+STU3395,CSE,271,182,184,High,High,Maintain performance
+STU3396,IT,73,26,232,Low,Low,Improve consistency
+STU3397,EEE,103,65,138,Low,Low,Improve consistency
+STU3398,EEE,220,235,151,Low,Low,Maintain performance
+STU3399,ECE,165,567,144,High,Low,Improve consistency
+STU3400,IT,98,76,64,Low,Low,Improve consistency
+STU3401,IT,178,206,65,Low,Low,Maintain performance
+STU3402,EEE,169,663,85,High,High,Improve consistency
+STU3403,IT,119,32,141,Low,Low,Improve consistency
+STU3404,IT,224,615,51,High,High,Improve consistency
+STU3405,IT,35,763,119,Low,Low,"Attend mentoring, increase activity"
+STU3406,ECE,15,246,79,Low,Low,"Attend mentoring, increase activity"
+STU3407,IT,134,575,293,Low,Low,Improve consistency
+STU3408,CSE,109,147,135,Low,Low,Improve consistency
+STU3409,ECE,31,482,188,Low,Low,Improve consistency
+STU3410,IT,231,793,206,High,High,Improve consistency
+STU3411,IT,6,562,270,Low,Low,"Attend mentoring, increase activity"
+STU3412,CSE,105,619,110,Low,Low,"Attend mentoring, increase activity"
+STU3413,ECE,25,704,70,Low,Low,"Attend mentoring, increase activity"
+STU3414,EEE,62,649,192,Low,Low,"Attend mentoring, increase activity"
+STU3415,EEE,184,238,18,Low,Low,Improve consistency
+STU3416,ECE,24,326,215,Low,Low,"Attend mentoring, increase activity"
+STU3417,IT,259,607,63,High,High,Improve consistency
+STU3418,IT,42,777,189,Low,Low,"Attend mentoring, increase activity"
+STU3419,EEE,152,730,113,High,High,Improve consistency
+STU3420,EEE,29,736,135,Low,Low,Improve consistency
+STU3421,EEE,125,621,43,Low,Low,"Attend mentoring, increase activity"
+STU3422,CSE,30,570,174,Low,Low,"Attend mentoring, increase activity"
+STU3423,EEE,173,210,279,Low,Low,"Attend mentoring, increase activity"
+STU3424,CSE,229,267,298,High,High,Maintain performance
+STU3425,ECE,5,489,127,Low,Low,Improve consistency
+STU3426,IT,265,187,101,Low,Low,Improve consistency
+STU3427,EEE,17,766,109,Low,Low,"Attend mentoring, increase activity"
+STU3428,IT,52,132,96,Low,Low,"Attend mentoring, increase activity"
+STU3429,IT,295,351,243,High,High,Maintain performance
+STU3430,EEE,98,180,133,Low,Low,Improve consistency
+STU3431,EEE,265,657,212,High,High,Maintain performance
+STU3432,ECE,282,68,41,Low,Low,Maintain performance
+STU3433,CSE,209,714,48,High,High,Improve consistency
+STU3434,CSE,189,474,103,High,High,Improve consistency
+STU3435,IT,179,789,19,High,High,Improve consistency
+STU3436,EEE,73,269,224,Low,Low,"Attend mentoring, increase activity"
+STU3437,ECE,108,382,109,Low,Low,Improve consistency
+STU3438,ECE,250,104,253,Low,Low,Maintain performance
+STU3439,ECE,165,134,67,Low,Low,Improve consistency
+STU3440,ECE,204,50,28,Low,Low,Improve consistency
+STU3441,ECE,220,263,126,Low,Low,Maintain performance
+STU3442,CSE,216,16,145,Low,Low,Improve consistency
+STU3443,CSE,20,480,22,Low,Low,Improve consistency
+STU3444,CSE,209,737,110,High,High,Maintain performance
+STU3445,EEE,43,520,164,Low,Low,Improve consistency
+STU3446,IT,93,590,91,High,High,Maintain performance
+STU3447,ECE,260,78,97,Low,Low,Improve consistency
+STU3448,EEE,258,90,114,Low,Low,Maintain performance
+STU3449,ECE,220,551,139,High,High,Maintain performance
+STU3450,CSE,176,594,281,High,High,Maintain performance
+STU3451,EEE,141,271,23,Low,Low,Improve consistency
+STU3452,CSE,182,98,137,Low,Low,Improve consistency
+STU3453,ECE,81,217,69,Low,Low,Improve consistency
+STU3454,ECE,192,222,236,Low,Low,Maintain performance
+STU3455,IT,19,275,26,Low,Low,Improve consistency
+STU3456,ECE,296,302,54,High,High,Maintain performance
+STU3457,CSE,218,216,47,Low,Low,Maintain performance
+STU3458,ECE,212,342,133,Low,Low,Improve consistency
+STU3459,IT,173,86,73,Low,Low,Improve consistency
+STU3460,IT,284,297,262,Low,Low,Maintain performance
+STU3461,CSE,150,56,271,Low,Low,Improve consistency
+STU3462,EEE,267,631,121,High,High,Improve consistency
+STU3463,ECE,8,209,111,Low,Low,"Attend mentoring, increase activity"
+STU3464,IT,94,436,58,Low,Low,"Attend mentoring, increase activity"
+STU3465,ECE,64,219,286,Low,Low,"Attend mentoring, increase activity"
+STU3466,ECE,20,429,236,Low,Low,"Attend mentoring, increase activity"
+STU3467,EEE,231,163,32,Low,Low,Maintain performance
+STU3468,IT,33,531,194,Low,Low,"Attend mentoring, increase activity"
+STU3469,ECE,155,424,73,High,High,Maintain performance
+STU3470,IT,249,362,166,Low,High,Improve consistency
+STU3471,CSE,274,166,292,Low,Low,Maintain performance
+STU3472,CSE,83,270,158,Low,Low,"Attend mentoring, increase activity"
+STU3473,ECE,293,86,178,Low,Low,Maintain performance
+STU3474,IT,157,778,142,High,High,Improve consistency
+STU3475,ECE,281,497,141,High,High,Maintain performance
+STU3476,IT,283,140,206,Low,Low,Maintain performance
+STU3477,IT,61,588,144,Low,Low,Improve consistency
+STU3478,EEE,190,464,44,Low,Low,"Attend mentoring, increase activity"
+STU3479,EEE,97,749,229,Low,Low,"Attend mentoring, increase activity"
+STU3480,EEE,280,172,194,High,Low,Maintain performance
+STU3481,ECE,162,24,14,Low,Low,Maintain performance
+STU3482,EEE,279,241,80,Low,Low,Maintain performance
+STU3483,EEE,185,204,250,Low,Low,"Attend mentoring, increase activity"
+STU3484,CSE,81,551,202,Low,Low,"Attend mentoring, increase activity"
+STU3485,IT,155,368,177,Low,Low,Improve consistency
+STU3486,IT,242,340,245,Low,Low,Maintain performance
+STU3487,EEE,293,436,257,High,High,Improve consistency
+STU3488,IT,235,506,174,High,High,Maintain performance
+STU3489,CSE,22,495,80,Low,Low,"Attend mentoring, increase activity"
+STU3490,CSE,77,458,240,Low,Low,Improve consistency
+STU3491,EEE,193,422,64,High,High,Improve consistency
+STU3492,CSE,21,339,191,Low,Low,Improve consistency
+STU3493,IT,23,741,31,Low,Low,"Attend mentoring, increase activity"
+STU3494,ECE,223,156,292,Low,Low,Improve consistency
+STU3495,IT,124,268,114,Low,Low,Improve consistency
+STU3496,ECE,105,301,184,Low,Low,Maintain performance
+STU3497,EEE,38,152,48,Low,Low,"Attend mentoring, increase activity"
+STU3498,ECE,88,756,69,High,Low,Improve consistency
+STU3499,CSE,200,636,221,High,High,Improve consistency

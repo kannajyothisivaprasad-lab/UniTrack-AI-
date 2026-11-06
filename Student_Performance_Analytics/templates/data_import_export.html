@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}CSV & Excel Data Management{% endblock %}
+{% block page_title %}Institutional Data Import & Export Hub{% endblock %}
+{% block page_subtitle %}Batch onboard students, attendance, marks, and fees via CSV/Excel with automated validation & formula-injection prevention{% endblock %}
+
+{% block content %}
+<div class="row g-4 mb-4">
+    <!-- Import Card -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-file-earmark-arrow-up-fill me-2"></i>Batch Data Importer</h5>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('data_import_preview') }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Target Domain Module <span class="text-danger">*</span></label>
+                        <select name="import_type" id="importTypeSelect" class="form-select" required>
+                            <option value="students">Student Roster (Student ID, Name, Email, Department, Section)</option>
+                            <option value="attendance">Daily Attendance (Student ID, Date, Status)</option>
+                            <option value="marks">Examination Marks (Student ID, Subject Code, Internal, External)</option>
+                            <option value="fees">Fee Records (Student ID, Academic Year, Total Fee, Paid Amount)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Spreadsheet File (CSV or Excel .xlsx) <span class="text-danger">*</span></label>
+                        <input type="file" name="file" class="form-control" accept=".csv, .xlsx, .xls" required>
+                        <div class="form-text small">Pandas and OpenPyXL engine will validate headers, sanitize formulas, and detect duplicates.</div>
+                    </div>
+
+                    <div class="alert alert-light border small text-muted mb-4">
+                        <i class="bi bi-shield-check text-success me-1"></i> <strong>Tenant Safety Guarantee:</strong> All imported rows are automatically assigned to <strong>{{ current_user.university_name }}</strong>. Formula injection protection is enabled.
+                    </div>
+
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm w-100">
+                        <i class="bi bi-eye-fill me-1"></i> Preview & Validate Spreadsheet
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Card -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h5 class="fw-bold mb-0 text-success"><i class="bi bi-file-earmark-arrow-down-fill me-2"></i>Institutional Data Exporter</h5>
+            </div>
+            <div class="card-body p-4">
+                <form action="{{ url_for('data_export') }}" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Export Dataset <span class="text-danger">*</span></label>
+                        <select name="export_type" class="form-select" required>
+                            <option value="students">Active Student Directory</option>
+                            <option value="attendance">Full Attendance Logs & Summary</option>
+                            <option value="marks">Examination Results & Performance</option>
+                            <option value="fees">Fee Collection & Outstanding Balances</option>
+                            <option value="achievements">Institutional Honors & Achievements</option>
+                            <option value="at_risk">At-Risk Predictive Intervention Roster</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-semibold text-secondary">Export File Format <span class="text-danger">*</span></label>
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="format" id="fmtCsv" value="csv" checked>
+                                <label class="form-check-label small" for="fmtCsv">
+                                    <i class="bi bi-filetype-csv text-primary me-1"></i> CSV Format
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="format" id="fmtXlsx" value="xlsx">
+                                <label class="form-check-label small" for="fmtXlsx">
+                                    <i class="bi bi-filetype-xlsx text-success me-1"></i> Excel (.xlsx) Format
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light border small text-muted mb-4">
+                        <i class="bi bi-lock-fill text-primary me-1"></i> Exports are strictly scoped to <strong>{{ current_user.university_name }}</strong>. Zero cross-tenant data leakage.
+                    </div>
+
+                    <button type="submit" class="btn btn-success px-4 fw-semibold shadow-sm w-100">
+                        <i class="bi bi-download me-1"></i> Generate & Download Secure Export
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Preview Modal / Section if preview data is returned -->
+{% if preview_data %}
+<div class="card border-0 shadow-sm rounded-4 mb-4 border-start border-primary border-4">
+    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+        <div>
+            <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-check2-circle me-2"></i>Spreadsheet Validation Summary</h6>
+            <span class="text-muted small">File: {{ preview_data.filename }} ({{ preview_data.total_rows }} rows identified)</span>
+        </div>
+        <span class="badge bg-success-subtle text-success border border-success-subtle">
+            <i class="bi bi-shield-check me-1"></i>Headers Verified
+        </span>
+    </div>
+    <div class="card-body p-4">
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+                <div class="p-3 bg-light rounded-3 text-center">
+                    <span class="text-muted small d-block">Total Rows</span>
+                    <h5 class="fw-bold text-dark mb-0">{{ preview_data.total_rows }}</h5>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-light rounded-3 text-center">
+                    <span class="text-muted small d-block">Duplicate Records Filtered</span>
+                    <h5 class="fw-bold text-warning mb-0">{{ preview_data.duplicates }}</h5>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-light rounded-3 text-center">
+                    <span class="text-muted small d-block">Missing Values Handled</span>
+                    <h5 class="fw-bold text-info mb-0">{{ preview_data.missing_vals }}</h5>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-light rounded-3 text-center">
+                    <span class="text-muted small d-block">Clean Valid Records</span>
+                    <h5 class="fw-bold text-success mb-0">{{ preview_data.valid_rows }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <h6 class="fw-bold text-dark mb-2">First 5 Sample Records Preview:</h6>
+        <div class="table-responsive mb-4">
+            <table class="table table-sm table-bordered align-middle small mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        {% for col in preview_data.columns %}
+                            <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in preview_data.samples %}
+                    <tr>
+                        {% for col in preview_data.columns %}
+                            <td>{{ row[col] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <form action="{{ url_for('data_import_confirm') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="import_type" value="{{ preview_data.import_type }}">
+            <input type="hidden" name="file_cache_key" value="{{ preview_data.file_cache_key }}">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ url_for('data_management_view') }}" class="btn btn-outline-secondary">Discard & Re-Upload</a>
+                <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm">
+                    <i class="bi bi-database-check me-1"></i> Commit {{ preview_data.valid_rows }} Records to Database
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

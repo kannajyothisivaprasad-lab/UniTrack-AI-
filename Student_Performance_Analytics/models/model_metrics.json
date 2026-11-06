@@ -1,0 +1,19 @@
+{
+    "accuracy": {
+        "Engagement": 90.4,
+        "Risk_Level": 79.4,
+        "Dropout": 100.0,
+        "Early_Risk": 57.4
+    },
+    "sample_counts": {
+        "total": 2500,
+        "train": 2000,
+        "test": 500
+    },
+    "risk_feature_importance": {
+        "Logins": 40.86,
+        "Content_Reads": 16.88,
+        "Forum_Posts": 29.03,
+        "Quiz_Reviews": 13.22
+    }
+}

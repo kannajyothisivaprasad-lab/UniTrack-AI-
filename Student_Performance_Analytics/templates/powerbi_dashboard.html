@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block title %}Power BI Analytics & Visualization Suite{% endblock %}
+{% block page_title %}Executive Power BI Analytics Dashboard{% endblock %}
+{% block page_subtitle %}Multi-Dimensional Institutional Intelligence, Slicers & Microsoft Power BI Connector Hub{% endblock %}
+
+{% block extra_css %}
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .powerbi-card {
+        background: #ffffff;
+        border-radius: 18px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .powerbi-kpi {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-radius: 16px;
+        color: #ffffff;
+        padding: 1.4rem;
+        box-shadow: 0 10px 20px -8px rgba(15, 23, 42, 0.3);
+    }
+    .powerbi-header {
+        background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+        color: #ffffff;
+        border-radius: 18px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Power BI Suite Banner -->
+<div class="powerbi-header d-flex flex-wrap align-items-center justify-content-between gap-3 shadow-sm">
+    <div class="d-flex align-items-center gap-3">
+        <div class="bg-white text-warning rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px; font-size: 1.6rem;">
+            <i class="bi bi-bar-chart-steps"></i>
+        </div>
+        <div>
+            <h5 class="fw-bold mb-0 text-white">Power BI Data Visualization & Intelligence</h5>
+            <small class="text-white-50">Interactive Analytical Slicers & Direct Desktop REST Feed</small>
+        </div>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="{{ url_for('api_powerbi_export') }}" class="btn btn-light rounded-pill px-4 fw-bold shadow-sm text-dark">
+            <i class="bi bi-file-earmark-arrow-down me-1"></i> Export Power BI Dataset (.CSV)
+        </a>
+        <button class="btn btn-outline-light rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#powerbiConnectModal">
+            <i class="bi bi-link-45deg me-1"></i> Desktop Connection API
+        </button>
+    </div>
+</div>
+
+<!-- 5 Top Executive KPI Cards -->
+<div class="row g-3 mb-4">
+    <!-- Total Fee Assessed & Cleared in Rupees -->
+    <div class="col-xl-3 col-md-6">
+        <div class="powerbi-kpi">
+            <span class="text-white-50 small text-uppercase fw-semibold d-block">Total Fees Assessed</span>
+            <h3 class="fw-bold text-white mb-1">&#8377;{{ "{:,.0f}".format(data.fees.total_assessed) }}</h3>
+            <div class="d-flex justify-content-between small text-white-50 mt-2">
+                <span class="text-success"><i class="bi bi-arrow-up-circle"></i> Cleared: &#8377;{{ "{:,.0f}".format(data.fees.total_collected) }}</span>
+                <span class="text-warning">Due: &#8377;{{ "{:,.0f}".format(data.fees.total_pending) }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendance Percentage -->
+    <div class="col-xl-3 col-md-6">
+        <div class="powerbi-kpi">
+            {% set total_att = data.attendance.total_logs or 0 %}
+            {% set present_att = data.attendance.present_count or 0 %}
+            {% set att_rate = [(present_att / total_att * 100)|round(1), 100]|min if total_att > 0 else 0 %}
+            <span class="text-white-50 small text-uppercase fw-semibold d-block">Aggregate Attendance Rate</span>
+            <h3 class="fw-bold text-info mb-1">{{ att_rate }}%</h3>
+            <div class="d-flex justify-content-between small text-white-50 mt-2">
+                <span>Total Logs: {{ total_att }}</span>
+                <span class="text-info"><i class="bi bi-camera"></i> Face: {{ data.attendance.face_rec_count or 0 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Academic Grade Performance -->
+    <div class="col-xl-3 col-md-6">
+        <div class="powerbi-kpi">
+            <span class="text-white-50 small text-uppercase fw-semibold d-block">Academic Exam Average</span>
+            <h3 class="fw-bold text-warning mb-1">{{ "{:,.1f}".format(data.marks.avg_marks_pct) }}%</h3>
+            <div class="d-flex justify-content-between small text-white-50 mt-2">
+                <span class="text-success">Passed: {{ data.marks.pass_count or 0 }}</span>
+                <span class="text-danger">Failed: {{ data.marks.fail_count or 0 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Program Specializations -->
+    <div class="col-xl-3 col-md-6">
+        <div class="powerbi-kpi">
+            <span class="text-white-50 small text-uppercase fw-semibold d-block">Active Degree Programs</span>
+            <h3 class="fw-bold text-white mb-1">{{ data.courses|length }} Courses</h3>
+            <div class="small text-white-50 mt-2">
+                <i class="bi bi-check2-circle text-success me-1"></i> High market relevance curriculum
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Grid -->
+<div class="row g-4 mb-4">
+    <!-- Chart 1: Course-wise Enrollment (Bar Chart) -->
+    <div class="col-lg-6">
+        <div class="powerbi-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold text-dark mb-0">
+                    <i class="bi bi-bar-chart-fill text-primary me-2"></i> Course Intake & Enrollment Distribution
+                </h6>
+                <span class="badge bg-light text-dark border">Enrolled Count</span>
+            </div>
+            <div class="flex-grow-1" style="min-height: 280px;">
+                <canvas id="courseBarChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 2: Batch-wise Student Cohorts (Donut Chart) -->
+    <div class="col-lg-6">
+        <div class="powerbi-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold text-dark mb-0">
+                    <i class="bi bi-pie-chart-fill text-warning me-2"></i> Academic Batch Representation
+                </h6>
+                <span class="badge bg-light text-dark border">Active Cohorts</span>
+            </div>
+            <div class="flex-grow-1" style="min-height: 280px;">
+                <canvas id="batchDonutChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 3: Financial Fee Collection vs Pending (Bar Chart) -->
+    <div class="col-lg-6">
+        <div class="powerbi-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold text-dark mb-0">
+                    <i class="bi bi-wallet2 text-success me-2"></i> Tuition Fee Recovery (INR &#8377;)
+                </h6>
+                <span class="badge bg-success-subtle text-success">Cleared vs Dues</span>
+            </div>
+            <div class="flex-grow-1" style="min-height: 260px;">
+                <canvas id="feeChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 4: AI Risk Distribution (Pie Chart) -->
+    <div class="col-lg-6">
+        <div class="powerbi-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold text-dark mb-0">
+                    <i class="bi bi-shield-exclamation text-danger me-2"></i> Student Risk Classification (AI Engine)
+                </h6>
+                <span class="badge bg-danger-subtle text-danger">Decision Support</span>
+            </div>
+            <div class="flex-grow-1" style="min-height: 260px;">
+                <canvas id="riskPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Power BI Desktop Connection API -->
+<div class="modal fade" id="powerbiConnectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-warning text-dark border-0">
+                <h6 class="modal-title fw-bold">
+                    <i class="bi bi-plug-fill me-2"></i> Microsoft Power BI Desktop REST Connector
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <p class="text-muted small">
+                    To connect your official Microsoft Power BI Desktop report to UniTrack AI, open <strong>Power BI Desktop &rarr; Get Data &rarr; Web</strong> and paste any of the live JSON API endpoints below:
+                </p>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">1. Students Tabular Model API</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control font-monospace small bg-light" value="{{ request.host_url }}api/powerbi/students" readonly>
+                        <button class="btn btn-outline-secondary" onclick="navigator.clipboard.writeText('{{ request.host_url }}api/powerbi/students')"><i class="bi bi-copy"></i></button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">2. Daily Attendance & Biometrics API</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control font-monospace small bg-light" value="{{ request.host_url }}api/powerbi/attendance" readonly>
+                        <button class="btn btn-outline-secondary" onclick="navigator.clipboard.writeText('{{ request.host_url }}api/powerbi/attendance')"><i class="bi bi-copy"></i></button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-dark">3. Fee Ledger & Revenue Collections (INR &#8377;) API</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control font-monospace small bg-light" value="{{ request.host_url }}api/powerbi/fees" readonly>
+                        <button class="btn btn-outline-secondary" onclick="navigator.clipboard.writeText('{{ request.host_url }}api/powerbi/fees')"><i class="bi bi-copy"></i></button>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label small fw-bold text-dark">4. B.Tech Trending Courses & Intake Capacity API</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control font-monospace small bg-light" value="{{ request.host_url }}api/powerbi/courses" readonly>
+                        <button class="btn btn-outline-secondary" onclick="navigator.clipboard.writeText('{{ request.host_url }}api/powerbi/courses')"><i class="bi bi-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light border-top">
+                <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // 1. Course Enrollment Bar Chart
+    const courseLabels = {{ data.courses | map(attribute='course_name') | list | tojson }};
+    const courseCounts = {{ data.courses | map(attribute='student_count') | list | tojson }};
+    new Chart(document.getElementById('courseBarChart'), {
+        type: 'bar',
+        data: {
+            labels: courseLabels,
+            datasets: [{
+                label: 'Enrolled Students',
+                data: courseCounts,
+                backgroundColor: '#2563eb',
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+        }
+    });
+
+    // 2. Batch Cohorts Donut Chart
+    const batchLabels = {{ data.batches | map(attribute='batch_name') | list | tojson }};
+    const batchCounts = {{ data.batches | map(attribute='student_count') | list | tojson }};
+    new Chart(document.getElementById('batchDonutChart'), {
+        type: 'doughnut',
+        data: {
+            labels: batchLabels,
+            datasets: [{
+                data: batchCounts,
+                backgroundColor: ['#2563eb', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#06b6d4'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'right' } }
+        }
+    });
+
+    // 3. Fee Collection vs Pending (Bar)
+    new Chart(document.getElementById('feeChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Total Assessed', 'Collected Amount', 'Pending Balance'],
+            datasets: [{
+                data: [{{ data.fees.total_assessed }}, {{ data.fees.total_collected }}, {{ data.fees.total_pending }}],
+                backgroundColor: ['#1e3a8a', '#10b981', '#ef4444'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ` ₹${ctx.raw.toLocaleString('en-IN')}`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { callback: v => `₹${v.toLocaleString('en-IN')}` }
+                }
+            }
+        }
+    });
+
+    // 4. Risk Pie Chart
+    const riskLabels = {{ data.risk | map(attribute='risk_level') | list | tojson }};
+    const riskCounts = {{ data.risk | map(attribute='count') | list | tojson }};
+    new Chart(document.getElementById('riskPieChart'), {
+        type: 'pie',
+        data: {
+            labels: riskLabels.length ? riskLabels : ['Low Risk', 'Medium Risk', 'High Risk'],
+            datasets: [{
+                data: riskCounts.length ? riskCounts : [5, 2, 1],
+                backgroundColor: ['#10b981', '#f59e0b', '#ef4444']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'right' } }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+
+{% block title %}Executive Analytics Dashboard{% endblock %}
+{% block page_title %}{{ current_user.university_name if current_user else 'University' }} Analytics Dashboard{% endblock %}
+{% block page_subtitle %}Live multi-tenant institutional operations, academic performance, and predictive risk indicators{% endblock %}
+
+{% block content %}
+<!-- Interactive Filters Bar -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <form id="dashboardFilterForm" class="row g-2 align-items-center">
+            <div class="col-md-3 col-sm-6">
+                <label class="form-label small fw-semibold text-secondary mb-1">Academic Year</label>
+                <select id="filterYear" class="form-select form-select-sm" onchange="reloadDashboardStats()">
+                    <option value="All">All Academic Years</option>
+                    <option value="2024-2025" selected>2024-2025</option>
+                    <option value="2023-2024">2023-2024</option>
+                </select>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <label class="form-label small fw-semibold text-secondary mb-1">Department</label>
+                <select id="filterDept" class="form-select form-select-sm" onchange="reloadDashboardStats()">
+                    <option value="All">All Departments</option>
+                    {% for d in departments %}
+                        <option value="{{ d.id }}">{{ d.name }} ({{ d.code }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <label class="form-label small fw-semibold text-secondary mb-1">Section</label>
+                <select id="filterSec" class="form-select form-select-sm" onchange="reloadDashboardStats()">
+                    <option value="All">All Sections</option>
+                    {% for s in sections %}
+                        <option value="{{ s.id }}">{{ s.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <label class="form-label small fw-semibold text-secondary mb-1">Date Filter</label>
+                <input type="date" id="filterDate" class="form-control form-control-sm" value="{{ today }}" onchange="reloadDashboardStats()">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 9 KPI Summary Cards -->
+<div class="row g-3 mb-4">
+    <!-- 1. Total Students -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Total Students</span>
+                <span class="stat-value text-primary" id="kpiTotalStudents">--</span>
+                <span class="stat-desc text-muted"><i class="bi bi-person-badge"></i> Enrolled Learners</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+        </div>
+    </div>
+
+    <!-- 2. Total Staff -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Total Staff</span>
+                <span class="stat-value text-secondary" id="kpiTotalStaff">--</span>
+                <span class="stat-desc text-muted"><i class="bi bi-person-workspace"></i> Faculty Members</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-person-badge"></i></div>
+        </div>
+    </div>
+
+    <!-- 3. Present Today -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Present Today</span>
+                <span class="stat-value text-success" id="kpiPresentToday">--</span>
+                <span class="stat-desc text-success"><i class="bi bi-calendar-check"></i> On-Campus Today</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-check2-circle"></i></div>
+        </div>
+    </div>
+
+    <!-- 4. Average Attendance -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Average Attendance</span>
+                <span class="stat-value text-info" id="kpiAvgAttendance">--%</span>
+                <span class="stat-desc text-muted"><i class="bi bi-graph-up"></i> Cumulative Rate</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
+        </div>
+    </div>
+
+    <!-- 5. Pass Percentage -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Pass Percentage</span>
+                <span class="stat-value text-success" id="kpiPassPct">--%</span>
+                <span class="stat-desc text-success"><i class="bi bi-award"></i> Academic Pass Rate</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-mortarboard-fill"></i></div>
+        </div>
+    </div>
+
+    <!-- 6. Failed Students -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card risk-high">
+            <div class="stat-card-info">
+                <span class="stat-label">Failed Students</span>
+                <span class="stat-value text-danger" id="kpiFailedStudents">--</span>
+                <span class="stat-desc text-danger"><i class="bi bi-shield-x"></i> Needs Remedial</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-x-octagon-fill"></i></div>
+        </div>
+    </div>
+
+    <!-- 7. High-Risk Students -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card risk-high">
+            <div class="stat-card-info">
+                <span class="stat-label">High-Risk Students</span>
+                <span class="stat-value text-danger" id="kpiHighRisk">--</span>
+                <span class="stat-desc text-danger"><i class="bi bi-exclamation-triangle-fill"></i> Immediate Intervention</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-cpu-fill"></i></div>
+        </div>
+    </div>
+
+    <!-- 8. Total Fee Collection -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Total Fee Collection</span>
+                <span class="stat-value text-success" id="kpiFeeCollection">&#8377;0</span>
+                <span class="stat-desc text-success"><i class="bi bi-piggy-bank"></i> Realized Revenue (&#8377;)</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-cash-stack"></i></div>
+        </div>
+    </div>
+
+    <!-- 9. Pending Fees -->
+    <div class="col-xl-4 col-md-4 col-sm-6">
+        <div class="stat-card risk-med">
+            <div class="stat-card-info">
+                <span class="stat-label">Pending Fees</span>
+                <span class="stat-value text-warning" id="kpiPendingFees">&#8377;0</span>
+                <span class="stat-desc text-warning"><i class="bi bi-hourglass-split"></i> Outstanding Balance (&#8377;)</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-wallet2"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Grid: Row 1 -->
+<div class="row g-4 mb-4">
+    <!-- Chart 1: Department-wise student count -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-bar-chart-fill me-2"></i>Department-Wise Enrolled Students</h6>
+                <span class="badge bg-light text-muted border">Live Count</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="deptStudentsChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 2: Section-wise performance -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-layers-fill me-2"></i>Section-Wise Academic Performance Average</h6>
+                <span class="badge bg-light text-muted border">Class Standing</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="sectionPerformanceChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Grid: Row 2 -->
+<div class="row g-4 mb-4">
+    <!-- Chart 3: Subject-wise pass/fail -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-stack me-2"></i>Subject-Wise Pass & Failure Analysis</h6>
+                <span class="badge bg-light text-muted border">Course Outcomes</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="subjectPassFailChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 4: Monthly attendance trends -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-graph-up-arrow me-2"></i>Monthly Attendance Trajectory (%)</h6>
+                <span class="badge bg-light text-muted border">Punctuality Trend</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="attendanceTrendChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Grid: Row 3 -->
+<div class="row g-4 mb-4">
+    <!-- Chart 5: Fee collection trends -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-cash-coin me-2"></i>Fee Collection vs Outstanding Trend</h6>
+                <span class="badge bg-light text-muted border">Monthly Inflow</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="feeCollectionChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 6: Assignment completion -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-pie-chart-fill me-2"></i>Curriculum Assignment Completion Status</h6>
+                <span class="badge bg-light text-muted border">Submission Rates</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="assignmentCompletionChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Grid: Row 4 -->
+<div class="row g-4 mb-4">
+    <!-- Chart 7: Student risk distribution -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-shield-shaded me-2"></i>AI Student Risk Categorization</h6>
+                <span class="badge bg-light text-muted border">Predictive ML</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="riskDistributionChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart 8: Semester-wise academic performance -->
+    <div class="col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-trophy me-2"></i>Semester-Wise Academic Marks Average</h6>
+                <span class="badge bg-light text-muted border">Historical Progression</span>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="semesterPerformanceChart" style="max-height: 270px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Machine Learning Prediction{% endblock %}
+{% block page_title %}Predict Student Performance{% endblock %}
+{% block page_subtitle %}Evaluate multi-target outcomes in real-time using trained Random Forest models{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <!-- Prediction Input Form Card -->
+    <div class="col-lg-6">
+        <div class="card h-100 prediction-card">
+            <div class="card-header-clean">
+                <h2 class="card-title-clean">
+                    <i class="bi bi-sliders text-primary"></i> Learning Engagement Parameters
+                </h2>
+                <span class="badge bg-light text-primary border">RF Inference Engine</span>
+            </div>
+
+            <div class="card-body-clean">
+                <!-- Preset Sample Quick-Fill Buttons -->
+                <div class="mb-4 p-3 bg-light rounded-3 border">
+                    <span class="d-block small fw-bold text-dark-blue mb-2">
+                        <i class="bi bi-magic text-primary me-1"></i> Quick Test Presets (Real Dataset Patterns):
+                    </span>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="preset-chip" onclick="fillPreset('high_risk')">
+                            <i class="bi bi-exclamation-triangle-fill text-danger me-1"></i> High Risk Sample
+                        </button>
+                        <button type="button" class="preset-chip" onclick="fillPreset('average')">
+                            <i class="bi bi-dash-circle-fill text-warning me-1"></i> Average Student
+                        </button>
+                        <button type="button" class="preset-chip" onclick="fillPreset('top_performer')">
+                            <i class="bi bi-stars text-success me-1"></i> High Achiever
+                        </button>
+                    </div>
+                </div>
+
+                <form id="predictionForm">
+                    <!-- Logins Input -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <label for="inputLogins" class="form-label fw-bold small text-dark-blue mb-1">
+                                <i class="bi bi-box-arrow-in-right text-primary me-1"></i> Student LMS Logins:
+                            </label>
+                            <span class="small fw-semibold text-primary" id="loginsValLabel">120 logins</span>
+                        </div>
+                        <input type="range" class="form-range" id="rangeLogins" min="0" max="300" step="1" value="120">
+                        <input type="number" class="form-control form-control-custom form-control-sm" id="inputLogins" name="logins" min="0" max="1000" value="120" required>
+                        <small class="text-muted" style="font-size: 0.75rem;">Total system logins throughout the academic semester (Dataset range: 5 - 299)</small>
+                    </div>
+
+                    <!-- Content Reads Input -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <label for="inputContentReads" class="form-label fw-bold small text-dark-blue mb-1">
+                                <i class="bi bi-journal-text text-primary me-1"></i> Content Reads:
+                            </label>
+                            <span class="small fw-semibold text-primary" id="readsValLabel">350 reads</span>
+                        </div>
+                        <input type="range" class="form-range" id="rangeContentReads" min="0" max="800" step="1" value="350">
+                        <input type="number" class="form-control form-control-custom form-control-sm" id="inputContentReads" name="content_reads" min="0" max="2000" value="350" required>
+                        <small class="text-muted" style="font-size: 0.75rem;">Number of lecture documents and course articles reviewed (Dataset range: 10 - 799)</small>
+                    </div>
+
+                    <!-- Forum Posts Input -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <label for="inputForumPosts" class="form-label fw-bold small text-dark-blue mb-1">
+                                <i class="bi bi-chat-dots text-primary me-1"></i> Forum Posts:
+                            </label>
+                            <span class="small fw-semibold text-primary" id="postsValLabel">15 posts</span>
+                        </div>
+                        <input type="range" class="form-range" id="rangeForumPosts" min="0" max="50" step="1" value="15">
+                        <input type="number" class="form-control form-control-custom form-control-sm" id="inputForumPosts" name="forum_posts" min="0" max="200" value="15" required>
+                        <small class="text-muted" style="font-size: 0.75rem;">Peer discussions and question submissions in forum (Dataset range: 0 - 49)</small>
+                    </div>
+
+                    <!-- Quiz Reviews Input -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <label for="inputQuizReviews" class="form-label fw-bold small text-dark-blue mb-1">
+                                <i class="bi bi-check2-square text-primary me-1"></i> Quiz Reviews:
+                            </label>
+                            <span class="small fw-semibold text-primary" id="quizzesValLabel">4 reviews</span>
+                        </div>
+                        <input type="range" class="form-range" id="rangeQuizReviews" min="0" max="10" step="1" value="4">
+                        <input type="number" class="form-control form-control-custom form-control-sm" id="inputQuizReviews" name="quiz_reviews" min="0" max="50" value="4" required>
+                        <small class="text-muted" style="font-size: 0.75rem;">Self-assessment tests and quiz reviews completed (Dataset range: 0 - 9)</small>
+                    </div>
+
+                    <!-- Risk Score Input -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <label for="inputRiskScore" class="form-label fw-bold small text-dark-blue mb-1">
+                                <i class="bi bi-speedometer text-primary me-1"></i> Risk Score:
+                            </label>
+                            <span class="small fw-semibold text-primary" id="riskScoreValLabel">55.0</span>
+                        </div>
+                        <input type="range" class="form-range" id="rangeRiskScore" min="5" max="110" step="0.5" value="55.0">
+                        <input type="number" class="form-control form-control-custom form-control-sm" id="inputRiskScore" name="risk_score" min="0" max="150" step="0.1" value="55.0" required>
+                        <small class="text-muted" style="font-size: 0.75rem;">Cumulative risk index based on assessment scores & deadlines (Dataset range: 6.73 - 107.27)</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary-custom w-100 py-2 fs-6 shadow" id="predictBtn">
+                        <i class="bi bi-cpu-fill me-1"></i> Predict Student Performance
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prediction Results Display Card -->
+    <div class="col-lg-6">
+        <div class="card h-100" id="resultCard">
+            <div class="card-header-clean">
+                <h2 class="card-title-clean">
+                    <i class="bi bi-graph-up-arrow text-primary"></i> Machine Learning Predictions
+                </h2>
+                <span class="badge bg-success-subtle text-success border border-success-subtle" id="inferenceStatusBadge">
+                    <i class="bi bi-check2-circle"></i> Ready for Inference
+                </span>
+            </div>
+
+            <div class="card-body-clean">
+                <!-- Initial Placeholder View -->
+                <div id="resultPlaceholder" class="text-center py-5">
+                    <div class="brand-icon mx-auto mb-3" style="width: 64px; height: 64px;">
+                        <i class="bi bi-cpu fs-2 text-white"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark-blue">No Prediction Generated Yet</h5>
+                    <p class="text-secondary small max-w-sm mx-auto">
+                        Adjust learning activity inputs on the left and click <strong>Predict Student Performance</strong> to generate multi-target ML inference.
+                    </p>
+                </div>
+
+                <!-- Dynamic Prediction Results View (Hidden Initially) -->
+                <div id="resultContent" style="display: none;">
+                    <!-- Four Main Target Outputs -->
+                    <div class="row g-3 mb-4">
+                        <!-- Predicted Risk Level -->
+                        <div class="col-sm-6">
+                            <div class="p-3 border rounded-3 bg-white text-center shadow-sm">
+                                <span class="small text-muted text-uppercase fw-semibold d-block">Predicted Risk Level</span>
+                                <div class="prediction-value-big" id="resPredictedRisk">-</div>
+                                <span class="small text-muted">Feature Set: Logins, Reads, Posts, Quizzes</span>
+                            </div>
+                        </div>
+
+                        <!-- Predicted Engagement -->
+                        <div class="col-sm-6">
+                            <div class="p-3 border rounded-3 bg-white text-center shadow-sm">
+                                <span class="small text-muted text-uppercase fw-semibold d-block">Predicted Engagement</span>
+                                <div class="prediction-value-big" id="resPredictedEngagement">-</div>
+                                <span class="small text-muted">Feature Set: Logins & Reads</span>
+                            </div>
+                        </div>
+
+                        <!-- Predicted Dropout -->
+                        <div class="col-sm-6">
+                            <div class="p-3 border rounded-3 bg-white text-center shadow-sm">
+                                <span class="small text-muted text-uppercase fw-semibold d-block">Predicted Dropout</span>
+                                <div class="prediction-value-big" id="resPredictedDropout">-</div>
+                                <span class="small text-muted">Feature Set: Risk Score Index</span>
+                            </div>
+                        </div>
+
+                        <!-- Predicted Early Risk -->
+                        <div class="col-sm-6">
+                            <div class="p-3 border rounded-3 bg-white text-center shadow-sm">
+                                <span class="small text-muted text-uppercase fw-semibold d-block">Predicted Early Risk</span>
+                                <div class="prediction-value-big" id="resPredictedEarlyRisk">-</div>
+                                <span class="small text-muted">Feature Set: Early Logins & Reads</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prescriptive Improvement Suggestion -->
+                    <div class="alert alert-primary border-primary-subtle p-3 rounded-3 mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-lightbulb-fill text-warning fs-2"></i>
+                            <div>
+                                <span class="small fw-bold text-uppercase text-dark-blue d-block">Student Improvement Suggestion</span>
+                                <div class="fw-semibold text-primary fs-6 mt-1" id="resSuggestion">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Confidence Breakdown -->
+                    <div class="p-3 bg-light rounded-3 border">
+                        <h6 class="fw-bold text-dark-blue mb-3 small text-uppercase">
+                            <i class="bi bi-pie-chart-fill text-primary me-1"></i> Risk Probability Confidence
+                        </h6>
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="text-danger fw-semibold">High Risk Probability</span>
+                                <span class="fw-bold" id="probHighRisk">0%</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-danger" id="barHighRisk" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="text-warning fw-semibold">Medium Risk Probability</span>
+                                <span class="fw-bold" id="probMediumRisk">0%</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-warning" id="barMediumRisk" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="text-success fw-semibold">Low Risk Probability</span>
+                                <span class="fw-bold" id="probLowRisk">0%</span>
+                            </div>
+                            <div class="progress progress-thin">
+                                <div class="progress-bar bg-success" id="barLowRisk" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+{% endblock %}

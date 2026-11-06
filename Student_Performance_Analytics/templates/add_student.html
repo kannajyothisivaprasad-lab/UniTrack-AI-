@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Student Registration{% endblock %}
+{% block page_title %}Student Admission & Profile Provisioning{% endblock %}
+{% block page_subtitle %}Register Enrolled Student Particulars, Department, Course, Batch & Fee Ledger{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary">
+                    <i class="bi bi-person-plus-fill me-2"></i> New Student Registration Form
+                </h6>
+                <a href="{{ url_for('students_view') }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                    &larr; Back to Directory
+                </a>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <form method="POST" action="{{ url_for('student_new_view') }}" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+
+                    <!-- Section 1: Basic Identity -->
+                    <h6 class="text-uppercase small fw-bold text-secondary mb-3 pb-2 border-bottom">
+                        <i class="bi bi-person-badge text-primary me-1"></i> Personal & Contact Particulars
+                    </h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Full Student Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="full_name" placeholder="e.g. Aarav Mehta" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Student ID / Roll Number <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control font-monospace" name="student_id" placeholder="e.g. APX-2025-001" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Institutional Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" name="email" placeholder="student@university.edu" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Contact Phone Number</label>
+                            <input type="text" class="form-control" name="phone" placeholder="+91 98765 43210">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold text-dark">Gender</label>
+                            <select name="gender" class="form-select">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold text-dark">Age</label>
+                            <input type="number" class="form-control" name="age" value="20" min="16" max="60">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold text-dark">Admission / Enrollment Date</label>
+                            <input type="date" class="form-control" name="admission_date" value="{{ today }}">
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Academic Program & Cohort -->
+                    <h6 class="text-uppercase small fw-bold text-secondary mb-3 pb-2 border-bottom">
+                        <i class="bi bi-mortarboard text-primary me-1"></i> Academic Program, Department & Batch
+                    </h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Department</label>
+                            <select name="department_id" class="form-select">
+                                <option value="">Select Department...</option>
+                                {% for d in departments %}
+                                    <option value="{{ d.id }}">{{ d.name }} ({{ d.code }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Course / Specialization <span class="text-danger">*</span></label>
+                            <select name="course_id" class="form-select" required>
+                                <option value="">Select BTech / Degree Course...</option>
+                                {% for c in courses %}
+                                    <option value="{{ c.id }}">{{ c.name }} ({{ c.code }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Academic Batch <span class="text-danger">*</span></label>
+                            <select name="batch_id" class="form-select" required>
+                                <option value="">Select Batch...</option>
+                                {% for b in batches %}
+                                    <option value="{{ b.id }}">{{ b.name }} ({{ b.start_year }}-{{ b.end_year }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Current Academic Year <span class="text-danger">*</span></label>
+                            <select name="academic_year" class="form-select" required>
+                                {% for ay in academic_years %}
+                                    <option value="{{ ay.name }}" {% if ay.is_current %}selected{% endif %}>{{ ay.name }}</option>
+                                {% else %}
+                                    <option value="2024-2025" selected>2024-2025</option>
+                                    <option value="2025-2026">2025-2026</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Financial & Biometric Provisioning -->
+                    <h6 class="text-uppercase small fw-bold text-secondary mb-3 pb-2 border-bottom">
+                        <i class="bi bi-wallet2 text-primary me-1"></i> Fee Assessment & Photograph Biometrics
+                    </h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Total Course Fees (&#8377; Rupees) <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted fw-bold">&#8377;</span>
+                                <input type="number" step="0.01" class="form-control" name="total_fee" value="75000" min="0" required>
+                            </div>
+                            <div class="form-text small text-muted">Initial pending balance will equal total fee assessed.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Student Photograph (AI Face Recognition)</label>
+                            <input type="file" name="profile_photo" class="form-control" accept="image/*">
+                            <div class="form-text small text-muted">Uploaded photo will be automatically processed for AI Face Recognition.</div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light border rounded-3 p-3 small text-muted mb-4">
+                        <i class="bi bi-key-fill text-primary me-1"></i>
+                        <strong>Default Student Password:</strong> A student login account will be automatically provisioned with initial password <code>Student@123</code>.
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ url_for('students_view') }}" class="btn btn-secondary rounded-pill px-4">Cancel</a>
+                        <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                            <i class="bi bi-check2-circle me-1"></i> Complete Enrollment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}At-Risk Students{% endblock %}
+{% block page_title %}At-Risk Student Intervention Portal{% endblock %}
+{% block page_subtitle %}Targeted academic monitoring, risk score classification, and intervention recommendations{% endblock %}
+
+{% block content %}
+<!-- At-Risk Urgency Summary -->
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card risk-high">
+            <div class="stat-card-info">
+                <span class="stat-label">High Risk Cohort</span>
+                <span class="stat-value text-danger" id="atRiskHighCount">467</span>
+                <span class="stat-desc text-danger"><i class="bi bi-alarm-fill"></i> Immediate faculty intervention needed</span>
+            </div>
+            <div class="stat-icon">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card risk-med">
+            <div class="stat-card-info">
+                <span class="stat-label">Medium Risk Cohort</span>
+                <span class="stat-value text-warning" id="atRiskMedCount">1,477</span>
+                <span class="stat-desc text-warning"><i class="bi bi-arrow-repeat"></i> Consistency & reminder alerts</span>
+            </div>
+            <div class="stat-icon">
+                <i class="bi bi-bell-fill"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card risk-low">
+            <div class="stat-card-info">
+                <span class="stat-label">Low Risk Cohort</span>
+                <span class="stat-value text-success" id="atRiskLowCount">556</span>
+                <span class="stat-desc text-success"><i class="bi bi-trophy-fill"></i> Stable learners on track</span>
+            </div>
+            <div class="stat-icon">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- At-Risk Students Table Card -->
+<div class="card mb-4">
+    <div class="card-header-clean flex-wrap gap-2">
+        <div>
+            <h2 class="card-title-clean">
+                <i class="bi bi-shield-exclamation text-danger"></i> Student Risk Classification Roster
+            </h2>
+            <small class="text-muted">Sorted by Risk Score descending (highest risk prioritized)</small>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <!-- Filter Tabs -->
+            <div class="btn-group" role="group" aria-label="Risk Filter Tabs">
+                <button type="button" class="btn btn-sm btn-outline-custom active" onclick="filterAtRisk('All', this)">All Tiers</button>
+                <button type="button" class="btn btn-sm btn-outline-custom text-danger" onclick="filterAtRisk('High Risk', this)">High Risk Only</button>
+                <button type="button" class="btn btn-sm btn-outline-custom text-warning" onclick="filterAtRisk('Medium Risk', this)">Medium Risk Only</button>
+                <button type="button" class="btn btn-sm btn-outline-custom text-success" onclick="filterAtRisk('Low Risk', this)">Low Risk Only</button>
+            </div>
+
+            <!-- Export Button -->
+            <a href="/api/export/risk" class="btn btn-sm btn-primary-custom text-nowrap">
+                <i class="bi bi-file-earmark-arrow-down"></i> Export Risk CSV
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table custom-table mb-0 align-middle">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Risk Score</th>
+                    <th>Risk Tier</th>
+                    <th>Engagement</th>
+                    <th>Logins</th>
+                    <th>Reads</th>
+                    <th>Forum Posts</th>
+                    <th>Quiz Reviews</th>
+                    <th>Prescriptive Suggestion</th>
+                    <th>Dropout</th>
+                </tr>
+            </thead>
+            <tbody id="atRiskTableBody">
+                <tr>
+                    <td colspan="10" class="text-center py-5">
+                        <div class="loading-spinner"></div>
+                        <p class="text-muted small mt-2">Loading at-risk cohort...</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer bg-white border-top p-3 d-flex justify-content-between align-items-center">
+        <span class="text-muted small" id="atRiskCountLabel">Showing records</span>
+        <button class="btn btn-outline-custom btn-sm" id="loadMoreAtRiskBtn" onclick="loadMoreAtRisk()">Load More Records</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let currentTier = 'All';
+let allAtRiskRecords = [];
+let displayedCount = 30;
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadAtRiskData();
+});
+
+async function loadAtRiskData() {
+    const tbody = document.getElementById('atRiskTableBody');
+    tbody.innerHTML = `
+        <tr>
+            <td colspan="10" class="text-center py-5">
+                <div class="loading-spinner"></div>
+                <p class="text-muted small mt-2">Loading at-risk cohort...</p>
+            </td>
+        </tr>
+    `;
+
+    try {
+        const response = await fetch(`/api/at-risk?tier=${encodeURIComponent(currentTier)}`);
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            allAtRiskRecords = result.students;
+            displayedCount = 30;
+            renderAtRiskTable();
+        } else {
+            tbody.innerHTML = `<tr><td colspan="10" class="text-center text-danger py-4">${result.message}</td></tr>`;
+        }
+    } catch (e) {
+        tbody.innerHTML = `<tr><td colspan="10" class="text-center text-danger py-4">Failed to load at-risk records.</td></tr>`;
+    }
+}
+
+function filterAtRisk(tier, btn) {
+    document.querySelectorAll('.btn-group .btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    currentTier = tier;
+    loadAtRiskData();
+}
+
+function renderAtRiskTable() {
+    const tbody = document.getElementById('atRiskTableBody');
+    const records = allAtRiskRecords.slice(0, displayedCount);
+
+    if (records.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" class="text-center py-5 text-muted">No students in this risk category.</td></tr>`;
+        document.getElementById('loadMoreAtRiskBtn').style.display = 'none';
+        return;
+    }
+
+    let html = '';
+    records.forEach(s => {
+        let riskClass = 'risk-low';
+        let rowClass = '';
+        if (s.Risk_Level === 'High Risk') {
+            riskClass = 'risk-high';
+            rowClass = 'table-danger-subtle';
+        } else if (s.Risk_Level === 'Medium Risk') {
+            riskClass = 'risk-med';
+        }
+
+        const dropClass = s.Dropout === 'Yes' ? 'dropout-yes' : 'dropout-no';
+        const engClass = s.Engagement_Level === 'High' ? 'eng-high' : 'eng-low';
+
+        html += `
+            <tr class="${rowClass}">
+                <td><strong>${s.Student_ID}</strong> <small class="text-muted d-block">${s.Course}</small></td>
+                <td><span class="fw-bold fs-6">${Number(s.Risk_Score).toFixed(2)}</span></td>
+                <td><span class="risk-badge ${riskClass}">${s.Risk_Level}</span></td>
+                <td><span class="eng-badge ${engClass}">${s.Engagement_Level}</span></td>
+                <td><span class="fw-semibold">${s.Logins}</span></td>
+                <td>${s.Content_Reads}</td>
+                <td>${s.Forum_Posts}</td>
+                <td>${s.Quiz_Reviews}</td>
+                <td>
+                    <span class="small fw-semibold text-dark d-block">
+                        <i class="bi bi-lightbulb text-warning me-1"></i>${s.Suggestion_New || s.Suggestion}
+                    </span>
+                </td>
+                <td><span class="${dropClass}">${s.Dropout}</span></td>
+            </tr>
+        `;
+    });
+
+    tbody.innerHTML = html;
+    document.getElementById('atRiskCountLabel').innerText = `Displaying ${records.length} of ${allAtRiskRecords.length} students`;
+    document.getElementById('loadMoreAtRiskBtn').style.display = displayedCount >= allAtRiskRecords.length ? 'none' : 'inline-block';
+}
+
+function loadMoreAtRisk() {
+    displayedCount += 30;
+    renderAtRiskTable();
+}
+</script>
+{% endblock %}

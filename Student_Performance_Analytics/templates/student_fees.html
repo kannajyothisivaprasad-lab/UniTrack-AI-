@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Ledger & Online Payments | UniTrack AI</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .pay-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            border-radius: 20px;
+            color: #ffffff;
+            padding: 2.2rem;
+            box-shadow: 0 15px 35px -10px rgba(30, 58, 138, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Top Student Navigation -->
+    <nav class="bg-white border-bottom sticky-top py-2 px-4 shadow-sm">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div>
+                    <h6 class="fw-bold mb-0 text-dark">UniTrack AI</h6>
+                    <small class="text-muted">{{ data.student.university_name }}</small>
+                </div>
+            </div>
+
+            <!-- Student Tabs -->
+            <ul class="nav nav-pills d-none d-md-flex gap-1">
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3 py-1 text-secondary" href="{{ url_for('student_dashboard_view') }}">
+                        <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3 py-1 text-secondary" href="{{ url_for('student_assignments_view') }}">
+                        <i class="bi bi-folder2-open me-1"></i> Coursework
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active rounded-pill px-3 py-1" href="{{ url_for('student_fees_view') }}">
+                        <i class="bi bi-wallet2 me-1"></i> Fees & Payments
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                <a href="{{ url_for('logout_view') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                    <i class="bi bi-box-arrow-right me-1"></i> Sign Out
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 px-md-4">
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show rounded-3 mb-4 shadow-sm" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Fee Balance Header Banner -->
+        <div class="pay-card mb-4">
+            <div class="row align-items-center g-3">
+                <div class="col-md-7">
+                    <span class="badge bg-white-subtle text-white border border-white-50 px-3 py-1 rounded-pill mb-2">
+                        Academic Year: {{ data.fee_record.academic_year if data.fee_record else 'Current' }}
+                    </span>
+                    <h2 class="fw-bold mb-1">
+                        Outstanding Fee: &#8377;{{ "{:,.0f}".format(data.fee_record.pending_amount if data.fee_record else 0) }}
+                    </h2>
+                    <p class="text-white-50 small mb-0">
+                        Total Course Assessment: &#8377;{{ "{:,.0f}".format(data.fee_record.total_fee if data.fee_record else 0) }} &bull;
+                        Cleared Amount: &#8377;{{ "{:,.0f}".format(data.fee_record.paid_amount if data.fee_record else 0) }}
+                    </p>
+                </div>
+                <div class="col-md-5 text-md-end">
+                    {% if data.fee_record and data.fee_record.pending_amount > 0 %}
+                    <button class="btn btn-warning btn-lg rounded-pill px-4 fw-bold shadow" data-bs-toggle="modal" data-bs-target="#payModal">
+                        <i class="bi bi-credit-card-2-front-fill me-2"></i> Pay Fees Online
+                    </button>
+                    {% else %}
+                    <span class="badge bg-success fs-6 px-4 py-2 rounded-pill">
+                        <i class="bi bi-check-circle-fill me-1"></i> All Dues Fully Cleared
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment History Ledger -->
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary">
+                    <i class="bi bi-receipt-cutoff me-2"></i> Official Fee Payment Receipts
+                </h6>
+                <span class="text-muted small">All transactions securely verified & logged</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light small text-secondary">
+                            <tr>
+                                <th class="ps-4">Receipt Reference</th>
+                                <th>Payment Date</th>
+                                <th>Payment Method</th>
+                                <th>Notes / Purpose</th>
+                                <th>Amount Cleared</th>
+                                <th class="pe-4 text-end">Official Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in data.payments %}
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge bg-light text-dark border font-monospace">{{ p.receipt_reference }}</span>
+                                </td>
+                                <td>{{ p.payment_date }}</td>
+                                <td>
+                                    <span class="badge bg-secondary-subtle text-secondary">{{ p.payment_method }}</span>
+                                </td>
+                                <td class="small text-muted">{{ p.notes or 'Tuition Fee Installment' }}</td>
+                                <td>
+                                    <strong class="text-success">&#8377;{{ "{:,.0f}".format(p.amount) }}</strong>
+                                </td>
+                                <td class="pe-4 text-end">
+                                    <a href="{{ url_for('fee_receipt_view', receipt_ref=p.receipt_reference) }}" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 shadow-sm">
+                                        <i class="bi bi-printer me-1"></i> Print / Download
+                                    </a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="6" class="text-center py-4 text-muted">No payments logged yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Online Payment Modal -->
+    <div class="modal fade" id="payModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header bg-primary text-white border-0 py-3 px-4">
+                    <h6 class="modal-title fw-bold">
+                        <i class="bi bi-shield-lock-fill me-2"></i> Secure Online Payment Gateway
+                    </h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form method="POST" action="{{ url_for('student_fee_pay') }}">
+                    <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+                    <div class="modal-body p-4">
+                        <div class="text-center mb-4">
+                            <span class="text-muted small d-block">Outstanding Balance Due</span>
+                            <h3 class="fw-bold text-danger mb-0">
+                                &#8377;{{ "{:,.0f}".format(data.fee_record.pending_amount if data.fee_record else 0) }}
+                            </h3>
+                        </div>
+
+                        <!-- Amount to pay -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-dark">Payment Amount (&#8377;)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted fw-bold">&#8377;</span>
+                                <input type="number" step="0.01" class="form-control" name="amount" value="{{ data.fee_record.pending_amount if data.fee_record else 0 }}" max="{{ data.fee_record.pending_amount if data.fee_record else 0 }}" min="1" required>
+                            </div>
+                            <div class="form-text small text-muted">You can pay in full or enter a partial installment.</div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-dark">Select Payment Method</label>
+                            <select name="payment_method" class="form-select">
+                                <option value="UPI">UPI / QR Code (GPay, PhonePe, Paytm)</option>
+                                <option value="NetBanking">Net Banking (SBI, HDFC, ICICI, Axis)</option>
+                                <option value="Debit / Credit Card">Debit / Credit Card (RuPay, Visa, Mastercard)</option>
+                                <option value="NEFT / RTGS">Institutional NEFT / RTGS Challan</option>
+                            </select>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-dark">Payment Remarks</label>
+                            <input type="text" name="notes" class="form-control" value="Semester Tuition Fee Installment">
+                        </div>
+
+                        <div class="p-3 bg-light rounded-3 small text-muted border">
+                            <i class="bi bi-lock-fill text-success me-1"></i>
+                            256-Bit SSL Secured Transaction. Card numbers and banking credentials are never stored.
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light border-top">
+                        <button type="button" class="btn btn-secondary btn-sm rounded-pill px-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success btn-sm rounded-pill px-4 fw-bold shadow">
+                            <i class="bi bi-check2-circle me-1"></i> Confirm Payment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

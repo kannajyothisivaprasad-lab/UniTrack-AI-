@@ -1,0 +1,115 @@
+{
+  "dataset_records": 2500,
+  "training_records": 2000,
+  "test_records": 500,
+  "features": [
+    "Logins",
+    "Content_Reads",
+    "Forum_Posts",
+    "Quiz_Reviews",
+    "Assignment1_Late",
+    "Assignment2_Late",
+    "Assignment3_Late",
+    "Avg_Assignment_Time"
+  ],
+  "classes": [
+    "Low Risk",
+    "Medium Risk",
+    "High Risk"
+  ],
+  "models": {
+    "Logistic Regression": {
+      "accuracy": 98.8,
+      "precision": 98.81,
+      "recall": 98.8,
+      "f1_score": 98.8,
+      "confusion_matrix": [
+        [
+          109,
+          2,
+          0
+        ],
+        [
+          1,
+          295,
+          0
+        ],
+        [
+          0,
+          3,
+          90
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 90.0,
+      "precision": 90.3,
+      "recall": 90.0,
+      "f1_score": 89.79,
+      "confusion_matrix": [
+        [
+          98,
+          13,
+          0
+        ],
+        [
+          8,
+          284,
+          4
+        ],
+        [
+          0,
+          25,
+          68
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 80.4,
+      "precision": 80.38,
+      "recall": 80.4,
+      "f1_score": 80.11,
+      "confusion_matrix": [
+        [
+          79,
+          32,
+          0
+        ],
+        [
+          20,
+          261,
+          15
+        ],
+        [
+          0,
+          31,
+          62
+        ]
+      ]
+    },
+    "Gradient Boosting": {
+      "accuracy": 91.2,
+      "precision": 91.45,
+      "recall": 91.2,
+      "f1_score": 91.03,
+      "confusion_matrix": [
+        [
+          100,
+          11,
+          0
+        ],
+        [
+          6,
+          286,
+          4
+        ],
+        [
+          0,
+          23,
+          70
+        ]
+      ]
+    }
+  },
+  "best_model": "Logistic Regression"
+}

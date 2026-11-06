@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+
+{% block title %}Student Management Directory{% endblock %}
+{% block page_title %}Student Management & Roster{% endblock %}
+{% block page_subtitle %}Comprehensive student management, 360° dossiers, filters, and enrollment operations{% endblock %}
+
+{% block content %}
+<!-- Top Action & Search Bar -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <form method="GET" action="{{ url_for('students_view') }}" class="row g-2 align-items-center">
+            <!-- Search Input -->
+            <div class="col-lg-3 col-md-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                    <input type="text" name="search" class="form-control border-start-0" placeholder="Search by Student ID or Name..." value="{{ search_term }}">
+                </div>
+            </div>
+
+            <!-- Department Filter -->
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <select name="dept_id" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="All">All Departments</option>
+                    {% for d in departments %}
+                        <option value="{{ d.id }}" {% if selected_dept == d.id|string %}selected{% endif %}>{{ d.name }} ({{ d.code }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Section Filter -->
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <select name="sec_id" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="All">All Sections</option>
+                    {% for s in sections %}
+                        <option value="{{ s.id }}" {% if selected_sec == s.id|string %}selected{% endif %}>{{ s.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                    <option value="All" {% if selected_status == 'All' %}selected{% endif %}>All Statuses</option>
+                    <option value="Active" {% if selected_status == 'Active' %}selected{% endif %}>Active</option>
+                    <option value="Inactive" {% if selected_status == 'Inactive' %}selected{% endif %}>Inactive</option>
+                    <option value="Suspended" {% if selected_status == 'Suspended' %}selected{% endif %}>Suspended</option>
+                    <option value="Graduated" {% if selected_status == 'Graduated' %}selected{% endif %}>Graduated</option>
+                </select>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="col-lg-3 col-md-6 d-flex gap-2 justify-content-lg-end">
+                <a href="{{ url_for('students_view') }}" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-arrow-counterclockwise"></i> Reset
+                </a>
+                <a href="{{ url_for('student_new_view') }}" class="btn btn-primary btn-sm px-3 shadow-sm text-nowrap">
+                    <i class="bi bi-person-plus-fill me-1"></i> Add Student
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Student Roster Table -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+        <div>
+            <h6 class="fw-bold mb-0 text-primary"><i class="bi bi-people-fill me-2"></i>Institutional Student Roster</h6>
+            <span class="text-muted small">Showing {{ students|length }} of {{ pagination.total }} learners</span>
+        </div>
+        <span class="badge bg-light text-secondary border font-monospace">Page {{ pagination.page }} of {{ pagination.total_pages }}</span>
+    </div>
+
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light text-secondary small">
+                    <tr>
+                        <th class="ps-4">Student ID</th>
+                        <th>Student Full Name</th>
+                        <th>Department</th>
+                        <th>Section</th>
+                        <th>Academic Year</th>
+                        <th>Status</th>
+                        <th>AI Risk Indicator</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in students %}
+                    <tr>
+                        <td class="ps-4">
+                            <span class="badge bg-light text-primary border font-monospace">{{ s.student_id }}</span>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px; font-size: 0.8rem;">
+                                    {{ s.full_name[:1] }}
+                                </div>
+                                <div>
+                                    <strong class="text-dark">{{ s.full_name }}</strong>
+                                    <div class="text-muted small" style="font-size: 0.75rem;">{{ s.email }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-secondary-subtle text-secondary">{{ s.dept_code or 'General' }}</span></td>
+                        <td>{{ s.sec_name or 'Default' }}</td>
+                        <td class="small">{{ s.academic_year }} (Sem {{ s.semester }})</td>
+                        <td>
+                            {% if s.enrollment_status == 'Active' %}
+                                <span class="badge bg-success-subtle text-success border border-success-subtle">Active</span>
+                            {% elif s.enrollment_status == 'Suspended' %}
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Suspended</span>
+                            {% elif s.enrollment_status == 'Graduated' %}
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Graduated</span>
+                            {% else %}
+                                <span class="badge bg-secondary-subtle text-secondary border">{{ s.enrollment_status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.risk_level == 'High Risk' %}
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="bi bi-shield-x me-1"></i>High Risk</span>
+                            {% elif s.risk_level == 'Medium Risk' %}
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="bi bi-shield-shaded me-1"></i>Medium Risk</span>
+                            {% elif s.risk_level == 'Low Risk' %}
+                                <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="bi bi-shield-check me-1"></i>Low Risk</span>
+                            {% else %}
+                                <span class="badge bg-light text-muted border">Unassessed</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{ url_for('student_profile_view', student_pk=s.id) }}" class="btn btn-outline-primary" title="View Complete 360° Profile">
+                                    <i class="bi bi-person-lines-fill"></i> 360° Dossier
+                                </a>
+                                <button type="button" class="btn btn-outline-secondary" onclick="openEditModal({{ s|tojson }})" title="Edit Student">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <form action="{{ url_for('student_delete', student_pk=s.id) }}" method="POST" class="d-inline" onsubmit="return confirm('Deactivate/Delete this student record?')">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-outline-danger" title="Deactivate / Delete">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center py-5 text-muted">
+                            <i class="bi bi-person-x fs-1 text-secondary d-block mb-2"></i>
+                            No students found matching the selected filters.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination Bar -->
+        {% if pagination.total_pages > 1 %}
+        <div class="p-3 border-top d-flex justify-content-between align-items-center">
+            <span class="small text-muted">Page {{ pagination.page }} of {{ pagination.total_pages }}</span>
+            <ul class="pagination pagination-sm mb-0">
+                <li class="page-item {% if pagination.page <= 1 %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('students_view', page=pagination.page-1, search=search_term, dept_id=selected_dept, sec_id=selected_sec, status=selected_status) }}">Previous</a>
+                </li>
+                {% for p in range(1, pagination.total_pages + 1) %}
+                <li class="page-item {% if pagination.page == p %}active{% endif %}">
+                    <a class="page-link" href="{{ url_for('students_view', page=p, search=search_term, dept_id=selected_dept, sec_id=selected_sec, status=selected_status) }}">{{ p }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item {% if pagination.page >= pagination.total_pages %}disabled{% endif %}">
+                    <a class="page-link" href="{{ url_for('students_view', page=pagination.page+1, search=search_term, dept_id=selected_dept, sec_id=selected_sec, status=selected_status) }}">Next</a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modal: Add Student -->
+<div class="modal fade" id="addStudentModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-bottom py-3 px-4">
+                <h5 class="modal-title fw-bold text-primary"><i class="bi bi-person-plus-fill me-2"></i>Enroll New Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="{{ url_for('student_create') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="modal-body p-4">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Student ID <span class="text-danger">*</span></label>
+                            <input type="text" name="student_id" class="form-control" placeholder="e.g. APEX-24-101" required>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label small fw-semibold text-secondary">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" name="full_name" class="form-control" placeholder="e.g. Ishaan Verma" required>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Institutional Email <span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control" placeholder="ishaan.v@apex.edu" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Phone Number</label>
+                            <input type="text" name="phone" class="form-control" placeholder="+91 98765 00000">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Department <span class="text-danger">*</span></label>
+                            <select name="department_id" class="form-select" required>
+                                {% for d in departments %}
+                                    <option value="{{ d.id }}">{{ d.name }} ({{ d.code }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Section</label>
+                            <select name="section_id" class="form-select">
+                                {% for s in sections %}
+                                    <option value="{{ s.id }}">{{ s.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Academic Year <span class="text-danger">*</span></label>
+                            <input type="text" name="academic_year" class="form-control" value="2024-2025" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Current Semester</label>
+                            <input type="number" name="semester" class="form-control" value="1" min="1" max="10">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Enrollment Status</label>
+                            <select name="enrollment_status" class="form-select">
+                                <option value="Active" selected>Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Graduated">Graduated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Gender</label>
+                            <select name="gender" class="form-select">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Age</label>
+                            <input type="number" name="age" class="form-control" value="20" min="15" max="60">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Enrollment Date</label>
+                            <input type="date" name="enrollment_date" class="form-control" value="{{ today }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top py-3 px-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm">
+                        <i class="bi bi-save me-1"></i> Enroll Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Edit Student -->
+<div class="modal fade" id="editStudentModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-bottom py-3 px-4">
+                <h5 class="modal-title fw-bold text-primary"><i class="bi bi-pencil-square me-2"></i>Edit Student Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="{{ url_for('student_update') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="student_pk" id="editStudentPk">
+
+                <div class="modal-body p-4">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-semibold text-secondary">Student ID</label>
+                            <input type="text" name="student_id" id="editStudentId" class="form-control bg-light" readonly>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label small fw-semibold text-secondary">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" name="full_name" id="editFullName" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Email <span class="text-danger">*</span></label>
+                            <input type="email" name="email" id="editEmail" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Phone Number</label>
+                            <input type="text" name="phone" id="editPhone" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Department</label>
+                            <select name="department_id" id="editDeptId" class="form-select">
+                                {% for d in departments %}
+                                    <option value="{{ d.id }}">{{ d.name }} ({{ d.code }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Section</label>
+                            <select name="section_id" id="editSecId" class="form-select">
+                                {% for s in sections %}
+                                    <option value="{{ s.id }}">{{ s.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Semester</label>
+                            <input type="number" name="semester" id="editSemester" class="form-control" min="1" max="10">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Enrollment Status</label>
+                            <select name="enrollment_status" id="editStatus" class="form-select">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Suspended">Suspended</option>
+                                <option value="Graduated">Graduated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top py-3 px-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm">
+                        <i class="bi bi-check2 me-1"></i> Update Student Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function openEditModal(st) {
+        document.getElementById('editStudentPk').value = st.id;
+        document.getElementById('editStudentId').value = st.student_id;
+        document.getElementById('editFullName').value = st.full_name;
+        document.getElementById('editEmail').value = st.email;
+        document.getElementById('editPhone').value = st.phone || '';
+        document.getElementById('editDeptId').value = st.department_id || '';
+        document.getElementById('editSecId').value = st.section_id || '';
+        document.getElementById('editSemester').value = st.semester || 1;
+        document.getElementById('editStatus').value = st.enrollment_status || 'Active';
+        new bootstrap.Modal(document.getElementById('editStudentModal')).show();
+    }
+</script>
+{% endblock %}

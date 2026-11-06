@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | UniTrack AI – Multi-University Analytics Platform</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 1) 90%);
+            padding: 2rem 1rem;
+        }
+        .auth-card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px -15px rgba(30, 58, 138, 0.12);
+            overflow: hidden;
+            width: 100%;
+            max-width: 460px;
+        }
+        .auth-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: #ffffff;
+            padding: 2.2rem 2rem 1.8rem;
+            text-align: center;
+            position: relative;
+        }
+        .auth-header .brand-icon {
+            width: 58px;
+            height: 58px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.85rem;
+            margin-bottom: 0.85rem;
+        }
+        .auth-body {
+            padding: 2.2rem 2rem 2rem;
+        }
+        .demo-pill {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.76rem;
+            padding: 0.4rem 0.65rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-bottom: 0.35rem;
+        }
+        .demo-pill:hover {
+            background: #eff6ff;
+            border-color: #93c5fd;
+            color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="brand-icon">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <h4 class="fw-bold mb-1">UniTrack AI</h4>
+                <p class="mb-0 opacity-75 small">Multi-University Management & Performance Analytics</p>
+            </div>
+
+            <div class="auth-body">
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show py-2 px-3 small" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close py-2" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form action="{{ url_for('login_view') }}" method="POST" id="loginForm">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Institutional Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-envelope"></i></span>
+                            <input type="email" name="email" id="emailInput" class="form-control border-start-0 ps-0" placeholder="admin@apex.edu" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label class="form-label small fw-semibold text-secondary mb-0">Password</label>
+                            <a href="{{ url_for('password_reset_view') }}" class="small text-decoration-none text-primary">Forgot Password?</a>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-lock"></i></span>
+                            <input type="password" name="password" id="passwordInput" class="form-control border-start-0 ps-0" placeholder="••••••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 d-flex justify-content-between align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                            <label class="form-check-label small text-muted" for="rememberMe">
+                                Secure Session
+                            </label>
+                        </div>
+                        <span class="badge bg-light text-secondary border">Role Auto-Detect</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Sign In to Portal
+                    </button>
+                </form>
+
+                <!-- Demo Fast-Fill Bar -->
+                <div class="mt-4 pt-3 border-top">
+                    <span class="d-block small text-muted fw-semibold mb-2 text-uppercase" style="font-size: 0.68rem; letter-spacing: 0.5px;">
+                        Quick Demo Credentials (Click to fill):
+                    </span>
+                    <div class="d-flex flex-wrap gap-1">
+                        <button type="button" class="demo-pill" onclick="fillCreds('admin@unitrack.ai', 'Admin@123')">
+                            <i class="bi bi-shield-lock-fill text-danger"></i> Super Admin
+                        </button>
+                        <button type="button" class="demo-pill" onclick="fillCreds('admin@apex.edu', 'ApexAdmin@123')">
+                            <i class="bi bi-building-fill text-primary"></i> Apex Admin
+                        </button>
+                        <button type="button" class="demo-pill" onclick="fillCreds('prof.sharma@apex.edu', 'Staff@123')">
+                            <i class="bi bi-person-workspace text-teal"></i> Apex Staff
+                        </button>
+                        <button type="button" class="demo-pill" onclick="fillCreds('admin@pacific.edu', 'PacificAdmin@123')">
+                            <i class="bi bi-building text-success"></i> Pacific Admin
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Registration Link -->
+                <div class="text-center mt-3 pt-2">
+                    <span class="small text-muted">Register a new institution?</span>
+                    <a href="{{ url_for('register_view') }}" class="small fw-semibold text-primary text-decoration-none ms-1">
+                        Register University <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Student Portal Direct Link -->
+                <div class="mt-3 p-3 bg-light rounded-3 border text-center">
+                    <span class="small text-muted d-block mb-1">Looking for the Student Dashboard?</span>
+                    <a href="{{ url_for('student_login_view') }}" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold shadow-sm">
+                        <i class="bi bi-mortarboard-fill me-1"></i> Access Student Portal &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function fillCreds(email, password) {
+            document.getElementById('emailInput').value = email;
+            document.getElementById('passwordInput').value = password;
+        }
+    </script>
+</body>
+</html>

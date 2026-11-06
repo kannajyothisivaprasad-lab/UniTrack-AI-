@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}B.Tech Trending Courses{% endblock %}
+{% block page_title %}Engineering Program & Course Portfolio{% endblock %}
+{% block page_subtitle %}B.Tech Trending Specializations, Dynamic Enrollment Analytics & Intake Capacity Tracking{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <!-- Top Trending Insights Banner -->
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4 bg-white p-4">
+            <div class="row align-items-center g-3">
+                <div class="col-md-8">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill mb-2">
+                        <i class="bi bi-fire text-danger me-1"></i> Market-Driven Curricula
+                    </span>
+                    <h4 class="fw-bold text-dark mb-1">B.Tech Engineering Specializations</h4>
+                    <p class="text-muted small mb-0">
+                        Tracks real-time intake distribution across premier programs including AI/ML, Data Science, Cyber Security, Cloud, IoT and Robotics.
+                    </p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <button class="btn btn-primary rounded-pill px-4 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                        <i class="bi bi-plus-circle me-1"></i> Add New Program
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Grid & Table -->
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary">
+                    <i class="bi bi-mortarboard-fill me-2"></i> Active Academic Offerings & Enrollment Ranking
+                </h6>
+                <span class="text-muted small">Ranked by verified live student enrollments</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light small text-secondary">
+                            <tr>
+                                <th class="ps-4">Rank & Course Name</th>
+                                <th>Code</th>
+                                <th>Enrolled Students</th>
+                                <th>Intake Capacity</th>
+                                <th>Seat Utilization</th>
+                                <th class="pe-4 text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for c in courses %}
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="rounded-circle {% if loop.index == 1 %}bg-warning-subtle text-warning border-warning{% elif loop.index <= 3 %}bg-primary-subtle text-primary border-primary{% else %}bg-light text-muted{% endif %} border d-flex align-items-center justify-content-center fw-bold" style="width: 32px; height: 32px; font-size: 0.85rem;">
+                                            #{{ loop.index }}
+                                        </div>
+                                        <div>
+                                            <strong class="text-dark d-block">{{ c.name }}</strong>
+                                            <small class="text-muted text-truncate d-inline-block" style="max-width: 350px;">{{ c.description }}</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border font-monospace">{{ c.code }}</span>
+                                </td>
+                                <td>
+                                    <strong class="text-primary fs-6">{{ c.enrolled_count }}</strong>
+                                    <span class="small text-muted">Learners</span>
+                                </td>
+                                <td>
+                                    <span class="text-dark fw-semibold">{{ c.intake_capacity or 120 }}</span> seats
+                                </td>
+                                <td style="width: 220px;">
+                                    {% set cap = c.intake_capacity if c.intake_capacity else 120 %}
+                                    {% set pct = [(c.enrolled_count / cap * 100)|round(1), 100]|min %}
+                                    <div class="d-flex justify-content-between small text-muted mb-1">
+                                        <span>{{ pct }}%</span>
+                                        <span>{{ c.enrolled_count }}/{{ cap }}</span>
+                                    </div>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar {% if pct > 80 %}bg-success{% elif pct > 50 %}bg-primary{% else %}bg-info{% endif %}" style="width: {{ pct }}%;"></div>
+                                    </div>
+                                </td>
+                                <td class="pe-4 text-end">
+                                    <form method="POST" action="{{ url_for('course_delete', course_id=c.id) }}" onsubmit="return confirm('Are you sure you want to remove {{ c.name }}?');" class="d-inline">
+                                        <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3" {% if c.enrolled_count > 0 %}title="Cannot delete course with active students" disabled{% endif %}>
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="6" class="text-center py-4 text-muted">No courses configured.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Add New Course -->
+<div class="modal fade" id="addCourseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-light border-bottom">
+                <h6 class="modal-title fw-bold text-dark">
+                    <i class="bi bi-mortarboard-fill text-primary me-2"></i> Register New Degree Course
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('course_create') }}">
+                <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-dark">Course Code</label>
+                        <input type="text" class="form-control font-monospace" name="code" placeholder="e.g. AIML, CYBER, DS" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-dark">Course Program Title</label>
+                        <input type="text" class="form-control" name="name" placeholder="e.g. B.Tech in Quantum Computing" required>
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-dark">Annual Intake Capacity</label>
+                            <input type="number" class="form-control" name="intake_capacity" value="120" min="10" max="1000" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-dark">Department</label>
+                            <select name="department_id" class="form-select">
+                                <option value="">General Engineering</option>
+                                {% for d in departments %}
+                                    <option value="{{ d.id }}">{{ d.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold text-dark">Curriculum Overview / Description</label>
+                        <textarea name="description" class="form-control" rows="3" placeholder="Brief outline of syllabus core specializations and lab requirements..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-top">
+                    <button type="button" class="btn btn-secondary btn-sm rounded-pill px-3" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm">
+                        <i class="bi bi-check-lg me-1"></i> Register Course
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

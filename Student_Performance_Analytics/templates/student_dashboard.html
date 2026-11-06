@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.student.full_name }} | Student Dashboard – UniTrack AI</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .student-nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.8rem 1.5rem;
+        }
+        .hero-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+            border-radius: 20px;
+            color: #ffffff;
+            padding: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.25);
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            bottom: -30px;
+            width: 220px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        .avatar-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            overflow: hidden;
+        }
+        .kpi-box {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 1.4rem;
+            box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease;
+        }
+        .kpi-box:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Top Student Navigation -->
+    <nav class="student-nav sticky-top shadow-sm">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div>
+                    <h6 class="fw-bold mb-0 text-dark">UniTrack AI</h6>
+                    <small class="text-muted">{{ data.student.university_name }}</small>
+                </div>
+            </div>
+
+            <!-- Student Tabs -->
+            <ul class="nav nav-pills d-none d-md-flex gap-1">
+                <li class="nav-item">
+                    <a class="nav-link active rounded-pill px-3 py-1" href="{{ url_for('student_dashboard_view') }}">
+                        <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3 py-1 text-secondary" href="{{ url_for('student_assignments_view') }}">
+                        <i class="bi bi-folder2-open me-1"></i> Coursework
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill px-3 py-1 text-secondary" href="{{ url_for('student_fees_view') }}">
+                        <i class="bi bi-wallet2 me-1"></i> Fees & Payments
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                <div class="d-none d-sm-block text-end me-2">
+                    <span class="d-block small fw-bold text-dark">{{ data.student.full_name }}</span>
+                    <span class="d-block text-muted small font-monospace" style="font-size: 0.75rem;">{{ data.student.student_id }}</span>
+                </div>
+                <a href="{{ url_for('logout_view') }}" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                    <i class="bi bi-box-arrow-right me-1"></i> Sign Out
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 px-md-4">
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show rounded-3 mb-4 shadow-sm" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Hero Student Profile Banner -->
+        <div class="hero-banner mb-4">
+            <div class="row align-items-center g-3">
+                <div class="col-auto">
+                    <div class="avatar-box">
+                        {% if data.student.profile_photo %}
+                            <img src="{{ url_for('static', filename=data.student.profile_photo.replace('uploads/', '')) }}" alt="Photo" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% else %}
+                            {{ data.student.full_name[:1] }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                        <h3 class="fw-bold mb-0 text-white">{{ data.student.full_name }}</h3>
+                        <span class="badge bg-white text-primary font-monospace px-2 py-1">{{ data.student.student_id }}</span>
+                        <span class="badge bg-success-subtle text-success px-2 py-1">{{ data.student.enrollment_status }}</span>
+                    </div>
+                    <p class="text-white-50 mb-2">
+                        <i class="bi bi-mortarboard me-1"></i> {{ data.student.course_name or 'Engineering Program' }} &bull;
+                        <i class="bi bi-building me-1"></i> {{ data.student.department_name or 'Engineering Department' }} &bull;
+                        <i class="bi bi-people me-1"></i> {{ data.student.section_name or 'Section A' }}
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 small text-white-50">
+                        <span><i class="bi bi-calendar3-range text-info me-1"></i> Batch: <strong class="text-white">{{ data.student.batch_name or '2024-2028' }}</strong></span>
+                        <span><i class="bi bi-calendar-check text-info me-1"></i> Academic Year: <strong class="text-white">{{ data.student.academic_year }}</strong></span>
+                        <span><i class="bi bi-envelope text-info me-1"></i> {{ data.student.email }}</span>
+                        <span><i class="bi bi-telephone text-info me-1"></i> {{ data.student.phone or 'Not Provided' }}</span>
+                    </div>
+                </div>
+                <div class="col-md-auto text-md-end mt-3 mt-md-0">
+                    <a href="{{ url_for('student_fees_view') }}" class="btn btn-warning rounded-pill px-4 fw-bold shadow-sm">
+                        <i class="bi bi-credit-card me-1"></i> Pay Fees Online
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Essential Metrics Cards -->
+        <div class="row g-3 mb-4">
+            <!-- 1. Attendance Rate -->
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-box">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted small fw-bold text-uppercase">Cumulative Attendance</span>
+                        <span class="badge {% if data.attendance_summary.percentage >= 75 %}bg-success-subtle text-success{% else %}bg-danger-subtle text-danger{% endif %} rounded-pill">
+                            {% if data.attendance_summary.percentage >= 75 %}Good Standing{% else %}Low Alert{% endif %}
+                        </span>
+                    </div>
+                    <h3 class="fw-bold mb-1 text-primary">{{ data.attendance_summary.percentage }}%</h3>
+                    <div class="progress mb-2" style="height: 6px;">
+                        <div class="progress-bar {% if data.attendance_summary.percentage >= 75 %}bg-success{% else %}bg-danger{% endif %}" style="width: {{ data.attendance_summary.percentage }}%;"></div>
+                    </div>
+                    <span class="small text-muted">
+                        <strong class="text-dark">{{ data.attendance_summary.present_days }}</strong> Present out of {{ data.attendance_summary.total_days }} total lecture days
+                    </span>
+                </div>
+            </div>
+
+            <!-- 2. Today's Attendance Status -->
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-box">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted small fw-bold text-uppercase">Today's Attendance</span>
+                        <i class="bi bi-calendar-event text-secondary"></i>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        {% if data.today_status == 'Present' %}
+                            <span class="badge bg-success fs-6 py-2 px-3 rounded-pill">
+                                <i class="bi bi-check-circle-fill me-1"></i> PRESENT
+                            </span>
+                        {% elif data.today_status == 'Absent' %}
+                            <span class="badge bg-danger fs-6 py-2 px-3 rounded-pill">
+                                <i class="bi bi-x-circle-fill me-1"></i> ABSENT
+                            </span>
+                        {% else %}
+                            <span class="badge bg-secondary-subtle text-secondary fs-6 py-2 px-3 rounded-pill">
+                                <i class="bi bi-clock-history me-1"></i> NOT RECORDED
+                            </span>
+                        {% endif %}
+                    </div>
+                    <span class="small text-muted d-block">
+                        Status verified for today's session
+                    </span>
+                </div>
+            </div>
+
+            <!-- 3. Fee Balance Status in Rupees -->
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-box">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted small fw-bold text-uppercase">Fee Payment Status</span>
+                        <span class="badge {% if data.fee_record and data.fee_record.payment_status == 'Paid' %}bg-success{% elif data.fee_record and data.fee_record.payment_status == 'Partial' %}bg-warning text-dark{% else %}bg-danger{% endif %} rounded-pill">
+                            {{ data.fee_record.payment_status if data.fee_record else 'No Dues' }}
+                        </span>
+                    </div>
+                    <h3 class="fw-bold mb-1 {% if data.fee_record and data.fee_record.pending_amount > 0 %}text-danger{% else %}text-success{% endif %}">
+                        &#8377;{{ "{:,.0f}".format(data.fee_record.pending_amount if data.fee_record else 0) }}
+                    </h3>
+                    <div class="d-flex justify-content-between small text-muted">
+                        <span>Total: &#8377;{{ "{:,.0f}".format(data.fee_record.total_fee if data.fee_record else 0) }}</span>
+                        <span class="text-success fw-semibold">Paid: &#8377;{{ "{:,.0f}".format(data.fee_record.paid_amount if data.fee_record else 0) }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Coursework & Assignments -->
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-box">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted small fw-bold text-uppercase">Assignments & Labs</span>
+                        <i class="bi bi-folder-check text-primary"></i>
+                    </div>
+                    <h3 class="fw-bold mb-1 text-dark">{{ data.assignments|length }} Assigned</h3>
+                    <div class="small text-muted">
+                        Track upcoming deadlines and review graded lab submissions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Left Column: Coursework Assignments & Submission Folder -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-journal-text text-primary me-2"></i> Coursework & Assignment Ledger
+                        </h6>
+                        <a href="{{ url_for('student_assignments_view') }}" class="btn btn-outline-primary btn-sm rounded-pill">
+                            View All <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light small text-secondary">
+                                    <tr>
+                                        <th class="ps-4">Assignment Title</th>
+                                        <th>Subject</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                        <th class="pe-4 text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for a in data.assignments %}
+                                    <tr>
+                                        <td class="ps-4">
+                                            <span class="fw-semibold text-dark d-block">{{ a.title }}</span>
+                                            <small class="text-muted text-truncate d-inline-block" style="max-width: 200px;">{{ a.description }}</small>
+                                        </td>
+                                        <td><span class="badge bg-light text-dark border">{{ a.subject_code or 'ENG' }}</span></td>
+                                        <td class="small">{{ a.due_date }}</td>
+                                        <td>
+                                            {% if a.submission_status == 'Submitted' or a.submission_status == 'Completed' %}
+                                                <span class="badge bg-success-subtle text-success">Submitted</span>
+                                            {% else %}
+                                                <span class="badge bg-warning-subtle text-warning">Pending</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="pe-4 text-end">
+                                            <a href="{{ url_for('student_assignments_view') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                                Submit <i class="bi bi-upload ms-1"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr><td colspan="5" class="text-center py-4 text-muted">No coursework assigned yet.</td></tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Marks Table -->
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-header bg-white border-bottom py-3 px-4">
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-award text-warning me-2"></i> Examination & Assessment Results
+                        </h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light small text-secondary">
+                                    <tr>
+                                        <th class="ps-4">Subject</th>
+                                        <th>Internal</th>
+                                        <th>External</th>
+                                        <th>Total</th>
+                                        <th>Percentage</th>
+                                        <th class="pe-4">Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for m in data.marks %}
+                                    <tr>
+                                        <td class="ps-4">
+                                            <strong>{{ m.subject_name }}</strong>
+                                            <span class="text-muted small d-block font-monospace">{{ m.subject_code }}</span>
+                                        </td>
+                                        <td>{{ m.internal_marks }}</td>
+                                        <td>{{ m.external_marks }}</td>
+                                        <td><strong class="text-dark">{{ m.total_marks }}</strong> / {{ m.max_marks }}</td>
+                                        <td>{{ m.percentage }}%</td>
+                                        <td class="pe-4">
+                                            {% if m.is_pass == 1 %}
+                                                <span class="badge bg-success-subtle text-success">PASS</span>
+                                            {% else %}
+                                                <span class="badge bg-danger-subtle text-danger">FAIL</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr><td colspan="6" class="text-center py-4 text-muted">No examination results recorded yet.</td></tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Recent Daily Attendance Log & Fee Receipts -->
+            <div class="col-lg-5">
+                <!-- Recent Attendance Logs -->
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-header bg-white border-bottom py-3 px-4">
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-calendar-check text-success me-2"></i> Recent Attendance Records
+                        </h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover align-middle mb-0">
+                                <thead class="bg-light small text-secondary">
+                                    <tr>
+                                        <th class="ps-4">Date</th>
+                                        <th>Status</th>
+                                        <th class="pe-4 text-end">Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for att in data.recent_attendance %}
+                                    <tr>
+                                        <td class="ps-4 font-monospace small">{{ att.date }}</td>
+                                        <td>
+                                            {% if att.status == 'Present' %}
+                                                <span class="badge bg-success-subtle text-success">Present</span>
+                                            {% elif att.status == 'Absent' %}
+                                                <span class="badge bg-danger-subtle text-danger">Absent</span>
+                                            {% else %}
+                                                <span class="badge bg-warning-subtle text-warning">Leave</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="pe-4 text-end small text-muted">
+                                            {% if att.method == 'face_recognition' %}
+                                                <span class="badge bg-primary-subtle text-primary"><i class="bi bi-camera me-1"></i> AI Face</span>
+                                            {% else %}
+                                                <span class="badge bg-light text-dark border">Manual</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr><td colspan="3" class="text-center py-3 text-muted">No recent logs recorded.</td></tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Fee Payments & Receipts -->
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold mb-0 text-dark">
+                            <i class="bi bi-receipt text-primary me-2"></i> Payment Receipts
+                        </h6>
+                        <a href="{{ url_for('student_fees_view') }}" class="btn btn-outline-primary btn-sm rounded-pill">
+                            Pay / Ledger
+                        </a>
+                    </div>
+                    <div class="card-body p-3">
+                        {% for p in data.payments %}
+                        <div class="p-3 bg-light rounded-3 mb-2 d-flex justify-content-between align-items-center border">
+                            <div>
+                                <span class="d-block fw-bold text-dark">&#8377;{{ "{:,.0f}".format(p.amount) }}</span>
+                                <span class="small text-muted font-monospace">{{ p.receipt_reference }}</span>
+                                <small class="d-block text-secondary">{{ p.payment_date }} &bull; {{ p.payment_method }}</small>
+                            </div>
+                            <a href="{{ url_for('fee_receipt_view', receipt_ref=p.receipt_reference) }}" target="_blank" class="btn btn-sm btn-outline-success rounded-pill px-3">
+                                <i class="bi bi-printer me-1"></i> Receipt
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="text-center py-4 text-muted small">No payment transactions recorded yet.</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

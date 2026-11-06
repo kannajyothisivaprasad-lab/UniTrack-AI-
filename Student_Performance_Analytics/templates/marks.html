@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+
+{% block title %}Academic Marks & Examinations{% endblock %}
+{% block page_title %}Academic Performance & Examination Management{% endblock %}
+{% block page_subtitle %}Record exam results, track subject-wise pass rates, and identify top performers{% endblock %}
+
+{% block content %}
+<!-- KPI Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Total Exam Records</span>
+                <span class="stat-value text-primary">{{ data.records|length }}</span>
+                <span class="stat-desc text-muted"><i class="bi bi-file-earmark-check"></i> Submissions Graded</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-journal-check"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Top Performers (&ge;85%)</span>
+                <span class="stat-value text-success">{{ data.top_performers|length }}</span>
+                <span class="stat-desc text-success"><i class="bi bi-award-fill"></i> Honors List</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-trophy-fill"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Academic Deficiency (&lt;40%)</span>
+                <span class="stat-value text-danger">{{ data.low_performers|length }}</span>
+                <span class="stat-desc text-danger"><i class="bi bi-exclamation-octagon-fill"></i> Requires Remedial</span>
+            </div>
+            <div class="stat-icon"><i class="bi bi-shield-x"></i></div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="stat-card">
+            <div class="stat-card-info">
+                <span class="stat-label">Actions</span>
+                <div class="mt-2">
+                    <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#enterMarksModal">
+                        <i class="bi bi-plus-circle me-1"></i> Enter Exam Marks
+                    </button>
+                </div>
+            </div>
+            <div class="stat-icon"><i class="bi bi-pencil-square"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabs -->
+<ul class="nav nav-pills mb-4 bg-white p-2 rounded-4 shadow-sm border" id="marksTabs" role="tablist">
+    <li class="nav-item">
+        <button class="nav-link active rounded-3 px-4" data-bs-toggle="pill" data-bs-target="#all-marks-content">
+            <i class="bi bi-list-columns-reverse me-2"></i>All Exam Records
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-4" data-bs-toggle="pill" data-bs-target="#top-performers-content">
+            <i class="bi bi-trophy-fill text-warning me-2"></i>Top Performers List
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link rounded-3 px-4" data-bs-toggle="pill" data-bs-target="#failing-content">
+            <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>Failing Students Watchlist
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="marksTabContent">
+    <!-- TAB 1: ALL MARKS TABLE -->
+    <div class="tab-pane fade show active" id="all-marks-content">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-primary">Academic Examination Ledger</h6>
+                <span class="badge bg-light text-secondary border">{{ data.records|length }} Total Evaluations</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Student ID</th>
+                                <th>Student Name</th>
+                                <th>Subject</th>
+                                <th>Examination</th>
+                                <th>Internal / External</th>
+                                <th>Total Marks</th>
+                                <th>Percentage</th>
+                                <th>Grade</th>
+                                <th class="text-end pe-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for m in data.records %}
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge bg-light text-dark border font-monospace">{{ m.student_id }}</span>
+                                </td>
+                                <td><strong class="text-dark">{{ m.full_name }}</strong></td>
+                                <td>
+                                    <div><strong class="text-primary">{{ m.sub_code }}</strong></div>
+                                    <div class="text-muted small">{{ m.sub_name }}</div>
+                                </td>
+                                <td>
+                                    <div>{{ m.exam_name }}</div>
+                                    <span class="badge bg-light text-muted border small">{{ m.exam_type }}</span>
+                                </td>
+                                <td>{{ m.internal_marks }} / {{ m.external_marks }}</td>
+                                <td><strong>{{ m.total_marks }}</strong> <span class="text-muted small">/ {{ m.max_marks }}</span></td>
+                                <td>
+                                    <div class="fw-semibold {% if m.percentage >= 75 %}text-success{% elif m.percentage >= 40 %}text-primary{% else %}text-danger{% endif %}">
+                                        {{ m.percentage }}%
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary-subtle text-dark">{{ m.grade or 'N/A' }}</span>
+                                </td>
+                                <td class="text-end pe-4">
+                                    {% if m.is_pass == 1 %}
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="bi bi-check-circle-fill me-1"></i>PASS</span>
+                                    {% else %}
+                                        <span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="bi bi-x-circle-fill me-1"></i>FAIL</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="9" class="text-center py-4 text-muted">No examination records found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: TOP PERFORMERS -->
+    <div class="tab-pane fade" id="top-performers-content">
+        <div class="card border-0 shadow-sm rounded-4 border-start border-success border-4">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h6 class="fw-bold mb-0 text-success"><i class="bi bi-award-fill me-2"></i>Academic Honors & High Achievers (&ge;85%)</h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Rank</th>
+                                <th>Student</th>
+                                <th>Subject</th>
+                                <th>Score</th>
+                                <th>Percentage</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tp in data.top_performers %}
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge rounded-circle bg-warning text-dark p-2" style="width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center;">
+                                        {{ loop.index }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div><strong>{{ tp.full_name }}</strong></div>
+                                    <span class="badge bg-light text-muted border font-monospace">{{ tp.student_id }}</span>
+                                </td>
+                                <td>{{ tp.sub_name }} ({{ tp.sub_code }})</td>
+                                <td>{{ tp.total_marks }} / {{ tp.max_marks }}</td>
+                                <td><span class="badge bg-success-subtle text-success fs-6 fw-bold">{{ tp.percentage }}%</span></td>
+                                <td><span class="badge bg-primary text-white">{{ tp.grade }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: FAILING STUDENTS -->
+    <div class="tab-pane fade" id="failing-content">
+        <div class="card border-0 shadow-sm rounded-4 border-start border-danger border-4">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+                <h6 class="fw-bold mb-0 text-danger"><i class="bi bi-shield-x me-2"></i>Students Below Passing Grade (Remedial Intervention Required)</h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-secondary small">
+                            <tr>
+                                <th class="ps-4">Student ID</th>
+                                <th>Student Name</th>
+                                <th>Subject</th>
+                                <th>Score Obtained</th>
+                                <th>Pass Mark Required</th>
+                                <th>Deficit</th>
+                                <th class="text-end pe-4">Intervention</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lp in data.low_performers %}
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge bg-light text-dark border font-monospace">{{ lp.student_id }}</span>
+                                </td>
+                                <td><strong class="text-dark">{{ lp.full_name }}</strong></td>
+                                <td>{{ lp.sub_name }} ({{ lp.sub_code }})</td>
+                                <td><span class="text-danger fw-bold">{{ lp.total_marks }}</span> / {{ lp.max_marks }}</td>
+                                <td>{{ lp.pass_marks }}</td>
+                                <td><span class="badge bg-danger-subtle text-danger">-{{ (lp.pass_marks - lp.total_marks)|round(1) }} marks</span></td>
+                                <td class="text-end pe-4">
+                                    <a href="{{ url_for('students_view', search=lp.student_id) }}" class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-exclamation-triangle me-1"></i> Plan Remedial
+                                    </a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center py-4 text-muted">No failing students recorded. Excellent performance!</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Enter Marks -->
+<div class="modal fade" id="enterMarksModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-bottom py-3 px-4">
+                <h5 class="modal-title fw-bold text-primary"><i class="bi bi-pencil-square me-2"></i>Enter Student Marks</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="{{ url_for('marks_save') }}" method="POST" id="marksEntryForm">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="modal-body p-4">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Student <span class="text-danger">*</span></label>
+                            <select name="student_id" class="form-select" required>
+                                <option value="">Select Student...</option>
+                                {% for s in students %}
+                                    <option value="{{ s.id }}">{{ s.student_id }} - {{ s.full_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Subject <span class="text-danger">*</span></label>
+                            <select name="subject_id" class="form-select" required>
+                                <option value="">Select Subject...</option>
+                                {% for sub in subjects %}
+                                    <option value="{{ sub.id }}">{{ sub.code }} - {{ sub.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Examination <span class="text-danger">*</span></label>
+                            <select name="examination_id" class="form-select" required>
+                                {% for ex in examinations %}
+                                    <option value="{{ ex.id }}">{{ ex.name }} ({{ ex.exam_type }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small fw-semibold text-secondary">Max Marks</label>
+                            <input type="number" name="max_marks" id="maxMarksInput" class="form-control" value="100" min="1" required oninput="calcMarks()">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label small fw-semibold text-secondary">Pass Marks</label>
+                            <input type="number" name="pass_marks" id="passMarksInput" class="form-control" value="40" min="0" required oninput="calcMarks()">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">Internal Assessment Marks</label>
+                            <input type="number" step="0.5" name="internal_marks" id="internalMarksInput" class="form-control" value="0" min="0" required oninput="calcMarks()">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold text-secondary">External Examination Marks</label>
+                            <input type="number" step="0.5" name="external_marks" id="externalMarksInput" class="form-control" value="0" min="0" required oninput="calcMarks()">
+                        </div>
+                    </div>
+
+                    <!-- Auto Calculation Live Indicator -->
+                    <div class="card bg-light border-0 p-3 rounded-3 mb-2">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <span class="text-muted small d-block">Computed Total:</span>
+                                <h5 class="fw-bold mb-0 text-primary" id="calcTotal">0.0</h5>
+                            </div>
+                            <div class="col-4">
+                                <span class="text-muted small d-block">Percentage:</span>
+                                <h5 class="fw-bold mb-0 text-primary" id="calcPct">0.0%</h5>
+                            </div>
+                            <div class="col-4">
+                                <span class="text-muted small d-block">Result Status:</span>
+                                <span class="badge bg-secondary fs-6" id="calcStatus">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top py-3 px-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm">
+                        <i class="bi bi-save me-1"></i> Save Marks Record
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function calcMarks() {
+        const internal = parseFloat(document.getElementById('internalMarksInput').value) || 0;
+        const external = parseFloat(document.getElementById('externalMarksInput').value) || 0;
+        const maxMarks = parseFloat(document.getElementById('maxMarksInput').value) || 100;
+        const passMarks = parseFloat(document.getElementById('passMarksInput').value) || 40;
+
+        const total = internal + external;
+        const pct = maxMarks > 0 ? ((total / maxMarks) * 100).toFixed(1) : 0;
+        const isPass = total >= passMarks;
+
+        document.getElementById('calcTotal').textContent = total.toFixed(1);
+        document.getElementById('calcPct').textContent = `${pct}%`;
+
+        const statusBadge = document.getElementById('calcStatus');
+        if (isPass) {
+            statusBadge.className = 'badge bg-success fs-6';
+            statusBadge.textContent = 'PASS';
+        } else {
+            statusBadge.className = 'badge bg-danger fs-6';
+            statusBadge.textContent = 'FAIL';
+        }
+    }
+</script>
+{% endblock %}

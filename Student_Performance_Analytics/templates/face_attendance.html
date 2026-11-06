@@ -1,0 +1,454 @@
+{% extends "base.html" %}
+
+{% block title %}AI Face Recognition Attendance{% endblock %}
+{% block page_title %}AI Face Recognition Attendance{% endblock %}
+{% block page_subtitle %}Automated Facial Biometrics, Anti-Duplicate Detection & Timestamp Logging{% endblock %}
+
+{% block extra_css %}
+<style>
+    .video-viewport {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        min-height: 380px;
+        margin: 0 auto;
+        background: #0f172a;
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    #webcamVideo {
+        width: 100%;
+        height: 100%;
+        display: none;
+        object-fit: cover;
+        transform: scaleX(-1); /* Mirror camera */
+    }
+    #cameraPlaceholder {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        color: #94a3b8;
+    }
+    #faceCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    .scanner-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+        box-shadow: 0 0 12px #38bdf8;
+        display: none;
+        animation: scan 2s infinite ease-in-out;
+    }
+    @keyframes scan {
+        0% { top: 0%; opacity: 0.2; }
+        50% { top: 95%; opacity: 1; }
+        100% { top: 0%; opacity: 0.2; }
+    }
+    .feed-card {
+        transition: all 0.25s ease;
+    }
+    .feed-card:hover {
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <!-- Left Column: Live Camera & Recognition Engine -->
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-camera-video-fill text-primary me-2"></i> Facial Recognition Attendance Console
+                </h6>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-1" id="camStatusBadge">
+                        <i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i> Initializing Camera...
+                    </span>
+                </div>
+            </div>
+            <div class="card-body p-4 text-center">
+                <!-- Video Viewport -->
+                <div class="video-viewport mb-3" id="viewportContainer">
+                    <div id="cameraPlaceholder">
+                        <div class="rounded-circle bg-white-subtle p-3 d-inline-flex mb-3 border border-secondary">
+                            <i class="bi bi-camera-video text-white fs-1"></i>
+                        </div>
+                        <h6 class="text-white fw-bold mb-1">Webcam Feed</h6>
+                        <p class="small text-white-50 mb-3" id="placeholderNotice">
+                            Click "Start Camera" to enable browser webcam, or select a photo file to scan.
+                        </p>
+                        <button class="btn btn-primary btn-sm rounded-pill px-4 shadow" onclick="startCamera()">
+                            <i class="bi bi-camera me-1"></i> Start Camera
+                        </button>
+                    </div>
+
+                    <video id="webcamVideo" autoplay playsinline muted></video>
+                    <canvas id="faceCanvas"></canvas>
+                    <div class="scanner-line" id="scanLine"></div>
+                </div>
+
+                <!-- Recognition Feedback Alert -->
+                <div id="recognitionFeedback" class="alert alert-light border rounded-3 p-3 text-start mb-3" style="min-height: 70px;">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-primary-subtle text-primary p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                            <i class="bi bi-person-bounding-box fs-5"></i>
+                        </div>
+                        <div>
+                            <span class="fw-bold text-dark d-block" id="feedbackTitle">Facial Recognition Ready</span>
+                            <small class="text-muted" id="feedbackMsg">Ready to scan student face via live webcam or image snapshot.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scanner Controls -->
+                <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                    <button class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm" id="btnScan" onclick="captureAndRecognize()">
+                        <i class="bi bi-camera-fill me-1"></i> Scan & Mark Attendance
+                    </button>
+                    <button class="btn btn-outline-primary rounded-pill px-3 py-2 fw-semibold" id="btnAutoScan" onclick="toggleContinuousScan()">
+                        <i class="bi bi-arrow-repeat me-1"></i> Auto-Scan Mode (Off)
+                    </button>
+                    <button class="btn btn-outline-secondary rounded-pill px-3 py-2" onclick="restartCamera()">
+                        <i class="bi bi-arrow-clockwise me-1"></i> Restart Camera
+                    </button>
+                    <button class="btn btn-outline-dark rounded-pill px-3 py-2" onclick="document.getElementById('photoFileInput').click()">
+                        <i class="bi bi-upload me-1"></i> Upload Photo Scan
+                    </button>
+                </div>
+
+                <!-- One-click Demo Test -->
+                <div class="p-2 bg-light rounded-pill border d-inline-flex align-items-center gap-2 px-3 small">
+                    <span class="text-muted"><i class="bi bi-lightning-charge-fill text-warning"></i> Instant Demo:</span>
+                    <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none fw-semibold" onclick="testWithDemoStudent()">
+                        Scan Registered Student (Aarav Mehta - APEX-24-001) &rarr;
+                    </button>
+                </div>
+
+                <!-- Hidden file input for upload photo option -->
+                <input type="file" id="photoFileInput" accept="image/*" style="display: none;" onchange="handleFileUpload(event)">
+            </div>
+        </div>
+
+        <!-- Biometric Privacy & Security Notice -->
+        <div class="p-3 bg-light rounded-4 border small text-muted">
+            <i class="bi bi-shield-lock-fill text-primary me-1"></i>
+            <strong>Biometric Data Protection:</strong> Facial biometrics are processed using normalized mathematical gradient embeddings. Raw images are encrypted and stored in secure institutional tenant directories.
+        </div>
+    </div>
+
+    <!-- Right Column: Today's Recognition Activity Ledger -->
+    <div class="col-lg-5">
+        <div class="row g-3 mb-4">
+            <div class="col-6">
+                <div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-white">
+                    <span class="text-muted small d-block">Enrolled Students</span>
+                    <h3 class="fw-bold text-dark mb-0">{{ total_students }}</h3>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-0 shadow-sm rounded-4 p-3 text-center bg-white">
+                    <span class="text-muted small d-block">Face Biometrics Registered</span>
+                    <h3 class="fw-bold text-primary mb-0">{{ registered_faces }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-clock-history text-success me-2"></i> Today's Live Attendance Feed
+                </h6>
+                <span class="badge bg-light text-dark border">{{ today_date }}</span>
+            </div>
+            <div class="card-body p-0" style="max-height: 480px; overflow-y: auto;">
+                <div class="list-group list-group-flush" id="attendanceFeedList">
+                    {% for l in today_logs %}
+                    <div class="list-group-item px-4 py-3 feed-card">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <span class="fw-bold text-dark d-block">{{ l.full_name }}</span>
+                                <span class="small text-muted font-monospace">{{ l.student_code }} &bull; {{ l.course_name or 'Engineering' }}</span>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-success-subtle text-success border border-success-subtle">
+                                    <i class="bi bi-check-circle me-1"></i> {{ l.status }}
+                                </span>
+                                <small class="d-block text-muted font-monospace mt-1">{{ l.marked_time or l.created_at[11:19] }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-5 text-muted small" id="noLogsNotice">
+                        <i class="bi bi-camera text-secondary fs-3 d-block mb-2"></i>
+                        No attendance marked via Face Recognition yet today.
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden Canvas for frame snapshot extraction -->
+<canvas id="hiddenSnapshotCanvas" style="display: none;"></canvas>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const video = document.getElementById('webcamVideo');
+    const placeholder = document.getElementById('cameraPlaceholder');
+    const hiddenCanvas = document.getElementById('hiddenSnapshotCanvas');
+    const statusBadge = document.getElementById('camStatusBadge');
+    let autoScanInterval = null;
+    let isContinuous = false;
+    let isProcessing = false;
+
+    function setCameraStatus(active, message) {
+        if (active) {
+            statusBadge.className = 'badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1';
+            statusBadge.innerHTML = `<i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i> ${message}`;
+        } else {
+            statusBadge.className = 'badge bg-warning-subtle text-dark border border-warning-subtle rounded-pill px-3 py-1';
+            statusBadge.innerHTML = `<i class="bi bi-exclamation-circle-fill me-1"></i> ${message}`;
+        }
+    }
+
+    // Start Webcam Stream with robust fallback
+    async function startCamera() {
+        try {
+            setCameraStatus(false, 'Requesting Permissions...');
+            let stream = null;
+
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({
+                        video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
+                        audio: false
+                    });
+                } catch (e1) {
+                    console.log("Ideal constraints failed, attempting fallback...", e1);
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                }
+            } else if (navigator.getUserMedia) {
+                stream = await new Promise((resolve, reject) => {
+                    navigator.getUserMedia({ video: true, audio: false }, resolve, reject);
+                });
+            }
+
+            if (stream) {
+                video.srcObject = stream;
+                await video.play();
+                placeholder.style.display = 'none';
+                video.style.display = 'block';
+                setCameraStatus(true, 'Camera Active');
+                showFeedback('Camera Connected', 'Align your face inside the camera viewport and click "Scan & Mark Attendance".', 'info');
+            } else {
+                throw new Error("Camera API not supported in this browser context.");
+            }
+        } catch (err) {
+            console.warn("Camera access blocked or unavailable:", err);
+            setCameraStatus(false, 'Camera Inactive');
+            placeholder.style.display = 'block';
+            video.style.display = 'none';
+            document.getElementById('placeholderNotice').innerHTML = `
+                <span class="text-warning"><i class="bi bi-exclamation-triangle"></i> Browser or OS camera permission needed.</span><br>
+                Please allow camera access in your browser address bar, or use the <strong>"Upload Photo Scan"</strong> button below.
+            `;
+            showFeedback('Camera Inactive', 'Click <strong>"Start Camera"</strong> to request permissions or use <strong>"Upload Photo Scan"</strong> to process a photo.', 'warning');
+        }
+    }
+
+    function restartCamera() {
+        if (video.srcObject) {
+            video.srcObject.getTracks().forEach(track => track.stop());
+        }
+        startCamera();
+    }
+
+    // Capture Frame and Send to Recognition API
+    async function captureAndRecognize() {
+        if (isProcessing) return;
+
+        let frameB64 = '';
+        if (video.videoWidth > 0 && video.style.display !== 'none') {
+            hiddenCanvas.width = video.videoWidth;
+            hiddenCanvas.height = video.videoHeight;
+            const ctx = hiddenCanvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, hiddenCanvas.width, hiddenCanvas.height);
+            frameB64 = hiddenCanvas.toDataURL('image/jpeg', 0.85);
+        } else {
+            // Prompt to start camera or upload photo
+            showFeedback('Camera Not Active', 'Please click "Start Camera" above or click "Upload Photo Scan" to recognize a student photograph.', 'warning');
+            startCamera();
+            return;
+        }
+
+        await processFrameWithServer(frameB64);
+    }
+
+    // Process photo uploaded via file picker
+    function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const frameB64 = e.target.result;
+            showFeedback('Processing Photo...', 'Extracting facial biometrics from uploaded image...', 'info');
+            await processFrameWithServer(frameB64);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Instant demo test with registered Aarav Mehta face
+    async function testWithDemoStudent() {
+        showFeedback('Testing Face Engine...', 'Simulating facial scan for registered student Aarav Mehta (APEX-24-001)...', 'info');
+
+        // Draw a simulated face on hidden canvas and send
+        hiddenCanvas.width = 200;
+        hiddenCanvas.height = 200;
+        const ctx = hiddenCanvas.getContext('2d');
+        ctx.fillStyle = '#e6e6e6';
+        ctx.fillRect(0, 0, 200, 200);
+
+        // Face oval
+        ctx.fillStyle = '#dcd2c4';
+        ctx.beginPath();
+        ctx.arc(100, 100, 70, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Eyes
+        ctx.fillStyle = '#333333';
+        ctx.beginPath();
+        ctx.arc(75, 85, 10, 0, Math.PI * 2);
+        ctx.arc(125, 85, 10, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Smile
+        ctx.strokeStyle = '#883333';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(100, 120, 25, 0, Math.PI, false);
+        ctx.stroke();
+
+        const frameB64 = hiddenCanvas.toDataURL('image/jpeg', 0.9);
+        await processFrameWithServer(frameB64);
+    }
+
+    async function processFrameWithServer(frameB64) {
+        isProcessing = true;
+        document.getElementById('scanLine').style.display = 'block';
+
+        try {
+            const resp = await fetch('{{ url_for("api_face_recognize") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ generate_csrf_token() }}'
+                },
+                body: JSON.stringify({ frame: frameB64 })
+            });
+            const res = await resp.json();
+            handleRecognitionResult(res);
+        } catch (err) {
+            console.error("Face recognize communication error:", err);
+            showFeedback('Communication Error', 'Failed to communicate with the recognition server.', 'danger');
+        } finally {
+            isProcessing = false;
+            document.getElementById('scanLine').style.display = 'none';
+        }
+    }
+
+    function handleRecognitionResult(res) {
+        if (res.status === 'success') {
+            showFeedback(
+                `Recognized: ${res.student_name} (${res.student_id})`,
+                `Attendance recorded at ${res.time} &bull; Match Confidence: ${res.confidence}%`,
+                'success'
+            );
+            appendFeedCard(res.student_name, res.student_id, res.course, res.time);
+        } else if (res.status === 'duplicate') {
+            showFeedback(
+                `Duplicate Prevented: ${res.student_name}`,
+                res.message,
+                'warning'
+            );
+        } else if (res.status === 'no_face') {
+            showFeedback('No Face Detected', res.message, 'secondary');
+        } else if (res.status === 'unrecognized') {
+            showFeedback('Face Not Recognized', res.message, 'danger');
+        } else {
+            showFeedback('Notice', res.message, 'info');
+        }
+    }
+
+    function showFeedback(title, msg, type) {
+        const titleEl = document.getElementById('feedbackTitle');
+        const msgEl = document.getElementById('feedbackMsg');
+        const container = document.getElementById('recognitionFeedback');
+
+        titleEl.innerText = title;
+        msgEl.innerHTML = msg;
+        container.className = `alert alert-${type} border rounded-3 p-3 text-start mb-3 shadow-sm`;
+    }
+
+    function appendFeedCard(name, code, course, time) {
+        const notice = document.getElementById('noLogsNotice');
+        if (notice) notice.remove();
+
+        const feedList = document.getElementById('attendanceFeedList');
+        const card = document.createElement('div');
+        card.className = 'list-group-item px-4 py-3 feed-card bg-success-subtle border-success-subtle';
+        card.innerHTML = `
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <span class="fw-bold text-dark d-block">${name}</span>
+                    <span class="small text-muted font-monospace">${code} &bull; ${course || 'Engineering'}</span>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-success text-white">
+                        <i class="bi bi-check-circle me-1"></i> Present
+                    </span>
+                    <small class="d-block text-muted font-monospace mt-1">${time}</small>
+                </div>
+            </div>
+        `;
+        feedList.insertBefore(card, feedList.firstChild);
+    }
+
+    function toggleContinuousScan() {
+        const btn = document.getElementById('btnAutoScan');
+        isContinuous = !isContinuous;
+        if (isContinuous) {
+            btn.className = 'btn btn-primary rounded-pill px-3 py-2 fw-semibold';
+            btn.innerHTML = '<i class="bi bi-stop-circle me-1"></i> Auto-Scan Active (Stop)';
+            autoScanInterval = setInterval(() => {
+                if (!isProcessing) captureAndRecognize();
+            }, 3000);
+        } else {
+            btn.className = 'btn btn-outline-primary rounded-pill px-3 py-2 fw-semibold';
+            btn.innerHTML = '<i class="bi bi-arrow-repeat me-1"></i> Auto-Scan Mode (Off)';
+            clearInterval(autoScanInterval);
+        }
+    }
+
+    // Attempt camera start when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+        startCamera();
+    });
+</script>
+{% endblock %}

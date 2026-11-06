@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Unlimited Batches & Academic Years{% endblock %}
+{% block page_title %}Batch & Academic Year Governance{% endblock %}
+{% block page_subtitle %}Manage Multi-Year Academic Cohorts, Intakes & Dynamic Student Enrollments{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <!-- Left Column: Batches Ledger -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-calendar3-range text-primary me-2"></i> Academic Batches & Cohort Registry
+                </h6>
+                <button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#addBatchModal">
+                    <i class="bi bi-plus-circle me-1"></i> Add New Batch
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light small text-secondary">
+                            <tr>
+                                <th class="ps-4">Batch Name</th>
+                                <th>Span Period</th>
+                                <th>Enrolled Students</th>
+                                <th>Created Date</th>
+                                <th class="pe-4 text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for b in batches %}
+                            <tr>
+                                <td class="ps-4">
+                                    <strong class="text-dark fs-6">{{ b.name }}</strong>
+                                    <span class="badge bg-light text-muted border font-monospace ms-2">4-Year Degree</span>
+                                </td>
+                                <td>
+                                    <span class="small font-monospace text-secondary">{{ b.start_year }} &rarr; {{ b.end_year }}</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 fs-6">
+                                        <i class="bi bi-people-fill me-1"></i> {{ b.enrolled_count }} Learners
+                                    </span>
+                                </td>
+                                <td class="small text-muted">{{ b.created_at[:10] }}</td>
+                                <td class="pe-4 text-end">
+                                    <form method="POST" action="{{ url_for('batch_delete', batch_id=b.id) }}" onsubmit="return confirm('Are you sure you want to delete batch {{ b.name }}?');" class="d-inline">
+                                        <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3" {% if b.enrolled_count > 0 %}title="Cannot delete non-empty batch" disabled{% endif %}>
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr><td colspan="5" class="text-center py-4 text-muted">No academic batches created yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Academic Years & Fast Provisioning -->
+    <div class="col-lg-4">
+        <!-- Academic Years Card -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-dark">
+                    <i class="bi bi-calendar-check text-success me-2"></i> Academic Years
+                </h6>
+                <button class="btn btn-outline-success btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#addAyModal">
+                    <i class="bi bi-plus-circle"></i> Add Year
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    {% for ay in academic_years %}
+                    <div class="list-group-item px-4 py-3 d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong class="text-dark">{{ ay.name }}</strong>
+                            {% if ay.is_current %}
+                                <span class="badge bg-success ms-2">Current Session</span>
+                            {% endif %}
+                        </div>
+                        <span class="small text-muted font-monospace">{{ ay.created_at[:10] }}</span>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4 text-muted small">No academic years listed.</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="p-3 bg-light rounded-4 border small text-muted">
+            <i class="bi bi-info-circle-fill text-primary me-1"></i>
+            <strong>Unlimited Cohort Scalability:</strong> You can create prospective cohorts for upcoming academic cycles (e.g. 2026-2030, 2027-2031, 2028-2032). Student intake metrics update dynamically in real time.
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Add New Batch -->
+<div class="modal fade" id="addBatchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-light border-bottom">
+                <h6 class="modal-title fw-bold text-dark">
+                    <i class="bi bi-calendar-plus text-primary me-2"></i> Register New Multi-Year Batch
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('batch_create') }}">
+                <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-dark">Batch Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="e.g. 2026-2030" required>
+                        <div class="form-text small text-muted">Common format: [Start Year]-[End Year] (e.g. 2026-2030)</div>
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-dark">Start Year</label>
+                            <input type="number" class="form-control" name="start_year" placeholder="2026" min="2020" max="2040" required>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-dark">Graduation / End Year</label>
+                            <input type="number" class="form-control" name="end_year" placeholder="2030" min="2020" max="2045" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-top">
+                    <button type="button" class="btn btn-secondary btn-sm rounded-pill px-3" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm">
+                        <i class="bi bi-check-lg me-1"></i> Save Batch
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Add Academic Year -->
+<div class="modal fade" id="addAyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-light border-bottom">
+                <h6 class="modal-title fw-bold text-dark">
+                    <i class="bi bi-calendar-check text-success me-2"></i> Add Academic Year
+                </h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('academic_year_create') }}">
+                <input type="hidden" name="csrf_token" value="{{ generate_csrf_token() }}">
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-dark">Academic Year Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="e.g. 2026-2027" required>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" name="is_current" id="isCurrAy" value="1">
+                        <label class="form-check-label small text-dark fw-semibold" for="isCurrAy">Set as Active Current Academic Session</label>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-top">
+                    <button type="button" class="btn btn-secondary btn-sm rounded-pill px-3" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm rounded-pill px-4 shadow-sm">
+                        <i class="bi bi-check-lg me-1"></i> Add Academic Session
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
